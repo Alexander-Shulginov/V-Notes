@@ -41,8 +41,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <main class="grid-container" :class="{ 'sidebar-hidden': store.testt }">
-        <div class="app-top">
+    <main class="editor" :class="{ 'sidebar-hidden': store.testt }">
+        <div class="editor__top">
             <div class="sidebar__search">
                 <div class="sidebar__search-sidebar">
                     <BaseSideBarControl />
@@ -53,7 +53,8 @@ onMounted(() => {
                 <NotesTitle />
             </div>
         </div>
-        <div class="app-body">
+
+        <div class="editor__body">
             <aside class="sidebar">
                 <div ref="sidebarList" class="sidebar__list">
                     <div class="sidebar__list-wrapper">
@@ -79,14 +80,17 @@ onMounted(() => {
 </template>
 
 <style lang="scss">
-.grid-container {
+.editor {
     max-width: 1240px;
     margin: 0 auto;
 
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-base);
+
     padding: 0 16px;
     // height: calc(100vh - 120px);
-
-    gap: var(--gap-base);
+    height: calc(100vh - 200px);
 
     @media (max-width: 1024px) {
         grid-template-columns: 240px 3fr;
@@ -95,18 +99,20 @@ onMounted(() => {
     @media (max-width: 768px) {
         padding: 0 8px;
     }
-}
 
-.app-top {
-    display: flex;
-    gap: var(--gap-base);
-    margin-bottom: var(--gap-base);
-}
+    &__top {
+        display: flex;
+        gap: var(--gap-base);
+    }
 
-.app-body {
-    display: flex;
-    gap: var(--gap-base);
-    transition: 0.5s ease-in-out;
+    &__body {
+        position: relative;
+
+        display: flex;
+        gap: var(--gap-base);
+
+        transition: 0.5s ease-in-out;
+    }
 }
 
 .editor__textarea {
@@ -119,6 +125,20 @@ onMounted(() => {
     flex-grow: 2;
 }
 
+.svg-dots {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.svg-line {
+    transition: transform 0.5s ease-in-out;
+}
+
+.svg-arrow {
+    transform: translateX(0px);
+    transform-origin: center center;
+    transition: transform 0.5s ease-in-out;
+}
+
 .sidebar-hidden {
     .sidebar {
         width: 0px;
@@ -127,14 +147,29 @@ onMounted(() => {
     }
 
     .sidebar__search {
-        width: 60px;
+        width: 66px;
     }
 
     .search {
+        visibility: hidden;
+        opacity: 0;
         width: 0;
         padding: 0;
-        // visibility: hidden;
-        // opacity: 0;
+    }
+
+    .svg-arrow {
+        transform: rotateY(190deg) translateX(-5px);
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .svg-dots {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .svg-line {
+        transform: translateX(-4px);
+        transition: transform 0.5s ease-in-out;
     }
 
     .sidebar__controls {
@@ -145,7 +180,7 @@ onMounted(() => {
         }
     }
 
-    .app-body {
+    .editor__body {
         gap: 0;
     }
 
@@ -156,6 +191,19 @@ onMounted(() => {
 
 .search {
     transition: 0.5s ease-in-out;
+    outline: none;
+
+    &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+        border-radius: var(--b-radius-base);
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--dark-primary-hover);
+        }
+    }
 }
 
 .sidebar {
@@ -167,7 +215,14 @@ onMounted(() => {
     width: 300px;
     flex-shrink: 0;
 
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
     &__search {
+        cursor: pointer;
         display: flex;
         gap: 6px;
         background-color: var(--bg-side-bar);
@@ -185,6 +240,13 @@ onMounted(() => {
         align-items: center;
         justify-content: center;
         padding: 0 5px;
+        transition: 0.5s ease-in-out;
+
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--dark-primary-hover);
+            }
+        }
     }
 
     &__list {
@@ -197,7 +259,7 @@ onMounted(() => {
         color: var(--light);
         font-size: 18px;
         overflow-y: auto;
-        height: calc(100vh - 255px);
+        // height: calc(100vh - 255px);
         background-color: var(--bg-side-bar);
         padding: 8px;
         border-radius: var(--b-radius-base);

@@ -1,5 +1,7 @@
 :root {
-    --dark-primary: #24292e;
+    --dark-primary: rgb(36, 41, 46);
+    --dark-primary-hover: rgba(36, 41, 46, 0.6);
+
     --dark-second: #363e45;
     --accent: #0d74e7;
     --accent-hover: #0d73e7af;
