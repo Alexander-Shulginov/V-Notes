@@ -12,9 +12,14 @@ import NotesArea from './NotesArea.vue'
 
 <style lang="scss" scoped>
 .editor__body {
+    position: relative;
+
     display: flex;
     gap: var(--gap-base);
+
     width: 100%;
-    transition: gap 0.5s ease-in-out;
+    height: 100%;
+
+    transition: gap var(--transition-delay) ease-in-out;
 }
 </style>

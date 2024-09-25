@@ -59,4 +59,18 @@ const store = useStore()
         border-radius: var(--b-radius-base);
     }
 }
+
+.svg-dots {
+    transition: opacity var(--transition-delay) ease-in-out;
+}
+
+.svg-line {
+    transition: transform var(--transition-delay) ease-in-out;
+}
+
+.svg-arrow {
+    transform: translateX(0px);
+    transform-origin: center center;
+    transition: transform var(--transition-delay) ease-in-out;
+}
 </style>

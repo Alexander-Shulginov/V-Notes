@@ -20,7 +20,7 @@ import NotesSearchInput from './NotesSearchInput.vue'
     border-radius: var(--b-radius-base);
     width: 300px;
 
-    transition: width 0.5s ease-in-out;
+    transition: width var(--transition-delay) ease-in-out;
     outline: none;
 }
 </style>

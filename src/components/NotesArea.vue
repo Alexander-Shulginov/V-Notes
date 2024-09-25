@@ -25,7 +25,21 @@ onMounted(() => {
 .text-field {
     width: 100%;
     flex-grow: 2;
-    transition: width 0.5s ease-in-out;
+    transition: width var(--transition-delay) ease-in-out;
+    position: relative;
+    &::after {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+        border-radius: var(--b-radius-base);
+        transition: background-color var(--transition-delay) ease-in-out;
+    }
 
     &__area {
         height: 100%;

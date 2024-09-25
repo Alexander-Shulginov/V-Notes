@@ -40,7 +40,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .sidebar {
-    transition: 0.5s ease-in-out;
+    transition: var(--transition-delay) ease-in-out;
     gap: var(--gap-base);
 
     display: flex;
@@ -48,12 +48,13 @@ onMounted(() => {
     width: 300px;
     flex-shrink: 0;
     overflow: hidden;
-    transition: 0.5s ease-in-out;
+    transition: var(--transition-delay) ease-in-out;
 
     @media (max-width: 768px) {
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 3;
     }
 
     &__list--scroll {

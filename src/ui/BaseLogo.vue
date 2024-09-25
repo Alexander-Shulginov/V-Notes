@@ -19,10 +19,20 @@
     gap: 4px;
     text-decoration: none;
 
+    outline: none;
+
+    @media (any-hover: hover) {
+        &:hover {
+            .slogan::after {
+                width: 100%;
+            }
+        }
+    }
+
     &:focus-visible {
-        outline: 1px solid var(--light-2);
-        outline-offset: 5px;
-        border-radius: var(--b-radius-base);
+        .slogan::after {
+            width: 100%;
+        }
     }
 }
 
@@ -32,5 +42,21 @@
     color: var(--light-2);
     display: block;
     margin-top: 4px;
+
+    position: relative;
+    &::after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background-color: var(--accent);
+        border-radius: 2px;
+
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+
+        transition: width var(--transition-delay) ease-in-out;
+    }
 }
 </style>

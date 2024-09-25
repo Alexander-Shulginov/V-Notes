@@ -24,7 +24,9 @@ const store = useStore()
     background-color: var(--dark-primary);
     border-radius: var(--b-radius-base);
 
-    transition:  .5s  ease-in-out;
+    transition-property: visibility, opacity, width, padding;
+    transition-duration: 0.5;
+    transition-timing-function: ease-in-out;
 
     &:focus-visible {
         outline: 2px solid var(--accent);

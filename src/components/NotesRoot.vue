@@ -7,7 +7,7 @@ const store = useStore()
 </script>
 
 <template>
-    <main class="editor" :class="{ 'sidebar-hidden': store.testt }">
+    <main class="editor" :class="{ 'sidebar--active': store.testt }">
         <AppTop />
         <AppBody />
     </main>
@@ -23,41 +23,23 @@ const store = useStore()
     gap: var(--gap-base);
 
     padding: 0 16px;
-    // height: calc(100vh - 120px);
     height: calc(100vh - 200px);
-
-    @media (max-width: 1024px) {
-        grid-template-columns: 240px 3fr;
-    }
 
     @media (max-width: 768px) {
         padding: 0 8px;
+        height: calc(100vh - 100px);
     }
 }
 
-.svg-dots {
-    transition: opacity 0.5s ease-in-out;
-}
+.sidebar--active {
+    .search {
+        width: 66px;
+    }
 
-.svg-line {
-    transition: transform 0.5s ease-in-out;
-}
-
-.svg-arrow {
-    transform: translateX(0px);
-    transform-origin: center center;
-    transition: transform 0.5s ease-in-out;
-}
-
-.sidebar-hidden {
     .sidebar {
         width: 0px;
         opacity: 0;
         visibility: hidden;
-    }
-
-    .search {
-        width: 66px;
     }
 
     .search__field {
@@ -65,21 +47,6 @@ const store = useStore()
         opacity: 0;
         width: 0;
         padding: 0;
-    }
-
-    .svg-arrow {
-        transform: rotateY(190deg) translateX(-5px);
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .svg-dots {
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-
-    .svg-line {
-        transform: translateX(-4px);
-        transition: transform 0.5s ease-in-out;
     }
 
     .controls {
@@ -92,6 +59,25 @@ const store = useStore()
 
     .editor__body {
         gap: 0;
+    }
+
+    .text-field::after {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .svg-arrow {
+        transform: rotateY(190deg) translateX(-5px);
+        transition: transform var(--transition-delay) ease-in-out;
+    }
+
+    .svg-dots {
+        opacity: 0;
+        transition: opacity var(--transition-delay) ease-in-out;
+    }
+
+    .svg-line {
+        transform: translateX(-4px);
+        transition: transform var(--transition-delay) ease-in-out;
     }
 }
 </style>

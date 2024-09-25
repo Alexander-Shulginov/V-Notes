@@ -29,7 +29,7 @@ onMounted(() => {
 .controls {
     width: 100%;
     overflow: hidden;
-    transition: width 0.5s ease-in-out;
+    transition: width var(--transition-delay) ease-in-out;
 
     &__wrapper {
         display: flex;
