@@ -37,8 +37,8 @@ onMounted(() => {
             <div class="sidebar__list-wrapper">
                 <NotesList />
             </div>
-            <AppControls />
         </div>
+        <AppControls />
     </aside>
 </template>
 
