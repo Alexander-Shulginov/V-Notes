@@ -39,16 +39,24 @@ const store = useStore()
     background-color: transparent;
     border: none;
     cursor: pointer;
-    padding: 8px;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    &:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 4px;
-        border-radius: var(--b-radius-base);
+    background-color: var(--dark-primary);
+    border-radius: var(--b-radius-base);
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--dark-primary-hover);
+        }
     }
 
+    &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+        border-radius: var(--b-radius-base);
+    }
 }
 </style>

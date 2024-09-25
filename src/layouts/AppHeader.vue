@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseLogo from '@/ui/BaseLogo.vue'
 import BaseColorScheme from '@/ui/BaseColorScheme.vue'
-import BaseSideBarControl from '@/ui/BaseSideBarControl.vue';
+import BaseSideBarControl from '@/ui/BaseSideBarToggle.vue'
 </script>
 
 <template>

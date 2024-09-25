@@ -1,31 +1,25 @@
 <script setup lang="ts">
 import { useStore } from '@/store/notesStore'
-import { computed } from 'vue'
-import IconTrash from './icons/IconTrash.vue'
-import BaseBtn from '@/ui/BaseBtn.vue'
+
+defineProps<{
+    title: string
+    id: number
+}>()
 
 const store = useStore()
 const itemIsClicked = (id: number): boolean => {
     return id === store.activeItemId
 }
-const itemsToShow = computed(() => {
-    if (store.searchText.trim() !== '') {
-        return store.filteredNotesItems
-    }
-    return store.notesItems
-})
 </script>
 
 <template>
     <li
         class="list__item"
-        :class="{ 'list__item--active': itemIsClicked(item.id) }"
-        @click="store.setId(item.id), store.readItem()"
-        v-for="item in itemsToShow"
-        :key="item.id"
+        :class="{ 'list__item--active': itemIsClicked(id) }"
+        @click="store.setId(id), store.readItem()"
     >
         <p class="list__item-text">
-            {{ item.title }}
+            {{ title }}
         </p>
     </li>
 </template>

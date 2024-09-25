@@ -7,12 +7,19 @@ const store = useStore()
 const itemsListIsEmpty = computed((): boolean => {
     return store.notesItems.length === 0
 })
+
+const itemsToShow = computed(() => {
+    if (store.searchText.trim() !== '') {
+        return store.filteredNotesItems
+    }
+    return store.notesItems
+})
 </script>
 
 <template>
     <div v-if="itemsListIsEmpty" class="info">List is empty</div>
     <ul v-else class="list">
-        <NotesListItem />
+        <NotesListItem v-for="item in itemsToShow" :key="item.id" :id="item.id" :title="item.title" />
     </ul>
 </template>
 

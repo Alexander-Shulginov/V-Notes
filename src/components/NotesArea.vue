@@ -8,49 +8,56 @@ onMounted(() => {
 </script>
 
 <template>
-    <textarea
-        v-model="store.notesText"
-        @blur="store.updateText(), store.readItem()"
-        ref="textArea"
-        :disabled="store.isDisabled"
-        class="area"
-        name="user-text"
-        id="area-base"
-    ></textarea>
+    <div class="text-field">
+        <textarea
+            v-model="store.notesText"
+            @blur="store.updateText(), store.readItem()"
+            ref="textArea"
+            :disabled="store.isDisabled"
+            class="text-field__area"
+            name="user-text"
+            id="area-base"
+        ></textarea>
+    </div>
 </template>
 
 <style scoped lang="scss">
-.area {
-    height: 100%;
+.text-field {
     width: 100%;
+    flex-grow: 2;
+    transition: width 0.5s ease-in-out;
 
-    resize: none;
-    border: none;
-    outline: none;
+    &__area {
+        height: 100%;
+        width: 100%;
 
-    border: 6px solid transparent;
+        resize: none;
+        outline: none;
 
-    color: var(--light-2);
-    font-size: var(--font-size-text);
+        border: 6px solid transparent;
 
-    background-color: var(--dark-second);
+        color: var(--light-2);
+        font-size: var(--font-size-text);
 
-    border-radius: var(--b-radius-base);
-    padding: calc(var(--offset-base) - 6px);
+        background-color: var(--dark-second);
 
-    &::-webkit-scrollbar {
-        width: 5px;
-    }
+        border-radius: var(--b-radius-base);
+        padding: calc(var(--offset-base) - 6px);
 
-    &::-webkit-scrollbar-track {
-        background-color: var(--dark-primary);
-        border-radius: 2px;
-    }
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
 
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--accent);
-        border-radius: 2px;
-        cursor: pointer;
+        &::-webkit-scrollbar-track {
+            background-color: var(--dark-primary);
+            border-radius: 2px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--accent);
+            border-radius: 2px;
+            cursor: pointer;
+        }
     }
 }
 </style>

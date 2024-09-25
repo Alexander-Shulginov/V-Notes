@@ -9,13 +9,13 @@ const store = useStore()
         v-model="store.searchText"
         @input="store.searchItems()"
         type="text"
-        class="search"
+        class="search__field"
         placeholder="Search"
     />
 </template>
 
 <style lang="scss" scoped>
-.search {
+.search__field {
     border: none;
     outline: none;
     color: #fff;
@@ -24,5 +24,17 @@ const store = useStore()
     font-size: var(--font-size-text);
     background-color: var(--dark-primary);
     border-radius: var(--b-radius-base);
+
+    &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+        border-radius: var(--b-radius-base);
+    }
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--dark-primary-hover);
+        }
+    }
 }
 </style>
