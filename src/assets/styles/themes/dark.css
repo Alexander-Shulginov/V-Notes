@@ -1,0 +1,17 @@
+:root {
+    --dark-primary: #24292e;
+    --dark-second: #363e45;
+    --accent: #0d74e7;
+    --accent-hover: #0d73e7af;
+    --accent-2: #2fbb4f;
+    --light: #eeeeee;
+    --light-2: #fafbfc;
+    --alert-color: #c93c37;
+}
+
+[data-color-scheme='dark'] {
+    --bg-color: var(--dark-primary);
+    --bg-side-bar: var(--dark-second);
+    --accent-color: var(--accent);
+    --light-color: var(--light);
+}

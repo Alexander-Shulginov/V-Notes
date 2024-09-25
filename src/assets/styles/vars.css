@@ -1,0 +1,17 @@
+:root {
+    --gap-base: 18px;
+    --offset-base: 12px;
+    --b-radius-base: 6px;
+
+    --font-size-text: 16px;
+    --font-size-title: 18px;
+
+    @media (max-width: 768px) {
+        --gap-base: 12px;
+        --offset-base: 8px;
+        --b-radius-base: 4px;
+
+        --font-size-text: 14px;
+        --font-size-title: 16px;
+    }
+}
