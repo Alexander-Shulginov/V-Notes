@@ -15,5 +15,6 @@ import NotesArea from './NotesArea.vue'
     display: flex;
     gap: var(--gap-base);
     width: 100%;
+    transition: gap 0.5s ease-in-out;
 }
 </style>

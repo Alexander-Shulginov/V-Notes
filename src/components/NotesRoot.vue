@@ -56,11 +56,11 @@ const store = useStore()
         visibility: hidden;
     }
 
-    .sidebar__search {
+    .search {
         width: 66px;
     }
 
-    .search {
+    .search__field {
         visibility: hidden;
         opacity: 0;
         width: 0;
@@ -82,7 +82,7 @@ const store = useStore()
         transition: transform 0.5s ease-in-out;
     }
 
-    .sidebar__controls {
+    .controls {
         width: 0px;
 
         .btn {
@@ -92,10 +92,6 @@ const store = useStore()
 
     .editor__body {
         gap: 0;
-    }
-
-    .editor__textarea {
-        grid-column: 1 / 3;
     }
 }
 </style>

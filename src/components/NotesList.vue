@@ -17,15 +17,43 @@ const itemsToShow = computed(() => {
 </script>
 
 <template>
-    <div v-if="itemsListIsEmpty" class="info">List is empty</div>
-    <ul v-else class="list">
-        <NotesListItem v-for="item in itemsToShow" :key="item.id" :id="item.id" :title="item.title" />
+    <ul class="list">
+        <li v-if="itemsListIsEmpty" class="info">List is empty</li>
+        <NotesListItem
+            v-for="item in itemsToShow"
+            :key="item.id"
+            :id="item.id"
+            :title="item.title"
+        />
     </ul>
 </template>
 
 <style lang="scss" scoped>
 .list {
-    padding: 0px;
     margin: 0;
+    color: var(--light);
+    font-size: 18px;
+    overflow-y: auto;
+    height: calc(100vh - 280px);
+    background-color: var(--bg-side-bar);
+    padding: 4px;
+    border-radius: var(--b-radius-base);
+    width: 100%;
+    border: 6px solid transparent;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--dark-primary);
+        border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--accent);
+        cursor: pointer;
+        border-radius: 2px;
+    }
 }
 </style>

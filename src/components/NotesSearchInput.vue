@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useStore } from '@/store/notesStore'
-
 const store = useStore()
 </script>
 
@@ -24,6 +23,8 @@ const store = useStore()
     font-size: var(--font-size-text);
     background-color: var(--dark-primary);
     border-radius: var(--b-radius-base);
+
+    transition:  .5s  ease-in-out;
 
     &:focus-visible {
         outline: 2px solid var(--accent);
