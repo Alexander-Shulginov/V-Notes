@@ -25,7 +25,7 @@ const store = useStore()
     border-radius: var(--b-radius-base);
 
     transition-property: visibility, opacity, width, padding;
-    transition-duration: 0.5;
+    transition-duration: var(--transition-delay);
     transition-timing-function: ease-in-out;
 
     &:focus-visible {

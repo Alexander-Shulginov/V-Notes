@@ -28,7 +28,6 @@ onMounted(() => {
     transition: width var(--transition-delay) ease-in-out;
     position: relative;
     &::after {
-        content: '';
         pointer-events: none;
         position: absolute;
         top: 0;
@@ -39,6 +38,12 @@ onMounted(() => {
         z-index: 2;
         border-radius: var(--b-radius-base);
         transition: background-color var(--transition-delay) ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+        &::after {
+            content: '';
+        }
     }
 
     &__area {

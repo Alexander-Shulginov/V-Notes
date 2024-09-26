@@ -4,10 +4,15 @@ import AppTop from './AppTop.vue'
 import AppBody from './AppBody.vue'
 
 const store = useStore()
+window.addEventListener('resize', () => {
+    if (window.innerWidth === 768) {
+        store.testt = true
+    }
+})
 </script>
 
 <template>
-    <main class="editor" :class="{ 'sidebar--active': store.testt }">
+    <main class="editor" :class="{ 'sidebar--hidden': store.testt }">
         <AppTop />
         <AppBody />
     </main>
@@ -27,26 +32,30 @@ const store = useStore()
 
     @media (max-width: 768px) {
         padding: 0 8px;
-        height: calc(100vh - 100px);
+        height: calc(100vh - 108px);
     }
 }
 
-.sidebar--active {
+.sidebar--hidden {
     .search {
-        width: 66px;
+        @media (min-width: 768px) {
+            width: 66px;
+        }
+
+        &__field {
+            @media (min-width: 768px) {
+                visibility: hidden;
+                opacity: 0;
+                width: 0;
+                padding: 0;
+            }
+        }
     }
 
     .sidebar {
         width: 0px;
         opacity: 0;
         visibility: hidden;
-    }
-
-    .search__field {
-        visibility: hidden;
-        opacity: 0;
-        width: 0;
-        padding: 0;
     }
 
     .controls {

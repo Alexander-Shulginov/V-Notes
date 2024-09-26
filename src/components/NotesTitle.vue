@@ -25,6 +25,9 @@ onMounted(() => {
 <style scoped lang="scss">
 .notes-title {
     flex-grow: 2;
+    transition-property: visibility, opacity, width, padding;
+    transition-duration: var(--transition-delay);
+    transition-timing-function: ease-in-out;
 
     &__field {
         border-bottom: 1px solid black;
@@ -41,7 +44,7 @@ onMounted(() => {
         padding: 16px;
 
         @media (max-width: 768px) {
-            padding: 11px;
+            padding: 13px;
         }
     }
 }

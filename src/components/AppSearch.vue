@@ -22,5 +22,12 @@ import NotesSearchInput from './NotesSearchInput.vue'
 
     transition: width var(--transition-delay) ease-in-out;
     outline: none;
+    @media (max-width: 1024px) {
+        width: 240px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }
 </style>

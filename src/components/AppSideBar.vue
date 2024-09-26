@@ -46,15 +46,21 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     width: 300px;
+    height: 100%;
     flex-shrink: 0;
     overflow: hidden;
     transition: var(--transition-delay) ease-in-out;
+
+    @media (max-width: 1024px){
+        width: 240px;
+    }
 
     @media (max-width: 768px) {
         position: absolute;
         top: 0;
         left: 0;
         z-index: 3;
+        width: 100%;
     }
 
     &__list--scroll {

@@ -38,8 +38,11 @@ const itemsToShow = computed(() => {
     background-color: var(--bg-side-bar);
     padding: 4px;
     border-radius: var(--b-radius-base);
-    width: 100%;
     border: 6px solid transparent;
+
+    @media (max-width: 768px) {
+        height: calc(100vh - 238px);
+    }
 
     &::-webkit-scrollbar {
         width: 5px;
