@@ -25,7 +25,7 @@ onMounted(() => {
 .text-field {
     width: 100%;
     flex-grow: 2;
-    transition: width var(--transition-delay) ease-in-out;
+    transition: width var(--transition-base) ease-in-out;
     position: relative;
     &::after {
         pointer-events: none;
@@ -37,7 +37,7 @@ onMounted(() => {
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 2;
         border-radius: var(--b-radius-base);
-        transition: background-color var(--transition-delay) ease-in-out;
+        transition: background-color var(--transition-base) ease-in-out;
     }
 
     @media (max-width: 768px) {

@@ -41,7 +41,7 @@ const itemsToShow = computed(() => {
     border: 6px solid transparent;
 
     @media (max-width: 768px) {
-        height: calc(100vh - 238px);
+        height: calc(100vh - 303px);
     }
 
     &::-webkit-scrollbar {

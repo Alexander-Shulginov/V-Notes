@@ -40,7 +40,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .sidebar {
-    transition: var(--transition-delay) ease-in-out;
+    transition: var(--transition-base) ease-in-out;
     gap: var(--gap-base);
 
     display: flex;
@@ -49,9 +49,9 @@ onMounted(() => {
     height: 100%;
     flex-shrink: 0;
     overflow: hidden;
-    transition: var(--transition-delay) ease-in-out;
+    transition: var(--transition-base) ease-in-out;
 
-    @media (max-width: 1024px){
+    @media (max-width: 1024px) {
         width: 240px;
     }
 

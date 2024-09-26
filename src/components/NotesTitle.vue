@@ -26,7 +26,7 @@ onMounted(() => {
 .notes-title {
     flex-grow: 2;
     transition-property: visibility, opacity, width, padding;
-    transition-duration: var(--transition-delay);
+    transition-duration: var(--transition-base);
     transition-timing-function: ease-in-out;
 
     &__field {

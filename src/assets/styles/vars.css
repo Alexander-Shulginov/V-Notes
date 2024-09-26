@@ -6,7 +6,8 @@
     --font-size-text: 16px;
     --font-size-title: 18px;
 
-    --transition-delay: 0.5s;
+    --transition-short: 0.2s;
+    --transition-base: 0.5s;
 
     @media (max-width: 768px) {
         --gap-base: 12px;

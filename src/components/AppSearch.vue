@@ -12,7 +12,6 @@ import NotesSearchInput from './NotesSearchInput.vue'
 
 <style lang="scss" scoped>
 .search {
-    cursor: pointer;
     display: flex;
     gap: 6px;
     background-color: var(--bg-side-bar);
@@ -20,7 +19,7 @@ import NotesSearchInput from './NotesSearchInput.vue'
     border-radius: var(--b-radius-base);
     width: 300px;
 
-    transition: width var(--transition-delay) ease-in-out;
+    transition: width var(--transition-base) ease-in-out;
     outline: none;
     @media (max-width: 1024px) {
         width: 240px;

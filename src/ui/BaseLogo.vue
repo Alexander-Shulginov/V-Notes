@@ -56,7 +56,7 @@
         left: 0;
         right: 0;
 
-        transition: width var(--transition-delay) ease-in-out;
+        transition: width var(--transition-base) ease-in-out;
     }
 }
 </style>

@@ -16,5 +16,7 @@ themeStore.loadColorScheme()
 app.mount('#app')
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.remove('no-transition')
+    setTimeout(() => {
+        document.body.classList.remove('no-transition')
+    }, 100)
 })

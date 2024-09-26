@@ -18,11 +18,24 @@
     justify-content: center;
     align-items: center;
 
-    transition: opacity .3s  ease-in-out;
+    transition-property: background-color, opacity;
+    transition-duration: var(--transition-base);
+    transition-timing-function: ease-in-out;
+
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--dark-primary-hover);
+        }
+    }
+
+    &:active {
+        background-color: var(--dark-primary-hover);
+    }
 
     &:focus-visible {
-        outline: 3px solid red;
-        outline-offset: 2px;
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+        border-radius: var(--b-radius-base);
     }
 }
 </style>

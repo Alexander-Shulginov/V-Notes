@@ -2,6 +2,7 @@
 import { useStore } from '@/store/notesStore'
 import AppTop from './AppTop.vue'
 import AppBody from './AppBody.vue'
+import { onMounted } from 'vue'
 
 const store = useStore()
 window.addEventListener('resize', () => {
@@ -9,6 +10,7 @@ window.addEventListener('resize', () => {
         store.testt = true
     }
 })
+
 </script>
 
 <template>
@@ -76,17 +78,17 @@ window.addEventListener('resize', () => {
 
     .svg-arrow {
         transform: rotateY(190deg) translateX(-5px);
-        transition: transform var(--transition-delay) ease-in-out;
+        transition: transform var(--transition-base) ease-in-out;
     }
 
     .svg-dots {
         opacity: 0;
-        transition: opacity var(--transition-delay) ease-in-out;
+        transition: opacity var(--transition-base) ease-in-out;
     }
 
     .svg-line {
         transform: translateX(-4px);
-        transition: transform var(--transition-delay) ease-in-out;
+        transition: transform var(--transition-base) ease-in-out;
     }
 }
 </style>

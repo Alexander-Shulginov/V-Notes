@@ -11,13 +11,13 @@ import NotesTitle from './NotesTitle.vue'
 </template>
 
 <style lang="scss" scoped>
-    .editor__top {
-        display: flex;
-        gap: var(--gap-base);
-        transition: gap var(--transition-delay) ease-in-out;
+.editor__top {
+    display: flex;
+    gap: var(--gap-base);
+    transition: gap var(--transition-base) ease-in-out;
 
-        @media (max-width: 768px){
-            flex-direction: column;
-        }
+    @media (max-width: 768px) {
+        flex-direction: column;
     }
+}
 </style>

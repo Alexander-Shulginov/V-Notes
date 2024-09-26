@@ -47,10 +47,16 @@ const store = useStore()
     background-color: var(--dark-primary);
     border-radius: var(--b-radius-base);
 
+    transition: background-color var(--transition-short) ease-in-out;
+
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--dark-primary-hover);
         }
+    }
+
+    &:active {
+        background-color: var(--dark-primary-hover);
     }
 
     &:focus-visible {
@@ -61,16 +67,16 @@ const store = useStore()
 }
 
 .svg-dots {
-    transition: opacity var(--transition-delay) ease-in-out;
+    transition: opacity var(--transition-base) ease-in-out;
 }
 
 .svg-line {
-    transition: transform var(--transition-delay) ease-in-out;
+    transition: transform var(--transition-base) ease-in-out;
 }
 
 .svg-arrow {
     transform: translateX(0px);
     transform-origin: center center;
-    transition: transform var(--transition-delay) ease-in-out;
+    transition: transform var(--transition-base) ease-in-out;
 }
 </style>
