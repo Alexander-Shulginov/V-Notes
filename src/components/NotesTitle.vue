@@ -25,6 +25,8 @@ onMounted(() => {
 <style scoped lang="scss">
 .notes-title {
     flex-grow: 2;
+    width: calc(100% - (var(--side-bar-width) + var(--gap-base)));
+    overflow: hidden;
     transition-property: visibility, opacity, width, padding;
     transition-duration: var(--transition-base);
     transition-timing-function: ease-in-out;

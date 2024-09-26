@@ -2,7 +2,7 @@
 import { useStore } from '@/store/notesStore'
 import AppTop from './AppTop.vue'
 import AppBody from './AppBody.vue'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 
 const store = useStore()
 window.addEventListener('resize', () => {
@@ -11,10 +11,13 @@ window.addEventListener('resize', () => {
     }
 })
 
+const toggleSideBar = computed(() => {
+    return store.testt ? 'sidebar--hidden' : 'sidebar--visible'
+})
 </script>
 
 <template>
-    <main class="editor" :class="{ 'sidebar--hidden': store.testt }">
+    <main class="editor" :class="toggleSideBar">
         <AppTop />
         <AppBody />
     </main>
@@ -38,19 +41,29 @@ window.addEventListener('resize', () => {
     }
 }
 
+.sidebar--visible {
+    @media (max-width: 768px) {
+        .editor__top {
+            gap: 0;
+        }
+        .notes-title {
+            width: 0;
+            padding: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+    }
+}
+
 .sidebar--hidden {
     .search {
-        @media (min-width: 768px) {
-            width: 66px;
-        }
+        width: 66px;
 
         &__field {
-            @media (min-width: 768px) {
-                visibility: hidden;
-                opacity: 0;
-                width: 0;
-                padding: 0;
-            }
+            visibility: hidden;
+            opacity: 0;
+            width: 0;
+            padding: 0;
         }
     }
 

@@ -45,14 +45,14 @@ onMounted(() => {
 
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: var(--side-bar-width);
     height: 100%;
     flex-shrink: 0;
     overflow: hidden;
     transition: var(--transition-base) ease-in-out;
 
     @media (max-width: 1024px) {
-        width: 240px;
+        width: var(--side-bar-width);
     }
 
     @media (max-width: 768px) {

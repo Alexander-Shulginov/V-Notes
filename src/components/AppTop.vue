@@ -15,9 +15,5 @@ import NotesTitle from './NotesTitle.vue'
     display: flex;
     gap: var(--gap-base);
     transition: gap var(--transition-base) ease-in-out;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-    }
 }
 </style>
