@@ -4,7 +4,7 @@
     </button>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .btn {
     cursor: pointer;
     border-radius: var(--b-radius-base);
@@ -36,6 +36,27 @@
         outline: 2px solid var(--accent);
         outline-offset: 1px;
         border-radius: var(--b-radius-base);
+    }
+}
+
+.btn--add {
+    @media (any-hover: hover) {
+        &:hover {
+            .svg--plus {
+                transform: rotate(90deg);
+            }
+        }
+    }
+}
+
+.btn--delete {
+    @media (any-hover: hover) {
+        &:hover {
+            .svg--trash-top {
+                transform-origin: right 75%;
+                transform: rotate(25deg) translate(-2px, -1px);
+            }
+        }
     }
 }
 </style>

@@ -1,5 +1,11 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" width="22px" height="22px" viewBox="0 0 1024 1024">
+    <svg
+        class="svg--plus"
+        xmlns="http://www.w3.org/2000/svg"
+        width="22px"
+        height="22px"
+        viewBox="0 0 1024 1024"
+    >
         <path fill="currentColor" d="M352 480h320a32 32 0 1 1 0 64H352a32 32 0 0 1 0-64"></path>
         <path fill="currentColor" d="M480 672V352a32 32 0 1 1 64 0v320a32 32 0 0 1-64 0"></path>
         <path
@@ -8,3 +14,9 @@
         ></path>
     </svg>
 </template>
+
+<style lang="scss" scoped>
+.svg--plus {
+    transition: transform var(--transition-base) ease-in-out;
+}
+</style>

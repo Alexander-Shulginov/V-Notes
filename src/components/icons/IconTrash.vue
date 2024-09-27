@@ -1,21 +1,35 @@
 <template>
     <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
+        class="svg--trash"
+        width="16"
+        height="17"
+        viewBox="0 0 16 17"
         fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon-trash"
+        stroke-width="1.5px"
+        xmlns="http://www.w3.org/2000/svg"
     >
-        <polyline points="3 6 5 6 21 6"></polyline>
         <path
-            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-        ></path>
-        <line x1="10" y1="11" x2="10" y2="17"></line>
-        <line x1="14" y1="11" x2="14" y2="17"></line>
+            d="M3 4V15C3 15.5523 3.44772 16 4 16H8H12C12.5523 16 13 15.5523 13 15V4"
+            stroke="#fff"
+            stroke-linecap="round"
+        />
+        <path d="M6.5 8V12" stroke="#fff" stroke-linecap="round" />
+        <path
+            class="svg--trash-top"
+            d="M4.5 3.5V2C4.5 1.44772 4.94772 1 5.5 1H8H10.5C11.0523 1 11.5 1.44772 11.5 2V3.5M4.5 3.5H0.5M4.5 3.5H11.5M11.5 3.5H15.5"
+            stroke="#fff"
+            stroke-linecap="round"
+        />
+        <path d="M9.5 8V12" stroke="#fff" stroke-linecap="round" />
     </svg>
 </template>
+
+<style lang="scss" scoped>
+.svg--trash {
+    overflow: visible;
+}
+.svg--trash-top {
+    transform: translateY(-0.5px);
+    transition: var(--transition-base) ease-in-out;
+}
+</style>
