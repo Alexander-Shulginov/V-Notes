@@ -11,6 +11,7 @@
     padding: var(--offset-base);
     background-color: var(--dark-primary);
     border: none;
+    outline: none;
     color: var(--light);
     width: 100%;
 

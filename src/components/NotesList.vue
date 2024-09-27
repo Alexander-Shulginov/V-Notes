@@ -1,12 +1,27 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 import NotesListItem from './NotesListItem.vue'
+import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
 
 const store = useStore()
-const itemsListIsEmpty = computed((): boolean => {
-    return store.notesItems.length === 0
-})
+const { itemsListIsEmpty } = useItemsListIsEmpty()
+const sidebarElem = useTemplateRef('sideBarList')
+
+function scrollSibebarToBottom() {
+    nextTick(() => {
+        if (sidebarElem.value) {
+            const { clientHeight } = sidebarElem.value
+            const { scrollHeight } = sidebarElem.value
+
+            if (scrollHeight > clientHeight) {
+                sidebarElem.value.scrollTo({
+                    top: sidebarElem.value.scrollHeight
+                })
+            }
+        }
+    })
+}
 
 const itemsToShow = computed(() => {
     if (store.searchText.trim() !== '') {
@@ -14,11 +29,13 @@ const itemsToShow = computed(() => {
     }
     return store.notesItems
 })
+
+watch(store.notesItems, scrollSibebarToBottom)
 </script>
 
 <template>
-    <ul class="list">
-        <li v-if="itemsListIsEmpty" class="info">List is empty</li>
+    <ul class="list" ref="sideBarList">
+        <li v-if="itemsListIsEmpty()" class="info">List is empty</li>
         <NotesListItem
             v-for="item in itemsToShow"
             :key="item.id"

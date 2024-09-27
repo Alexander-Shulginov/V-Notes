@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import { useSideBarControls } from '@/hooks/useSideBarControls'
 import { useStore } from '@/store/notesStore'
 const store = useStore()
+const { toggleSideBar } = useSideBarControls()
 </script>
 
 <template>
-    <button @click="store.testt = !store.testt" class="sidebar-control" type="button">
+    <button @click="toggleSideBar" class="sidebar-control" type="button">
         <svg
             width="23"
             height="20"

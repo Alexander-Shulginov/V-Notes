@@ -1,7 +1,11 @@
 <script setup lang="ts">
-import { useStore } from '@/store/notesStore'
 import { onMounted } from 'vue'
+import { useStore } from '@/store/notesStore'
+import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
+
 const store = useStore()
+const { itemsListIsEmpty } = useItemsListIsEmpty()
+
 onMounted(() => {
     store.textArea = document.querySelector('.area')
 })
@@ -13,7 +17,7 @@ onMounted(() => {
             v-model="store.notesText"
             @blur="store.updateText(), store.readItem()"
             ref="textArea"
-            :disabled="store.isDisabled"
+            :disabled="itemsListIsEmpty()"
             class="text-field__area"
             name="user-text"
             id="area-base"

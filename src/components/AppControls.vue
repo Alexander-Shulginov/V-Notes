@@ -3,22 +3,34 @@ import BaseBtn from '@/ui/BaseBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
 import { useStore } from '@/store/notesStore'
-import { onMounted } from 'vue'
+import { onMounted, ref, useTemplateRef, watch } from 'vue'
+import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
+import { useSetFocus } from '@/hooks/useSetFocus'
 
 const store = useStore()
+const { itemsListIsEmpty } = useItemsListIsEmpty()
+const { setFocus } = useSetFocus()
+
+const btnAdd = ref<HTMLElement | null>(null)
 
 onMounted(() => {
-    store.btnAdd = document.querySelector('.btn--add')
+    btnAdd.value = document.querySelector('.btn--add')
+})
+
+watch(store.notesItems, () => {
+    if (itemsListIsEmpty()) {
+        setFocus(btnAdd.value)
+    }
 })
 </script>
 
 <template>
     <div class="controls">
         <div class="controls__wrapper">
-            <BaseBtn class="btn--add" @click="store.createItem()">
+            <BaseBtn class="btn--add" @click="store.createItem()" ref="btnAdd">
                 <IconPlus />
             </BaseBtn>
-            <BaseBtn class="btn--delete list__item-btn" @click="store.deleteItem()">
+            <BaseBtn class="btn--delete" @click="store.deleteItem()">
                 <IconTrash />
             </BaseBtn>
         </div>

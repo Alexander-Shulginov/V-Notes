@@ -1,4 +1,3 @@
-import { useSetFocus } from '@/hooks/useSetFocus'
 import { defineStore } from 'pinia'
 import { nextTick, ref } from 'vue'
 
@@ -7,8 +6,6 @@ interface NotesItem {
     title: string
     text: string
 }
-
-const { setFocus } = useSetFocus()
 
 export const useStore = defineStore('storeBase', {
     state: () => {
@@ -19,12 +16,7 @@ export const useStore = defineStore('storeBase', {
             searchText: '',
             notesItems: [] as NotesItem[],
             filteredNotesItems: [] as NotesItem[],
-            textArea: ref<HTMLTextAreaElement | null>(null),
-            titleInput: ref<HTMLInputElement | null>(null),
-            btnAdd: ref<HTMLButtonElement | null>(null),
-            sideBar: ref<HTMLElement | null>(null),
-            isDisabled: false,
-            testt: false
+            textArea: ref<HTMLTextAreaElement | null>(null)
         }
     },
 
@@ -37,31 +29,11 @@ export const useStore = defineStore('storeBase', {
             }
 
             this.notesItems.push(newItem)
+            // localStorage.setItem('notesItems', JSON.stringify(this.notesItems))
+
             this.filteredNotesItems.push(newItem)
             this.setId(newItem.id)
             this.resetTextToDefault()
-            setFocus(this.titleInput as HTMLElement)
-            nextTick(() => this.highLightTitle())
-            this.isDisabled = false
-            nextTick(() => this.scrollSibebarToBottom())
-        },
-
-        scrollSibebarToBottom() {
-            if (this.sideBar) {
-                const elemHeight = this.sideBar?.clientHeight
-                const scrollHeight = this.sideBar?.scrollHeight
-                if (scrollHeight > elemHeight) {
-                    this.sideBar?.scrollTo({
-                        top: this.sideBar.scrollHeight
-                    })
-                }
-            }
-        },
-
-        highLightTitle() {
-            if (this.titleInput) {
-                this.titleInput.setSelectionRange(0, 8)
-            }
         },
 
         readItem(): void {
@@ -113,10 +85,6 @@ export const useStore = defineStore('storeBase', {
                 } else {
                     this.activeItemId = 0
                     this.resetTextToDefault()
-                    nextTick(() => {
-                        setFocus(this.btnAdd as HTMLElement)
-                        this.isDisabled = true
-                    })
                 }
             }
             this.readItem()

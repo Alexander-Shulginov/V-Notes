@@ -1,23 +1,21 @@
 <script setup lang="ts">
+import { computed, onMounted, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 import AppTop from './AppTop.vue'
 import AppBody from './AppBody.vue'
-import { computed, onMounted } from 'vue'
+import { useSideBarControls } from '@/hooks/useSideBarControls'
 
 const store = useStore()
-window.addEventListener('resize', () => {
-    if (window.innerWidth === 768) {
-        store.testt = true
-    }
+
+onMounted(() => {
+    store.createItem()
 })
 
-const toggleSideBar = computed(() => {
-    return store.testt ? 'sidebar--hidden' : 'sidebar--visible'
-})
+const { sideBarIsActive } = useSideBarControls()
 </script>
 
 <template>
-    <main class="editor" :class="toggleSideBar">
+    <main class="editor" :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
         <AppTop />
         <AppBody />
     </main>

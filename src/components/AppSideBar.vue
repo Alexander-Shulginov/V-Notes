@@ -1,34 +1,6 @@
 <script setup lang="ts">
 import NotesList from './NotesList.vue'
 import AppControls from './AppControls.vue'
-import { useStore } from '@/store/notesStore'
-import { ref, watch, nextTick, onMounted } from 'vue'
-
-const store = useStore()
-
-const sidebarList = ref<HTMLElement | null>(null)
-const toggleScrollBar = () => {
-    if (sidebarList.value) {
-        const elemHeight = sidebarList.value.clientHeight
-        const scrollHeight = sidebarList.value.scrollHeight
-
-        if (scrollHeight > elemHeight) {
-            sidebarList.value.classList.add('sidebar__list--scroll')
-        } else {
-            sidebarList.value.classList.remove('sidebar__list--scroll')
-        }
-    }
-}
-
-watch(store.notesItems, async () => {
-    await nextTick()
-    toggleScrollBar()
-})
-
-onMounted(() => {
-    store.createItem()
-    store.sideBar = document.querySelector('.sidebar__list')
-})
 </script>
 
 <template>
