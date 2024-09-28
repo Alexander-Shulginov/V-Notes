@@ -4,7 +4,7 @@ import AppControls from './AppControls.vue'
 </script>
 
 <template>
-    <aside class="sidebar">
+    <aside class="sidebar" >
         <NotesList />
         <AppControls />
     </aside>

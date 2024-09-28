@@ -5,8 +5,8 @@ import NotesArea from './NotesArea.vue'
 
 <template>
     <div class="editor__body">
-        <AppSideBar />
         <NotesArea />
+        <AppSideBar />
     </div>
 </template>
 
@@ -15,6 +15,7 @@ import NotesArea from './NotesArea.vue'
     position: relative;
 
     display: flex;
+    flex-direction: row-reverse;
     gap: var(--gap-base);
 
     width: 100%;

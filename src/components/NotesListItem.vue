@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSetFocus } from '@/hooks/useSetFocus'
 import { useStore } from '@/store/notesStore'
 
 defineProps<{
@@ -7,8 +8,15 @@ defineProps<{
 }>()
 
 const store = useStore()
+const { setFocus } = useSetFocus()
+
 const itemIsClicked = (id: number): boolean => {
     return id === store.activeItemId
+}
+
+function setFocusOnTextArea() {
+    let textArea = document.querySelector('.text-field__area') as HTMLTextAreaElement
+    setFocus(textArea)
 }
 </script>
 
@@ -16,7 +24,7 @@ const itemIsClicked = (id: number): boolean => {
     <li
         class="list__item"
         :class="{ 'list__item--active': itemIsClicked(id) }"
-        @click="store.setId(id), store.readItem()"
+        @click="store.setId(id), store.readItem(), setFocusOnTextArea()"
     >
         <p class="list__item-text">
             {{ title }}

@@ -15,8 +15,7 @@ export const useStore = defineStore('storeBase', {
             notesText: '',
             searchText: '',
             notesItems: [] as NotesItem[],
-            filteredNotesItems: [] as NotesItem[],
-            textArea: ref<HTMLTextAreaElement | null>(null)
+            filteredNotesItems: [] as NotesItem[]
         }
     },
 
