@@ -41,17 +41,17 @@ function setFocusOnTextArea() {
     border-radius: var(--b-radius-base);
     @media (any-hover: hover) {
         &:hover {
-            background-color: var(--dark-primary);
+            background-color: var(--bg-base);
         }
     }
 }
 
 .list__item--active {
-    background-color: var(--accent-color);
+    background-color: var(--color-accent);
 
     @media (any-hover: hover) {
         &:hover {
-            background-color: var(--accent-color);
+            background-color: var(--color-accent);
         }
     }
 }

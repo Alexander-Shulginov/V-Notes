@@ -17,26 +17,26 @@ const store = useStore()
 .search__field {
     border: none;
     outline: none;
-    color: #fff;
+    color: var(--color-text);
     width: 100%;
     padding: var(--offset-base);
     font-size: var(--font-size-text);
-    background-color: var(--dark-primary);
+    background-color: var(--bg-base);
     border-radius: var(--b-radius-base);
 
-    transition-property: visibility, opacity, width, padding;
+    transition-property: visibility, opacity, width, padding, background-color;
     transition-duration: var(--transition-base);
     transition-timing-function: ease-in-out;
 
     &:focus-visible {
-        outline: 2px solid var(--accent);
+        outline: 2px solid var(--color-accent);
         outline-offset: 1px;
         border-radius: var(--b-radius-base);
     }
 
     @media (any-hover: hover) {
         &:hover {
-            background-color: var(--dark-primary-hover);
+            background-color: var(--bg-base-hover);
         }
     }
 }

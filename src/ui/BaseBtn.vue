@@ -9,10 +9,10 @@
     cursor: pointer;
     border-radius: var(--b-radius-base);
     padding: var(--offset-base);
-    background-color: var(--dark-primary);
+    background-color: var(--bg-base);
     border: none;
     outline: none;
-    color: var(--light);
+    // color: var(--dark-light);
     width: 100%;
 
     display: flex;
@@ -24,22 +24,21 @@
     transition-timing-function: ease-in-out;
 
     &:focus-visible {
-        outline: 2px solid var(--accent);
+        outline: 2px solid var(--color-accent);
         outline-offset: 1px;
         border-radius: var(--b-radius-base);
     }
 
     &:active {
-        background-color: var(--dark-primary-hover);
+        background-color: var(--bg-base-hover);
     }
 
     @media (any-hover: hover) {
         &:hover {
-            background-color: var(--dark-primary-hover);
+            background-color: var(--bg-base-hover);
         }
     }
 }
-
 
 //     position: relative;
 //     &::after {
@@ -88,8 +87,8 @@
 }
 
 .btn--add-active {
-    border-color: var(--accent);
-    transition: border-color var(--transition-short)  ease-in-out;
+    border-color: var(--dark-accent);
+    transition: border-color var(--transition-short) ease-in-out;
 }
 
 .btn--delete {

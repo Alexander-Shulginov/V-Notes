@@ -29,13 +29,15 @@ const store = useStore()
 .controls {
     width: 100%;
     overflow: hidden;
-    transition: width var(--transition-base) ease-in-out, opacity .3s ease-in-out;
+    transition:
+        width var(--transition-base) ease-in-out,
+        opacity 0.3s ease-in-out;
 
     &__wrapper {
         display: flex;
         gap: 6px;
         margin-top: auto;
-        background-color: var(--bg-side-bar);
+        background-color: var(--bg-second);
         padding: 8px;
         border-radius: var(--b-radius-base);
     }

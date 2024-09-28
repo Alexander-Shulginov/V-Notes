@@ -17,9 +17,11 @@ import BaseSideBarControl from '@/ui/BaseSideBarToggle.vue'
 <style lang="scss" scoped>
 .header {
     text-align: center;
-    background-color: var(--dark-second);
+    background-color: var(--bg-second);
     text-transform: uppercase;
     margin-bottom: 26px;
+
+    transition: background-color var(--transition-base) ease-in-out;
 
     &__container {
         display: flex;

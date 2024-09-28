@@ -51,10 +51,10 @@ const store = useStore()
 
         border: 6px solid transparent;
 
-        color: var(--light-2);
+        color: var(--color-text);
         font-size: var(--font-size-text);
 
-        background-color: var(--dark-second);
+        background-color: var(--bg-second);
 
         border-radius: var(--b-radius-base);
         padding: calc(var(--offset-base) - 6px);
@@ -70,12 +70,12 @@ const store = useStore()
         }
 
         &::-webkit-scrollbar-track {
-            background-color: var(--dark-primary);
+            background-color: var(--bg-base);
             border-radius: 2px;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: var(--accent);
+            background-color: var(--color-accent);
             border-radius: 2px;
             cursor: pointer;
         }
@@ -87,7 +87,7 @@ const store = useStore()
     //         content: '';
     //         width: 0;
     //         height: 3px;
-    //         background-color: var(--accent);
+    //         background-color: var(--dark-accent);
     //         border-radius: 2px;
 
     //         position: absolute;

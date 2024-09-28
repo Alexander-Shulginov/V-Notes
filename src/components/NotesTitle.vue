@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, useTemplateRef, watch } from 'vue'
+import { useTemplateRef, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useSetFocus } from '@/hooks/useSetFocus'
 import { useHighLightText } from '@/hooks/useHighLightText'
@@ -47,8 +47,8 @@ watch(store.notesItems, () => {
 
         font-weight: 700;
         border-radius: var(--b-radius-base);
-        color: var(--light-2);
-        background-color: var(--dark-second);
+        color: var(--color-text);
+        background-color: var(--bg-second);
         border: none;
         outline: none;
         width: 100%;
@@ -59,6 +59,10 @@ watch(store.notesItems, () => {
             ~ .notes-title__decor::after {
                 width: 100%;
             }
+        }
+
+        &::placeholder {
+            color: var(--color-text);
         }
 
         @media (max-width: 768px) {
@@ -72,7 +76,7 @@ watch(store.notesItems, () => {
             content: '';
             width: 0;
             height: 3px;
-            background-color: var(--accent);
+            background-color: var(--color-accent);
             border-radius: 2px;
 
             position: absolute;

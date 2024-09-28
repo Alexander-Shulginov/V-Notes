@@ -24,7 +24,7 @@ $burger-width: 36px;
 $line-height: 2px;
 $line-gap: 10px;
 $line-border-radius: 6px;
-$line-color: var(--light-2);
+$line-color: var(--dark-light);
 
 $animation-delay: 0;
 $animation-duration: 0.25s;

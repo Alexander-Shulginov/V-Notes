@@ -49,12 +49,12 @@ watch(store.notesItems, scrollSibebarToBottom)
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    color: var(--light);
+    color: var(--color-text);
     font-size: 18px;
     overflow-y: auto;
     overflow-x: hidden;
     height: calc(100vh - 280px);
-    background-color: var(--bg-side-bar);
+    background-color: var(--bg-second);
     padding: 4px;
     border-radius: var(--b-radius-base);
     border: 6px solid transparent;
@@ -69,12 +69,12 @@ watch(store.notesItems, scrollSibebarToBottom)
     }
 
     &::-webkit-scrollbar-track {
-        background-color: var(--dark-primary);
+        background-color: var(--bg-base);
         border-radius: 2px;
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: var(--accent);
+        background-color: var(--color-accent);
         cursor: pointer;
         border-radius: 2px;
     }

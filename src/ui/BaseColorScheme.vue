@@ -31,7 +31,8 @@ const themeStore = useThemeStore()
     width: 40px;
     height: 23px;
     border-radius: 11px;
-    background-color: var(--dark-primary);
+    background-color: var(--bg-base);
+    transition: background-color var(--transition-short) ease-in-out;
 
     &__label {
         cursor: pointer;
@@ -42,13 +43,12 @@ const themeStore = useThemeStore()
         top: 0;
         left: 0;
         border-radius: 11px;
-        outline: 1px solid var(--light-2);
     }
 
     &__input {
         appearance: none;
         &:checked ~ .theme__icon {
-            background-color: var(--light-2);
+            background-color: var(--dark-light);
             transform: translate(20%, -50%);
         }
 
@@ -61,7 +61,7 @@ const themeStore = useThemeStore()
         }
 
         &:focus-visible ~ .theme__label {
-            outline: 2px solid var(--accent);
+            outline: 2px solid var(--color-accent);
             border-radius: 11px;
         }
     }
@@ -74,11 +74,11 @@ const themeStore = useThemeStore()
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background-color: var(--light-2);
+        background-color: var(--bg-second);
 
         transition-property: background-color, transform, opacity;
         transition-timing-function: ease-in-out;
-        transition-duration: 0.3s;
+        transition-duration: var(--transition-short);
     }
 
     &__svg {

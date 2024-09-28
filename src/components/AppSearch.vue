@@ -14,7 +14,7 @@ import NotesSearchInput from './NotesSearchInput.vue'
 .search {
     display: flex;
     gap: 6px;
-    background-color: var(--bg-side-bar);
+    background-color: var(--bg-second);
     padding: 8px;
     border-radius: var(--b-radius-base);
     width: 300px;

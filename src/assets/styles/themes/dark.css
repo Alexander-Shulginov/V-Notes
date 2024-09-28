@@ -3,17 +3,19 @@
     --dark-primary-hover: rgba(36, 41, 46, 0.6);
 
     --dark-second: #363e45;
-    --accent: #0d74e7;
-    --accent-hover: #0d73e7af;
-    --accent-2: #2fbb4f;
-    --light: #eeeeee;
-    --light-2: #fafbfc;
-    --alert-color: #c93c37;
+
+    --dark-accent: #0d74e7;
+    --dark-accent-hover: #0d73e7af;
+
+    --dark-light: #fafbfc;
 }
 
 [data-color-scheme='dark'] {
-    --bg-color: var(--dark-primary);
-    --bg-side-bar: var(--dark-second);
-    --accent-color: var(--accent);
-    --light-color: var(--light);
+    --bg-base: var(--dark-primary);
+    --bg-base-hover: var(--dark-primary-hover);
+
+    --bg-second: var(--dark-second);
+
+    --color-text: var(--dark-light);
+    --color-accent: var(--dark-accent);
 }

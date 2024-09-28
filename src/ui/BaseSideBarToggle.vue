@@ -11,7 +11,7 @@ const { toggleSideBar } = useSideBarControls()
             width="23"
             height="20"
             viewBox="0 0 21 18"
-            fill="none"
+            class="svg-sidebar"
             xmlns="http://www.w3.org/2000/svg"
         >
             <rect x="1" y="1" width="19" height="16" rx="1" stroke="white" stroke-width="2" />
@@ -46,23 +46,23 @@ const { toggleSideBar } = useSideBarControls()
     align-items: center;
     justify-content: center;
 
-    background-color: var(--dark-primary);
+    background-color: var(--bg-base);
     border-radius: var(--b-radius-base);
 
     transition: background-color var(--transition-short) ease-in-out;
 
     @media (any-hover: hover) {
         &:hover {
-            background-color: var(--dark-primary-hover);
+            background-color: var(--bg-base-hover);
         }
     }
 
     &:active {
-        background-color: var(--dark-primary-hover);
+        background-color: var(--bg-base-hover);
     }
 
     &:focus-visible {
-        outline: 2px solid var(--accent);
+        outline: 2px solid var(--color-text);
         outline-offset: 1px;
         border-radius: var(--b-radius-base);
     }
