@@ -23,24 +23,61 @@
     transition-duration: var(--transition-base);
     transition-timing-function: ease-in-out;
 
-    @media (any-hover: hover) {
-        &:hover {
-            background-color: var(--dark-primary-hover);
-        }
+    &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+        border-radius: var(--b-radius-base);
     }
 
     &:active {
         background-color: var(--dark-primary-hover);
     }
 
-    &:focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 1px;
-        border-radius: var(--b-radius-base);
+    @media (any-hover: hover) {
+        &:hover {
+            background-color: var(--dark-primary-hover);
+        }
     }
 }
 
+
+//     position: relative;
+//     &::after {
+//         content: '';
+//         position: absolute;
+//         top: -50%;
+//         left: -50%;
+//         width: 22px;
+//         height: 50px;
+//         background: linear-gradient(
+//             120deg,
+//             rgba(255, 255, 255, 0.2) 0%,
+//             rgba(255, 255, 255, 0.6) 50%,
+//             rgba(255, 255, 255, 0.2) 100%
+//         );
+//         transform: rotate(15deg);
+//         animation: glossy-effect 1s forwards;
+//     }
+// }
+
+// @keyframes glossy-effect {
+//     0% {
+//         top: 0%;
+//         left: 0%;
+//         opacity: 0;
+//     }
+//     50% {
+//         opacity: 1;
+//     }
+//     100% {
+//         top: 0%;
+//         left: 100%;
+//         opacity: 0;
+//     }
+// }
+
 .btn--add {
+    border: 2px solid transparent;
     @media (any-hover: hover) {
         &:hover {
             .svg--plus {
@@ -48,6 +85,11 @@
             }
         }
     }
+}
+
+.btn--add-active {
+    border-color: var(--accent);
+    transition: border-color var(--transition-short)  ease-in-out;
 }
 
 .btn--delete {

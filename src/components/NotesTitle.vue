@@ -12,8 +12,10 @@ const { highLightText } = useHighLightText()
 const titleInput = useTemplateRef('titleInput')
 
 watch(store.notesItems, () => {
-    setFocus(titleInput.value)
-    highLightText(titleInput.value)
+    if (!itemsListIsEmpty()) {
+        setFocus(titleInput.value)
+        highLightText(titleInput.value)
+    }
 })
 </script>
 
@@ -28,6 +30,7 @@ watch(store.notesItems, () => {
             class="notes-title__field"
             placeholder="Title here"
         />
+        <div class="notes-title__decor"></div>
     </div>
 </template>
 
@@ -55,11 +58,31 @@ watch(store.notesItems, () => {
         padding: 16px;
 
         &:focus-visible {
-            border: 2px solid red;
+            ~ .notes-title__decor::after {
+                width: 100%;
+            }
         }
 
         @media (max-width: 768px) {
             padding: 13px;
+        }
+    }
+
+    &__decor {
+        position: relative;
+        &::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+
+            position: absolute;
+            bottom: 0px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            transition: width .3s  ease-in-out;
         }
     }
 }

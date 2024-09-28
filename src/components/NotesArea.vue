@@ -22,6 +22,7 @@ onMounted(() => {
             name="user-text"
             id="area-base"
         ></textarea>
+        <!-- <div class="text-field__decor"></div> -->
     </div>
 </template>
 
@@ -67,6 +68,12 @@ onMounted(() => {
         border-radius: var(--b-radius-base);
         padding: calc(var(--offset-base) - 6px);
 
+        &:focus-visible {
+            ~ .text-field__decor::after {
+                width: 100%;
+            }
+        }
+
         &::-webkit-scrollbar {
             width: 5px;
         }
@@ -82,5 +89,23 @@ onMounted(() => {
             cursor: pointer;
         }
     }
+
+    // &__decor {
+    //     position: relative;
+    //     &::after {
+    //         content: '';
+    //         width: 0;
+    //         height: 3px;
+    //         background-color: var(--accent);
+    //         border-radius: 2px;
+
+    //         position: absolute;
+    //         bottom: 2px;
+    //         left: 50%;
+    //         transform: translateX(-50%);
+
+    //         transition: width 0.3s ease-in-out;
+    //     }
+    // }
 }
 </style>

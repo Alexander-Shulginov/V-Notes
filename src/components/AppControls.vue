@@ -3,31 +3,21 @@ import BaseBtn from '@/ui/BaseBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
 import { useStore } from '@/store/notesStore'
-import { onMounted, ref, useTemplateRef, watch } from 'vue'
 import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
-import { useSetFocus } from '@/hooks/useSetFocus'
 
 const store = useStore()
 const { itemsListIsEmpty } = useItemsListIsEmpty()
-const { setFocus } = useSetFocus()
-
-const btnAdd = ref<HTMLElement | null>(null)
-
-onMounted(() => {
-    btnAdd.value = document.querySelector('.btn--add')
-})
-
-watch(store.notesItems, () => {
-    if (itemsListIsEmpty()) {
-        setFocus(btnAdd.value)
-    }
-})
 </script>
 
 <template>
     <div class="controls">
         <div class="controls__wrapper">
-            <BaseBtn class="btn--add" @click="store.createItem()" ref="btnAdd">
+            <BaseBtn
+                class="btn--add"
+                :class="{ 'btn--add-active': itemsListIsEmpty() }"
+                @click="store.createItem()"
+                ref="btnAdd"
+            >
                 <IconPlus />
             </BaseBtn>
             <BaseBtn class="btn--delete" @click="store.deleteItem()">
