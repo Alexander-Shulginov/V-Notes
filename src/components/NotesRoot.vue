@@ -73,10 +73,15 @@ const { sideBarIsActive } = useSideBarControls()
 
     .controls {
         width: 0px;
+        opacity: 0;
+    }
 
-        .btn {
-            opacity: 0;
-        }
+    .empty-list {
+        opacity: 0;
+    }
+
+    .info {
+        display: none;
     }
 
     .editor__body {

@@ -3,10 +3,8 @@ import BaseBtn from '@/ui/BaseBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
 import { useStore } from '@/store/notesStore'
-import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
 
 const store = useStore()
-const { itemsListIsEmpty } = useItemsListIsEmpty()
 </script>
 
 <template>
@@ -14,7 +12,7 @@ const { itemsListIsEmpty } = useItemsListIsEmpty()
         <div class="controls__wrapper">
             <BaseBtn
                 class="btn--add"
-                :class="{ 'btn--add-active': itemsListIsEmpty() }"
+                :class="{ 'btn--add-active': store.itemsListIsEmpty }"
                 @click="store.createItem()"
                 ref="btnAdd"
             >
@@ -31,7 +29,7 @@ const { itemsListIsEmpty } = useItemsListIsEmpty()
 .controls {
     width: 100%;
     overflow: hidden;
-    transition: width var(--transition-base) ease-in-out;
+    transition: width var(--transition-base) ease-in-out, opacity .3s ease-in-out;
 
     &__wrapper {
         display: flex;

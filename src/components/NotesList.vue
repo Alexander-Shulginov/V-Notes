@@ -2,10 +2,9 @@
 import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 import NotesListItem from './NotesListItem.vue'
-import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
+import IconFolderEmpty from './icons/IconFolderEmpty.vue'
 
 const store = useStore()
-const { itemsListIsEmpty } = useItemsListIsEmpty()
 const sidebarElem = useTemplateRef('sideBarList')
 
 function scrollSibebarToBottom() {
@@ -35,7 +34,9 @@ watch(store.notesItems, scrollSibebarToBottom)
 
 <template>
     <ul class="list" ref="sideBarList">
-        <li v-if="itemsListIsEmpty()" class="info">List is empty</li>
+        <li v-if="store.itemsListIsEmpty" class="empty-list">
+            <IconFolderEmpty />
+        </li>
         <NotesListItem
             v-for="item in itemsToShow"
             :key="item.id"
@@ -51,11 +52,13 @@ watch(store.notesItems, scrollSibebarToBottom)
     color: var(--light);
     font-size: 18px;
     overflow-y: auto;
+    overflow-x: hidden;
     height: calc(100vh - 280px);
     background-color: var(--bg-side-bar);
     padding: 4px;
     border-radius: var(--b-radius-base);
     border: 6px solid transparent;
+    position: relative;
 
     @media (max-width: 768px) {
         height: calc(100vh - 238px);
@@ -75,5 +78,15 @@ watch(store.notesItems, scrollSibebarToBottom)
         cursor: pointer;
         border-radius: 2px;
     }
+}
+
+.empty-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    list-style-type: none;
+
+    transition: opacity 0.2s ease-in-out;
 }
 </style>

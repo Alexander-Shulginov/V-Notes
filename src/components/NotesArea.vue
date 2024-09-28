@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { useStore } from '@/store/notesStore'
-import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
-
 const store = useStore()
-const { itemsListIsEmpty } = useItemsListIsEmpty()
 </script>
 
 <template>
@@ -11,7 +8,7 @@ const { itemsListIsEmpty } = useItemsListIsEmpty()
         <textarea
             v-model="store.notesText"
             @blur="store.updateText(), store.readItem()"
-            :disabled="itemsListIsEmpty()"
+            :disabled="store.itemsListIsEmpty"
             class="text-field__area"
             name="user-text"
             id="area-base"

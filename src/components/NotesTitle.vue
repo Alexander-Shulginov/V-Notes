@@ -1,18 +1,16 @@
 <script setup lang="ts">
 import { onMounted, useTemplateRef, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
-import { useItemsListIsEmpty } from '@/hooks/useItemsListIsEmpty'
 import { useSetFocus } from '@/hooks/useSetFocus'
 import { useHighLightText } from '@/hooks/useHighLightText'
 
 const store = useStore()
-const { itemsListIsEmpty } = useItemsListIsEmpty()
 const { setFocus } = useSetFocus()
 const { highLightText } = useHighLightText()
 const titleInput = useTemplateRef('titleInput')
 
 watch(store.notesItems, () => {
-    if (!itemsListIsEmpty()) {
+    if (!store.itemsListIsEmpty) {
         setFocus(titleInput.value)
         highLightText(titleInput.value)
     }
@@ -25,7 +23,7 @@ watch(store.notesItems, () => {
             @blur="store.updateTitle()"
             v-model="store.notesTitle"
             ref="titleInput"
-            :disabled="itemsListIsEmpty()"
+            :disabled="store.itemsListIsEmpty"
             type="text"
             class="notes-title__field"
             placeholder="Title here"
@@ -82,7 +80,7 @@ watch(store.notesItems, () => {
             left: 50%;
             transform: translateX(-50%);
 
-            transition: width .3s  ease-in-out;
+            transition: width 0.3s ease-in-out;
         }
     }
 }

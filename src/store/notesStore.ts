@@ -105,6 +105,10 @@ export const useStore = defineStore('storeBase', {
     getters: {
         getActiveItem: (state): NotesItem | undefined => {
             return state.notesItems.find((item) => item.id === state.activeItemId)
+        },
+
+        itemsListIsEmpty: (state): boolean => {
+            return state.notesItems.length === 0
         }
     }
 })
