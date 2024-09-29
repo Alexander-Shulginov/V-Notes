@@ -8,6 +8,7 @@
     --dark-accent-hover: #0d73e7af;
 
     --dark-light: #fafbfc;
+    --dark-overlay: rgba(0, 0, 0, 0.5);
 }
 
 [data-color-scheme='dark'] {
@@ -18,4 +19,5 @@
 
     --color-text: var(--dark-light);
     --color-accent: var(--dark-accent);
+    --color-overlay: var(--dark-overlay);
 }

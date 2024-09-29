@@ -30,7 +30,7 @@ const store = useStore()
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--color-overlay);
         z-index: 2;
         border-radius: var(--b-radius-base);
         transition: background-color var(--transition-base) ease-in-out;

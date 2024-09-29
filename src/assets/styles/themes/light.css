@@ -4,6 +4,7 @@
     --light-second: #dbe2ef;
     --light-accent: #3f72af;
     --light-dark: #112d4e;
+    --light-overlay: rgba(255, 255, 255, 0.5);
 }
 
 [data-color-scheme='light'] {
@@ -14,4 +15,5 @@
 
     --color-text: var(--light-dark);
     --color-accent: var(--light-accent);
+    --color-overlay: var(--light-overlay);
 }
