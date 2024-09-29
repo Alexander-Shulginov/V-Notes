@@ -31,15 +31,17 @@ const store = useStore()
     overflow: hidden;
     transition:
         width var(--transition-base) ease-in-out,
-        opacity 0.3s ease-in-out;
+        opacity var(--transition-short) ease-in-out;
 
     &__wrapper {
         display: flex;
         gap: 6px;
+
         margin-top: auto;
-        background-color: var(--bg-second);
         padding: 8px;
+
         border-radius: var(--b-radius-base);
+        background-color: var(--bg-second);
     }
 }
 </style>

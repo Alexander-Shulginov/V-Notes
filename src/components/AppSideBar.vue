@@ -4,7 +4,7 @@ import AppControls from './AppControls.vue'
 </script>
 
 <template>
-    <aside class="sidebar" >
+    <aside class="sidebar">
         <NotesList />
         <AppControls />
     </aside>
@@ -12,27 +12,22 @@ import AppControls from './AppControls.vue'
 
 <style lang="scss" scoped>
 .sidebar {
-    transition: var(--transition-base) ease-in-out;
-    gap: var(--gap-base);
-
     display: flex;
     flex-direction: column;
+    gap: var(--gap-base);
+    flex-shrink: 0;
+
     width: var(--side-bar-width);
     height: 100%;
-    flex-shrink: 0;
+
     overflow: hidden;
     transition: var(--transition-base) ease-in-out;
-
-    @media (max-width: 1024px) {
-        width: var(--side-bar-width);
-    }
 
     @media (max-width: 768px) {
         position: absolute;
         top: 0;
         left: 0;
         z-index: 3;
-        width: 100%;
     }
 
     &__list--scroll {

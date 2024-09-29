@@ -15,18 +15,23 @@ const store = useStore()
 
 <style lang="scss" scoped>
 .search__field {
-    border: none;
-    outline: none;
-    color: var(--color-text);
     width: 100%;
     padding: var(--offset-base);
-    font-size: var(--font-size-text);
-    background-color: var(--bg-base);
+
+    border: none;
+    outline: none;
     border-radius: var(--b-radius-base);
 
-    transition-property: visibility, opacity, width, padding, background-color;
-    transition-duration: var(--transition-base);
-    transition-timing-function: ease-in-out;
+    font-size: var(--font-size-text);
+    color: var(--color-text);
+    background-color: var(--bg-base);
+
+    transition:
+        visibility var(--b-radius-base) ease-in-out,
+        opacity var(--b-radius-base) ease-in-out,
+        width var(--b-radius-base) ease-in-out,
+        padding var(--b-radius-base) ease-in-out,
+        background-color var(--b-radius-short) ease-in-out;
 
     &:focus-visible {
         outline: 2px solid var(--color-accent);
@@ -36,7 +41,7 @@ const store = useStore()
 
     &::placeholder {
         color: var(--color-text);
-        opacity: .7;
+        opacity: 0.7;
     }
 
     @media (any-hover: hover) {

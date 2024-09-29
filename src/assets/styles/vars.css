@@ -11,6 +11,10 @@
 
     --side-bar-width: 300px;
 
+    @media (max-width: 1024px) {
+        --side-bar-width: 240px;
+    }
+
     @media (max-width: 768px) {
         --gap-base: 12px;
         --offset-base: 8px;
@@ -18,9 +22,8 @@
 
         --font-size-text: 14px;
         --font-size-title: 16px;
+        
+        --side-bar-width: 100%;
     }
 
-    @media (max-width: 1024px) {
-        --side-bar-width: 240px;
-    }
 }

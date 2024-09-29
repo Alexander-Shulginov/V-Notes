@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
+import { onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import AppTop from './AppTop.vue'
 import AppBody from './AppBody.vue'

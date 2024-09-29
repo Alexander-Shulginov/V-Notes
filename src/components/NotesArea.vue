@@ -19,21 +19,26 @@ const store = useStore()
 
 <style scoped lang="scss">
 .text-field {
-    width: 100%;
     flex-grow: 2;
+    width: 100%;
+
     transition: width var(--transition-base) ease-in-out;
+
     position: relative;
     &::after {
         pointer-events: none;
+
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-        background-color: var(--color-overlay);
+
         z-index: 2;
+
         border-radius: var(--b-radius-base);
-        transition: background-color var(--transition-base) ease-in-out;
+        background-color: var(--color-overlay);
+        transition: background-color var(--transition-short) ease-in-out;
     }
 
     @media (max-width: 768px) {

@@ -28,20 +28,25 @@ const themeStore = useThemeStore()
 <style lang="scss" scoped>
 .theme {
     position: relative;
+
     width: 40px;
     height: 23px;
     border-radius: 11px;
+
     background-color: var(--bg-base);
+
     transition: background-color var(--transition-short) ease-in-out;
 
     &__label {
         cursor: pointer;
-        display: block;
-        width: inherit;
-        height: inherit;
         position: absolute;
         top: 0;
         left: 0;
+
+        display: block;
+
+        width: inherit;
+        height: inherit;
         border-radius: 11px;
     }
 
@@ -68,12 +73,15 @@ const themeStore = useThemeStore()
 
     &__icon {
         pointer-events: none;
+
         position: absolute;
         top: 50%;
         transform: translate(103%, -50%);
+
         width: 18px;
         height: 18px;
         border-radius: 50%;
+
         background-color: var(--bg-second);
 
         transition-property: background-color, transform, opacity;
@@ -85,10 +93,11 @@ const themeStore = useThemeStore()
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        transition: opacity 0.3s ease-in-out;
 
         width: 12px;
+
+        transform: translate(-50%, -50%);
+        transition: opacity var(--transition-short) ease-in-out;
     }
 
     &__icon--moon {

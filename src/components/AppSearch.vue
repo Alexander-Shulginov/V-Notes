@@ -14,19 +14,14 @@ import NotesSearchInput from './NotesSearchInput.vue'
 .search {
     display: flex;
     gap: 6px;
-    background-color: var(--bg-second);
+
+    width: var(--side-bar-width);
     padding: 8px;
-    border-radius: var(--b-radius-base);
-    width: 300px;
 
-    transition: width var(--transition-base) ease-in-out;
     outline: none;
-    @media (max-width: 1024px) {
-        width: 240px;
-    }
+    border-radius: var(--b-radius-base);
+    background-color: var(--bg-second);
 
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+    transition: width var(--transition-short) ease-in-out;
 }
 </style>

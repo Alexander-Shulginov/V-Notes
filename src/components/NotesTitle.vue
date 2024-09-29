@@ -36,24 +36,27 @@ watch(store.notesItems, () => {
 .notes-title {
     flex-grow: 2;
     width: calc(100% - (var(--side-bar-width) + var(--gap-base)));
+
     overflow: hidden;
+
     transition-property: visibility, opacity, width, padding;
     transition-duration: var(--transition-base);
     transition-timing-function: ease-in-out;
 
     &__field {
-        border-bottom: 1px solid black;
-        font-size: 24px;
+        width: 100%;
+        padding: 16px;
 
+        font-size: 24px;
         font-weight: 700;
-        border-radius: var(--b-radius-base);
         color: var(--color-text);
         background-color: var(--bg-second);
-        border: none;
+
         outline: none;
-        width: 100%;
-        // padding: var(--offset-base);
-        padding: 16px;
+        border: none;
+        border-radius: var(--b-radius-base);
+
+        transition: background-color var(--transition-short) ease-in-out;
 
         &:focus-visible {
             ~ .notes-title__decor::after {
@@ -74,15 +77,15 @@ watch(store.notesItems, () => {
         position: relative;
         &::after {
             content: '';
-            width: 0;
-            height: 3px;
-            background-color: var(--color-accent);
-            border-radius: 2px;
-
             position: absolute;
             bottom: 0px;
             left: 50%;
             transform: translateX(-50%);
+
+            width: 0;
+            height: 3px;
+            border-radius: 2px;
+            background-color: var(--color-accent);
 
             transition: width 0.3s ease-in-out;
         }

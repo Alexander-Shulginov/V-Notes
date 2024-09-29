@@ -49,15 +49,19 @@ watch(store.notesItems, scrollSibebarToBottom)
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    color: var(--color-text);
-    font-size: 18px;
+    height: calc(100vh - 280px);
+    padding: 4px;
+
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 280px);
+
+    color: var(--color-text);
+    font-size: 18px;
     background-color: var(--bg-second);
-    padding: 4px;
+
     border-radius: var(--b-radius-base);
     border: 6px solid transparent;
+
     position: relative;
 
     @media (max-width: 768px) {
@@ -81,12 +85,13 @@ watch(store.notesItems, scrollSibebarToBottom)
 }
 
 .empty-list {
+    list-style-type: none;
+
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    list-style-type: none;
 
-    transition: opacity 0.2s ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity var(--transform-short) ease-in-out;
 }
 </style>
