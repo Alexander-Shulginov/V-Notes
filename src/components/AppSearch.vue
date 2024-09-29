@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import BaseSideBarToggle from '@/ui/BaseSideBarToggle.vue'
-import NotesSearchInput from './NotesSearchInput.vue'
+import AppSearchInput from './AppSearchInput.vue'
+import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
 </script>
 
 <template>
     <div class="search">
-        <BaseSideBarToggle />
-        <NotesSearchInput />
+        <AppSearchSideBarToggle />
+        <AppSearchInput />
     </div>
 </template>
 

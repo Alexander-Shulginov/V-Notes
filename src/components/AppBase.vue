@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
-import AppTop from './AppTop.vue'
-import AppBody from './AppBody.vue'
+import AppBaseTop from './AppBaseTop.vue'
+import AppBaseBody from './AppBaseBody.vue'
 import { useSideBarControls } from '@/hooks/useSideBarControls'
 
 const store = useStore()
@@ -16,8 +16,8 @@ const { sideBarIsActive } = useSideBarControls()
 
 <template>
     <main class="editor" :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
-        <AppTop />
-        <AppBody />
+        <AppBaseTop />
+        <AppBaseBody />
     </main>
 </template>
 

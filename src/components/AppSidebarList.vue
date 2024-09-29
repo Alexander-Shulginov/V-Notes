@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
-import { useStore } from '@/store/notesStore'
-import NotesListItem from './NotesListItem.vue'
+import { computed, nextTick, useTemplateRef, watch } from 'vue'
+import AppSidebarListItem from './AppSidebarListItem.vue'
 import IconFolderEmpty from './icons/IconFolderEmpty.vue'
+import { useStore } from '@/store/notesStore'
 
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
@@ -37,7 +37,7 @@ watch(store.notesItems, scrollSibebarToBottom)
         <li v-if="store.itemsListIsEmpty" class="empty-list">
             <IconFolderEmpty />
         </li>
-        <NotesListItem
+        <AppSidebarListItem
             v-for="item in itemsToShow"
             :key="item.id"
             :id="item.id"

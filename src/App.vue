@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AppHeader from './components/AppHeader.vue'
-import NotesRoot from './components/NotesRoot.vue'
+import TheHeader from './components/TheHeader.vue'
+import AppBase from './components/AppBase.vue'
 </script>
 
 <template>
-    <AppHeader />
-    <NotesRoot />
+    <TheHeader />
+    <AppBase />
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseBtn from '@/ui/BaseBtn.vue'
+import BaseBtn from '@/components/AppControlsBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
 import { useStore } from '@/store/notesStore'

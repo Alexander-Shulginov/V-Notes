@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import AppSearch from './AppSearch.vue'
-import NotesTitle from './NotesTitle.vue'
+import AppTitle from './AppTitle.vue'
 </script>
 
 <template>
     <div class="editor__top">
         <AppSearch />
-        <NotesTitle />
+        <AppTitle />
     </div>
 </template>
 

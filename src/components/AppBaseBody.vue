@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import AppSideBar from './AppSideBar.vue'
-import NotesArea from './NotesArea.vue'
+import AppSidebar from './AppSidebar.vue'
+import AppArea from './AppArea.vue'
 </script>
 
 <template>
     <div class="editor__body">
-        <NotesArea />
-        <AppSideBar />
+        <AppArea />
+        <AppSidebar />
     </div>
 </template>
 

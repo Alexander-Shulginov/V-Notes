@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NotesList from './NotesList.vue'
+import AppSidebarList from './AppSidebarList.vue'
 import AppControls from './AppControls.vue'
 </script>
 
 <template>
     <aside class="sidebar">
-        <NotesList />
+        <AppSidebarList />
         <AppControls />
     </aside>
 </template>

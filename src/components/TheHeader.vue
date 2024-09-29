@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import BaseLogo from '@/ui/BaseLogo.vue'
-import BaseColorScheme from '@/ui/BaseColorScheme.vue'
+import TheMainLogo from '@/components/TheMainLogo.vue'
+import TheColorSchemeToggle from '@/components/TheColorSchemeToggle.vue'
 </script>
 
 <template>
     <header class="header">
         <div class="header__container">
-            <BaseLogo />
-            <BaseColorScheme />
+            <TheMainLogo />
+            <TheColorSchemeToggle />
         </div>
     </header>
 </template>
