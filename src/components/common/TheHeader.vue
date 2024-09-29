@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import TheMainLogo from '@/components/TheMainLogo.vue'
-import TheColorSchemeToggle from '@/components/TheColorSchemeToggle.vue'
+import TheMainLogo from '@/components/common/TheMainLogo.vue'
+import TheColorSchemeToggle from '@/components/common/TheColorSchemeToggle.vue'
 </script>
 
 <template>
