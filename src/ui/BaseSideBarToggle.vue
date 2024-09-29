@@ -62,9 +62,19 @@ const { toggleSideBar } = useSideBarControls()
     }
 
     &:focus-visible {
-        outline: 2px solid var(--color-text);
+        outline: 2px solid var(--color-accent);
         outline-offset: 1px;
         border-radius: var(--b-radius-base);
+    }
+}
+
+.svg-sidebar {
+    fill: var(--bg-base);
+    transition: fill var(--transition-base) ease-in-out;
+    rect,
+    line,
+    path {
+        stroke: var(--color-text);
     }
 }
 

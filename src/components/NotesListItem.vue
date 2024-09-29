@@ -61,8 +61,13 @@ function setFocusOnTextArea() {
     overflow: hidden;
     display: -webkit-box;
     line-clamp: 1;
+    color: var(--color-text);
 
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+}
+
+[data-color-scheme='light'] .list__item--active .list__item-text {
+    color: var(--bg-base);
 }
 </style>

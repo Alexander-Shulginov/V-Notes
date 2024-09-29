@@ -76,7 +76,8 @@
 // }
 
 .btn--add {
-    border: 2px solid transparent;
+    outline: 2px solid transparent;
+    outline-offset: 1px;
     @media (any-hover: hover) {
         &:hover {
             .svg--plus {
@@ -87,7 +88,7 @@
 }
 
 .btn--add-active {
-    border-color: var(--dark-accent);
+    outline-color: var(--color-accent);
     transition: border-color var(--transition-short) ease-in-out;
 }
 

@@ -34,6 +34,11 @@ const store = useStore()
         border-radius: var(--b-radius-base);
     }
 
+    &::placeholder {
+        color: var(--color-text);
+        opacity: .7;
+    }
+
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base-hover);
