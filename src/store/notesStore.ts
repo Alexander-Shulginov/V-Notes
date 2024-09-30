@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-import { nextTick, ref } from 'vue'
 
 interface NotesItem {
     id: number
     title: string
     text: string
+    itemIsActive: false
 }
 
 export const useStore = defineStore('storeBase', {
@@ -14,23 +14,29 @@ export const useStore = defineStore('storeBase', {
             notesTitle: 'Untitled',
             notesText: '',
             searchText: '',
-            notesItems: [] as NotesItem[],
-            filteredNotesItems: [] as NotesItem[]
+            notesItems: JSON.parse(localStorage.getItem('notesItems') || '[]') as NotesItem[],
+            filteredNotesItems: JSON.parse(
+                localStorage.getItem('notesItems') || '[]'
+            ) as NotesItem[]
         }
     },
 
     actions: {
+        saveToLocalStorage() {
+            localStorage.setItem('notesItems', JSON.stringify(this.notesItems))
+        },
+
         createItem(): void {
             const newItem: NotesItem = {
                 id: Date.now(),
                 title: 'Untitled',
-                text: ''
+                text: '',
+                itemIsActive: false
             }
 
             this.notesItems.push(newItem)
-            // localStorage.setItem('notesItems', JSON.stringify(this.notesItems))
-
             this.filteredNotesItems.push(newItem)
+            this.saveToLocalStorage()
             this.setId(newItem.id)
             this.resetTextToDefault()
         },
@@ -47,6 +53,7 @@ export const useStore = defineStore('storeBase', {
             const activeItem = this.getActiveItem
             if (activeItem) {
                 activeItem.title = this.notesTitle
+                this.saveToLocalStorage()
             }
         },
 
@@ -54,6 +61,7 @@ export const useStore = defineStore('storeBase', {
             const activeItem = this.getActiveItem
             if (activeItem) {
                 activeItem.text = this.notesText
+                this.saveToLocalStorage()
             }
         },
 
@@ -70,17 +78,14 @@ export const useStore = defineStore('storeBase', {
             const index = this.notesItems.findIndex((item) => item.id === this.activeItemId)
 
             if (index !== -1) {
-                // delete item
                 this.notesItems.splice(index, 1)
                 this.filteredNotesItems.splice(index, 1)
+                this.saveToLocalStorage()
 
-                // if deleted NOT first item
                 if (index > 0) {
                     this.activeItemId = this.notesItems[index - 1]?.id
-                    // if deleted fitst item
                 } else if (this.notesItems.length > 0) {
                     this.activeItemId = this.notesItems[0].id
-                    // reset active item
                 } else {
                     this.activeItemId = 0
                     this.resetTextToDefault()
@@ -112,3 +117,16 @@ export const useStore = defineStore('storeBase', {
         }
     }
 })
+
+// Подключаем автосохранение при изменении списка заметок
+// persist: {
+//     enabled: true
+// }
+// Добавляем наблюдатель для автоматического сохранения изменений
+// watch(
+//     () => useStore().notesItems,
+//     (newNotesItems) => {
+//         localStorage.setItem('notesItems', JSON.stringify(newNotesItems))
+//     },
+//     { deep: true }
+// )
