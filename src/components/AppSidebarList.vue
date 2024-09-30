@@ -100,16 +100,31 @@ watch(store.notesItems, scrollSibebarToBottom)
     transform: translate(-50%, -50%) scale(1);
 }
 
+// .list-empty-enter-active {
+//     transition: opacity var(--transition-short) ease-in-out;
+//     // transition: none;
+// }
+
+// .list-empty-enter-from {
+//     opacity: 0;
+//     transition: none;
+// }
+
+// .list-empty-leave-to {
+//     opacity: 0;
+//     transition: none;
+// }
+
+// .list-empty-leave-active {
+//     opacity: 1;
+// }
 .list-empty-enter-active {
-    transition: var(--transition-short) ease-in-out;
+    transition: opacity 0.5s;
 }
 
-.list-empty-enter-from {
+.list-empty-enter,
+.list-empty-leave-to {
     opacity: 0;
-}
-
-.list-empty-leave-active {
-    opacity: 1;
 }
 
 .list-move,

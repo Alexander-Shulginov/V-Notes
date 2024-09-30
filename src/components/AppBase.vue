@@ -8,7 +8,7 @@ import { useSideBarControls } from '@/hooks/useSideBarControls'
 const store = useStore()
 
 onMounted(() => {
-    store.createItem()
+    // store.createItem()
 })
 
 const { sideBarIsActive } = useSideBarControls()
