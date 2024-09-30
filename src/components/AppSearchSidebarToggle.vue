@@ -73,6 +73,10 @@ const { toggleSideBar } = useSideBarControls()
     path {
         stroke: var(--color-text);
     }
+
+    rect {
+        transition: stroke var(--transition-short) ease-in-out;
+    }
 }
 
 .svg-dots {

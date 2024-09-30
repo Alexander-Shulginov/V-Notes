@@ -6,7 +6,7 @@
     --font-size-text: 16px;
     --font-size-title: 18px;
 
-    --transition-short: 0.2s;
+    --transition-short: 0.4s;
     --transition-base: 0.5s;
 
     --side-bar-width: 300px;
@@ -22,8 +22,7 @@
 
         --font-size-text: 14px;
         --font-size-title: 16px;
-        
+
         --side-bar-width: 100%;
     }
-
 }

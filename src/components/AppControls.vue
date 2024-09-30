@@ -42,6 +42,7 @@ const store = useStore()
 
         border-radius: var(--b-radius-base);
         background-color: var(--bg-second);
+        transition: background-color var(--transition-short) ease-in-out;
     }
 }
 </style>

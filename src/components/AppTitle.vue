@@ -56,7 +56,9 @@ watch(store.notesItems, () => {
         border: none;
         border-radius: var(--b-radius-base);
 
-        transition: background-color var(--transition-short) ease-in-out;
+        transition:
+            background-color var(--transition-short) ease-in-out,
+            color var(--transition-short) ease-in-out;
 
         &:focus-visible {
             ~ .notes-title__decor::after {
@@ -66,6 +68,7 @@ watch(store.notesItems, () => {
 
         &::placeholder {
             color: var(--color-text);
+            transition: color var(--transition-short) ease-in-out;
         }
 
         @media (max-width: 768px) {

@@ -28,7 +28,7 @@
     path {
         stroke: var(--color-text);
         fill: transparent;
-        transition: var(--transition-base) ease-in-out;
+        transition: var(--transition-short) ease-in-out;
     }
 }
 .svg--trash-top {

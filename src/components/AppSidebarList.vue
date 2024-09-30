@@ -64,6 +64,8 @@ watch(store.notesItems, scrollSibebarToBottom)
 
     position: relative;
 
+    transition: background-color var(--transition-short)  ease-in-out;
+
     @media (max-width: 768px) {
         height: calc(100vh - 238px);
     }

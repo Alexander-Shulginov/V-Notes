@@ -22,6 +22,8 @@ import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
     border-radius: var(--b-radius-base);
     background-color: var(--bg-second);
 
-    transition: width var(--transition-short) ease-in-out;
+    transition:
+        width var(--transition-short) ease-in-out,
+        background-color var(--transition-short) ease-in-out;
 }
 </style>

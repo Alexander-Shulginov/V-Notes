@@ -54,7 +54,9 @@
 
 .btn--add-active {
     outline-color: var(--color-accent);
-    transition: border-color var(--transition-short) ease-in-out;
+    transition:
+        outline-color var(--transition-short) ease-in-out,
+        background-color var(--transition-short) ease-in-out;
 }
 
 .btn--delete {

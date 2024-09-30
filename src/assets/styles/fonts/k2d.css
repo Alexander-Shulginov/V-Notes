@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'K2D';
+    src:
+        url('@/assets/fonts/k2d.woff2') format('woff2'),
+        url('@/assets/fonts/k2d.woff') format('woff');
+    font-display: swap;
+}

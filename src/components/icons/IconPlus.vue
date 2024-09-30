@@ -19,6 +19,6 @@
     fill: var(--color-text);
     transition:
         transform var(--transition-base) ease-in-out,
-        fill var(--transition-base) ease-in-out;
+        fill var(--transition-short) ease-in-out;
 }
 </style>

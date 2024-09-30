@@ -40,6 +40,7 @@ function setFocusOnTextArea() {
     padding: var(--offset-base);
 
     border-radius: var(--b-radius-base);
+    transition: background-color var(--transition-short)  ease-in-out;
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base);
@@ -67,6 +68,8 @@ function setFocusOnTextArea() {
     -webkit-line-clamp: 1;
 
     color: var(--color-text);
+
+    transition: color var(--transition-short)  ease-in-out;
 }
 
 [data-color-scheme='light'] .list__item--active .list__item-text {

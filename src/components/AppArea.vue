@@ -64,6 +64,10 @@ const store = useStore()
         border-radius: var(--b-radius-base);
         padding: calc(var(--offset-base) - 6px);
 
+        transition:
+            color var(--transition-short) ease-in-out,
+            background-color var(--transition-short) ease-in-out;
+
         &:focus-visible {
             ~ .text-field__decor::after {
                 width: 100%;

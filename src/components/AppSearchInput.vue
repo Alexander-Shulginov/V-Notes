@@ -27,11 +27,12 @@ const store = useStore()
     background-color: var(--bg-base);
 
     transition:
-        visibility var(--b-radius-base) ease-in-out,
-        opacity var(--b-radius-base) ease-in-out,
-        width var(--b-radius-base) ease-in-out,
-        padding var(--b-radius-base) ease-in-out,
-        background-color var(--b-radius-short) ease-in-out;
+        color var(--transition-short) ease-in-out,
+        visibility var(--transition-base) ease-in-out,
+        opacity var(--transition-base) ease-in-out,
+        width var(--transition-base) ease-in-out,
+        padding var(--transition-base) ease-in-out,
+        background-color var(--transition-short) ease-in-out;
 
     &:focus-visible {
         outline: 2px solid var(--color-accent);
@@ -42,6 +43,7 @@ const store = useStore()
     &::placeholder {
         color: var(--color-text);
         opacity: 0.7;
+        transition: color var(--transition-short) ease-in-out;
     }
 
     @media (any-hover: hover) {
