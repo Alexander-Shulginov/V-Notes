@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import TheMainLogo from '@/components/common/TheMainLogo.vue'
-import TheColorSchemeToggle from '@/components/common/TheColorSchemeToggle.vue'
+import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
 </script>
 
 <template>
     <header class="header">
         <div class="header__container">
             <TheMainLogo />
-            <TheColorSchemeToggle />
+            <TheColorThemeToggle />
         </div>
     </header>
 </template>

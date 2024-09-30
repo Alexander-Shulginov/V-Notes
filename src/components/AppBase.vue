@@ -15,7 +15,8 @@ const { sideBarIsActive } = useSideBarControls()
 </script>
 
 <template>
-    <main class="editor" :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
+    <main class="editor" 
+    :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
         <AppBaseTop />
         <AppBaseBody />
     </main>

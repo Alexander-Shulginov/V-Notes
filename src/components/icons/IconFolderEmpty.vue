@@ -36,10 +36,10 @@
 <style lang="scss" scoped>
 .svg-empty-folder {
     fill: var(--color-accent);
-    transition: fill var(--transition-base)  ease-in-out;
+    transition: fill var(--transition-base) ease-in-out;
 }
 
-[data-color-scheme='dark'] .svg-empty-folder {
+[data-color-theme='dark'] .svg-empty-folder {
     fill: var(--color-text);
 }
 </style>

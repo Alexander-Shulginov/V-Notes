@@ -1,36 +1,46 @@
 import { defineStore } from 'pinia'
 
-export type colorScheme = 'dark' | 'light'
-
 export const useThemeStore = defineStore('themeStore', {
-    state: (): { activeScheme: colorScheme } => {
+    state: () => {
         return {
-            activeScheme: 'dark'
+            activeTheme: '',
+            defaultTheme: 'dark',
+            domDataAttr: 'data-color-theme'
         }
     },
 
     actions: {
-        setColorScheme(name: colorScheme): void {
-            this.activeScheme = name
-            document.body.setAttribute('data-color-scheme', name)
+        setColorTheme(themeName: string): void {
+            this.activeTheme = themeName
+            localStorage.setItem('color-theme', themeName)
+            document.body.setAttribute(this.domDataAttr, themeName)
         },
 
-        loadColorScheme() {
-            this.userColorSchemeIsDark
-                ? this.setColorScheme('dark')
-                : this.setColorScheme('light')
+        setDefaultTheme() {
+            this.setColorTheme(this.defaultTheme)
+            document.body.setAttribute(this.domDataAttr, this.defaultTheme)
         },
 
-        toggleColorScheme() {
-            this.activeScheme === 'dark'
-                ? this.setColorScheme('light')
-                : this.setColorScheme('dark')
+        loadColorTheme() {
+            this.colorThemeIsNotFound
+                ? this.setDefaultTheme()
+                : this.setColorTheme(this.getCurrentTheme)
+        },
+
+        toggleColorTheme() {
+            this.activeTheme === 'dark'
+                ? this.setColorTheme('light')
+                : this.setColorTheme('dark')
         }
     },
 
     getters: {
-        userColorSchemeIsDark(): boolean {
-            return window.matchMedia('(prefers-color-scheme: dark)').matches
+        getCurrentTheme(): string {
+            return localStorage.getItem('color-theme') ?? this.defaultTheme
+        },
+
+        colorThemeIsNotFound(): boolean {
+            return localStorage.getItem('color-theme') === null
         }
     }
 })

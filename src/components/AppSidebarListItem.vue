@@ -74,7 +74,7 @@ function setFocusOnTextArea() {
     transition: color var(--transition-short) ease-in-out;
 }
 
-[data-color-scheme='light'] .list__item--active .list__item-text {
+[data-color-theme='light'] .list__item--active .list__item-text {
     color: var(--bg-base);
 }
 </style>

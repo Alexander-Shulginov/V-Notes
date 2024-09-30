@@ -11,7 +11,7 @@ const pinia = createPinia()
 app.use(pinia)
 
 const themeStore = useThemeStore()
-themeStore.loadColorScheme()
+themeStore.loadColorTheme()
 
 app.mount('#app')
 

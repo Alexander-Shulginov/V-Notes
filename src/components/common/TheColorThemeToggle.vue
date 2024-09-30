@@ -10,8 +10,8 @@ const themeStore = useThemeStore()
     <div class="theme" tabindex="1">
         <input
             tabindex="0"
-            @click="themeStore.toggleColorScheme()"
-            :checked="themeStore.userColorSchemeIsDark"
+            @click="themeStore.toggleColorTheme()"
+            :checked="themeStore.activeTheme === 'dark'"
             class="theme__input"
             type="checkbox"
             name="current-theme"

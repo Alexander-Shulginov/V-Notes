@@ -7,7 +7,7 @@
     --light-overlay: rgba(255, 255, 255, 0.5);
 }
 
-[data-color-scheme='light'] {
+[data-color-theme='light'] {
     --bg-base: var(--light-primary);
     --bg-base-hover: var(--light-primary-hover);
 
