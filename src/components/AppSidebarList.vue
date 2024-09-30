@@ -34,15 +34,19 @@ watch(store.notesItems, scrollSibebarToBottom)
 
 <template>
     <ul class="list" ref="sideBarList">
-        <li v-if="store.itemsListIsEmpty" class="empty-list">
-            <IconFolderEmpty />
-        </li>
-        <AppSidebarListItem
-            v-for="item in itemsToShow"
-            :key="item.id"
-            :id="item.id"
-            :title="item.title"
-        />
+        <Transition name="list-empty">
+            <li v-if="store.itemsListIsEmpty" class="empty-list">
+                <IconFolderEmpty />
+            </li>
+        </Transition>
+        <TransitionGroup name="list">
+            <AppSidebarListItem
+                v-for="item in itemsToShow"
+                :key="item.id"
+                :id="item.id"
+                :title="item.title"
+            />
+        </TransitionGroup>
     </ul>
 </template>
 
@@ -64,7 +68,7 @@ watch(store.notesItems, scrollSibebarToBottom)
 
     position: relative;
 
-    transition: background-color var(--transition-short)  ease-in-out;
+    transition: background-color var(--transition-short) ease-in-out;
 
     @media (max-width: 768px) {
         height: calc(100vh - 238px);
@@ -94,6 +98,34 @@ watch(store.notesItems, scrollSibebarToBottom)
     left: 50%;
 
     transform: translate(-50%, -50%) scale(1);
-    transition: opacity var(--transform-short) ease-in-out;
+}
+
+.list-empty-enter-active {
+    transition: var(--transition-short) ease-in-out;
+}
+
+.list-empty-enter-from {
+    opacity: 0;
+}
+
+.list-empty-leave-active {
+    opacity: 1;
+}
+
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: var(--transition-short) ease-in-out;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.list-leave-active {
+    position: absolute;
+    width: 100%;
 }
 </style>

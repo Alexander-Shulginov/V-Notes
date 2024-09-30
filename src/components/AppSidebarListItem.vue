@@ -39,8 +39,9 @@ function setFocusOnTextArea() {
     font-size: var(--font-size-text);
     padding: var(--offset-base);
 
+    list-style-type: none;
+
     border-radius: var(--b-radius-base);
-    transition: background-color var(--transition-short)  ease-in-out;
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base);
@@ -50,6 +51,7 @@ function setFocusOnTextArea() {
 
 .list__item--active {
     background-color: var(--color-accent);
+    transition: background-color var(--transition-short) ease-in-out;
 
     @media (any-hover: hover) {
         &:hover {
@@ -69,7 +71,7 @@ function setFocusOnTextArea() {
 
     color: var(--color-text);
 
-    transition: color var(--transition-short)  ease-in-out;
+    transition: color var(--transition-short) ease-in-out;
 }
 
 [data-color-scheme='light'] .list__item--active .list__item-text {
