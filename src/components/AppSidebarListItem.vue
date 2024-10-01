@@ -3,8 +3,8 @@ import { useSetFocus } from '@/hooks/useSetFocus'
 import { useStore } from '@/store/notesStore'
 
 defineProps<{
-    title: string
     id: number
+    title: string
 }>()
 
 const store = useStore()

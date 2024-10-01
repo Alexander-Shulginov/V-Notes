@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import AppSidebar from './AppSidebar.vue'
 import AppArea from './AppArea.vue'
+import AppSideBar from './AppSideBar.vue';
 </script>
 
 <template>
     <div class="editor__body">
         <AppArea />
-        <AppSidebar />
+        <AppSideBar />
     </div>
 </template>
 

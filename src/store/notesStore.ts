@@ -4,19 +4,26 @@ interface NotesItem {
     id: number
     title: string
     text: string
-    itemIsActive: false
+    itemIsActive: boolean
+}
+
+const StorageKeyName = {
+    id: 'activeItemId',
+    items: 'notesItems'
 }
 
 export const useStore = defineStore('storeBase', {
     state: () => {
         return {
-            activeItemId: 0,
+            activeItemId: JSON.parse(localStorage.getItem(StorageKeyName.id) || '0'),
             notesTitle: 'Untitled',
             notesText: '',
             searchText: '',
-            notesItems: JSON.parse(localStorage.getItem('notesItems') || '[]') as NotesItem[],
+            notesItems: JSON.parse(
+                localStorage.getItem(StorageKeyName.items) || '[]'
+            ) as NotesItem[],
             filteredNotesItems: JSON.parse(
-                localStorage.getItem('notesItems') || '[]'
+                localStorage.getItem(StorageKeyName.items) || '[]'
             ) as NotesItem[]
         }
     },
@@ -24,6 +31,7 @@ export const useStore = defineStore('storeBase', {
     actions: {
         saveToLocalStorage() {
             localStorage.setItem('notesItems', JSON.stringify(this.notesItems))
+            localStorage.setItem('activeItemId', JSON.stringify(this.activeItemId))
         },
 
         createItem(): void {
@@ -31,7 +39,7 @@ export const useStore = defineStore('storeBase', {
                 id: Date.now(),
                 title: 'Untitled',
                 text: '',
-                itemIsActive: false
+                itemIsActive: true
             }
 
             this.notesItems.push(newItem)
@@ -67,6 +75,7 @@ export const useStore = defineStore('storeBase', {
 
         setId(id: number): void {
             this.activeItemId = id
+            this.saveToLocalStorage()
         },
 
         resetTextToDefault(): void {
@@ -117,16 +126,3 @@ export const useStore = defineStore('storeBase', {
         }
     }
 })
-
-// Подключаем автосохранение при изменении списка заметок
-// persist: {
-//     enabled: true
-// }
-// Добавляем наблюдатель для автоматического сохранения изменений
-// watch(
-//     () => useStore().notesItems,
-//     (newNotesItems) => {
-//         localStorage.setItem('notesItems', JSON.stringify(newNotesItems))
-//     },
-//     { deep: true }
-// )
