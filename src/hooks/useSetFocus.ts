@@ -1,7 +1,7 @@
 import { nextTick } from 'vue'
 
 export function useSetFocus() {
-    function setFocus(elem: HTMLElement | null): void {
+    function setFocus(elem: any | null): void {
         nextTick(() => {
             if (elem) elem.focus()
         })

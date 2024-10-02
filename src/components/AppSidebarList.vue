@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { computed, nextTick, useTemplateRef, watch } from 'vue'
+import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import AppSidebarListItem from './AppSidebarListItem.vue'
 import IconFolderEmpty from './icons/IconFolderEmpty.vue'
 import { useStore } from '@/store/notesStore'
+import { useSetFocus } from '@/hooks/useSetFocus'
 
+const { setFocus } = useSetFocus()
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
 
@@ -29,7 +31,17 @@ const itemsToShow = computed(() => {
     return store.notesItems
 })
 
+// function setFocusOnTextArea() {
+//     let textArea = document.querySelector('.text-field__area') as HTMLTextAreaElement
+//     console.log('focus')
+//     setFocus(textArea)
+// }
+
 watch(store.notesItems, scrollSibebarToBottom)
+
+onMounted(() => {
+    store.readItem()
+})
 </script>
 
 <template>

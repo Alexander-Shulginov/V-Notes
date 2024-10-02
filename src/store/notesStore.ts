@@ -1,45 +1,41 @@
 import { defineStore } from 'pinia'
+import { getLocalStorage, setLocalStorage } from '@/helpers/LocalStorageActions'
 
 interface NotesItem {
     id: number
     title: string
     text: string
-    itemIsActive: boolean
 }
 
-const StorageKeyName = {
-    id: 'activeItemId',
-    items: 'notesItems'
+const enum StorageKeyName {
+    id = 'activeItemId',
+    items = 'notesItems'
 }
 
 export const useStore = defineStore('storeBase', {
     state: () => {
         return {
-            activeItemId: JSON.parse(localStorage.getItem(StorageKeyName.id) || '0'),
             notesTitle: 'Untitled',
+            notesTitleIsFocused: false,
             notesText: '',
             searchText: '',
-            notesItems: JSON.parse(
-                localStorage.getItem(StorageKeyName.items) || '[]'
-            ) as NotesItem[],
-            filteredNotesItems: JSON.parse(
-                localStorage.getItem(StorageKeyName.items) || '[]'
-            ) as NotesItem[]
+            activeItemId: getLocalStorage(StorageKeyName.id) || 0,
+            notesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],
+            filteredNotesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[]
         }
     },
 
     actions: {
         saveToLocalStorage() {
-            localStorage.setItem('notesItems', JSON.stringify(this.notesItems))
-            localStorage.setItem('activeItemId', JSON.stringify(this.activeItemId))
+            setLocalStorage(StorageKeyName.items, this.notesItems)
+            setLocalStorage(StorageKeyName.id, this.activeItemId)
         },
 
         createItem(): void {
             const newItem: NotesItem = {
                 id: Date.now(),
                 title: 'Untitled',
-                text: '',
-                itemIsActive: true
+                text: ''
             }
 
             this.notesItems.push(newItem)
@@ -47,6 +43,7 @@ export const useStore = defineStore('storeBase', {
             this.saveToLocalStorage()
             this.setId(newItem.id)
             this.resetTextToDefault()
+            this.notesTitleIsFocused = true
         },
 
         readItem(): void {
@@ -59,6 +56,9 @@ export const useStore = defineStore('storeBase', {
 
         updateTitle(): void {
             const activeItem = this.getActiveItem
+            if (this.notesTitle === '') {
+                this.notesTitle = 'Untitled'
+            }
             if (activeItem) {
                 activeItem.title = this.notesTitle
                 this.saveToLocalStorage()

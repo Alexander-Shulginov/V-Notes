@@ -29,7 +29,7 @@ import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
         justify-content: space-between;
 
         max-width: 1240px;
-        padding: 18px;
+        padding: 14px;
         margin: 0 auto;
     }
 }

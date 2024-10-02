@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useSetFocus } from '@/hooks/useSetFocus'
+import { onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
+import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
 
 defineProps<{
     id: number
@@ -8,23 +9,22 @@ defineProps<{
 }>()
 
 const store = useStore()
-const { setFocus } = useSetFocus()
+const { setFocusOnTextarea } = useFocusOnTextarea()
 
 const itemIsClicked = (id: number): boolean => {
     return id === store.activeItemId
 }
 
-function setFocusOnTextArea() {
-    let textArea = document.querySelector('.text-field__area') as HTMLTextAreaElement
-    setFocus(textArea)
-}
+onMounted(() => {
+    store.readItem()
+})
 </script>
 
 <template>
     <li
         class="list__item"
         :class="{ 'list__item--active': itemIsClicked(id) }"
-        @click="store.setId(id), store.readItem(), setFocusOnTextArea()"
+        @click="store.setId(id), store.readItem(), setFocusOnTextarea()"
     >
         <p class="list__item-text">
             {{ title }}

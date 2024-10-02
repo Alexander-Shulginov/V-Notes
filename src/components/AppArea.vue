@@ -12,8 +12,9 @@ const store = useStore()
             class="text-field__area"
             name="user-text"
             id="area-base"
+            data-notes-area
+            spellcheck="false"
         ></textarea>
-        <!-- <div class="text-field__decor"></div> -->
     </div>
 </template>
 
@@ -68,12 +69,6 @@ const store = useStore()
             color var(--transition-short) ease-in-out,
             background-color var(--transition-short) ease-in-out;
 
-        &:focus-visible {
-            ~ .text-field__decor::after {
-                width: 100%;
-            }
-        }
-
         &::-webkit-scrollbar {
             width: 5px;
         }
@@ -89,23 +84,5 @@ const store = useStore()
             cursor: pointer;
         }
     }
-
-    // &__decor {
-    //     position: relative;
-    //     &::after {
-    //         content: '';
-    //         width: 0;
-    //         height: 3px;
-    //         background-color: var(--dark-accent);
-    //         border-radius: 2px;
-
-    //         position: absolute;
-    //         bottom: 2px;
-    //         left: 50%;
-    //         transform: translateX(-50%);
-
-    //         transition: width 0.3s ease-in-out;
-    //     }
-    // }
 }
 </style>
