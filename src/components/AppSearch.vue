@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppSearchInput from './AppSearchInput.vue'
+import AppSearchInput from '@/components/AppSearchInput.vue'
 import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
 </script>
 

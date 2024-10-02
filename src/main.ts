@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { useThemeStore } from './store/themeStore'
+import { useSideBarControls } from './hooks/useSideBarControls'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -12,6 +13,7 @@ app.use(pinia)
 
 const themeStore = useThemeStore()
 themeStore.loadColorTheme()
+const { toggleSideBar, hideSideBar } = useSideBarControls()
 
 app.mount('#app')
 

@@ -1,9 +1,7 @@
-export function getLocalStorage(key: string): string {
+export function getLocalStorage(key: string) {
     const value = localStorage.getItem(key)
     if (value) {
         return JSON.parse(value)
-    } else {
-        throw new Error(`${key} is not defined on LocalStorage`)
     }
 }
 
@@ -11,6 +9,7 @@ export function setLocalStorage<T>(key: string, data: T): void {
     try {
         localStorage.setItem(key, JSON.stringify(data))
     } catch (error) {
-        throw new Error(`Error saving to localStorage: ${error}`)
+        console.log('error2')
+        // throw new Error(`Error saving to localStorage: ${error}`)
     }
 }

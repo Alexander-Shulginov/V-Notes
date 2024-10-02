@@ -7,8 +7,13 @@ export function useSideBarControls() {
         sideBarIsActive.value = !sideBarIsActive.value
     }
 
+    function hideSideBar() {
+        sideBarIsActive.value = true
+    }
+
     return {
         sideBarIsActive,
+        hideSideBar,
         toggleSideBar
     }
 }
