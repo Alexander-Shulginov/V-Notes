@@ -1,22 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useStore } from '@/store/notesStore'
 import AppBaseTop from './AppBaseTop.vue'
 import AppBaseBody from './AppBaseBody.vue'
 import { useSideBarControls } from '@/hooks/useSideBarControls'
-
-const store = useStore()
-
-onMounted(() => {
-    // store.createItem()
-})
 
 const { sideBarIsActive } = useSideBarControls()
 </script>
 
 <template>
-    <main class="editor" 
-    :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
+    <main class="editor" :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
         <AppBaseTop />
         <AppBaseBody />
     </main>

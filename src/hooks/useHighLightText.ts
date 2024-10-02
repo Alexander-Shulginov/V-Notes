@@ -4,7 +4,7 @@ export function useHighLightText() {
     function highLightText(elem: HTMLInputElement | null) {
         nextTick(() => {
             if (elem) {
-                elem.setSelectionRange(0, 8)
+                elem.setSelectionRange(0, elem.value.length)
             }
         })
     }
