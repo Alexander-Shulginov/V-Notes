@@ -57,7 +57,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    height: calc(100vh - 280px);
+    height: calc(100vh - 268px);
     padding: 4px;
 
     overflow-y: auto;
@@ -74,8 +74,16 @@ onMounted(() => {
 
     transition: background-color var(--transition-short) ease-in-out;
 
+    @supports (height: calc(100dvh - 268px)) {
+        height: calc(100dvh - 268px);
+    }
+
     @media (max-width: 768px) {
         height: calc(100vh - 238px);
+
+        @supports (height: calc(100dvh - 238px)) {
+            height: calc(100dvh - 238px);
+        }
     }
 
     &::-webkit-scrollbar {

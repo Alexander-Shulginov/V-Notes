@@ -28,6 +28,7 @@ import AppControls from './AppControls.vue'
         top: 0;
         left: 0;
         z-index: 3;
+        width: 100%;
     }
 
     &__list--scroll {

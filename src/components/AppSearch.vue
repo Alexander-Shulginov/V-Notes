@@ -25,5 +25,9 @@ import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
     transition:
         width var(--transition-short) ease-in-out,
         background-color var(--transition-short) ease-in-out;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }
 </style>

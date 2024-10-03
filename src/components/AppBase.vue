@@ -23,11 +23,14 @@ const { sideBarIsActive } = useSideBarControls()
     gap: var(--gap-base);
 
     padding: 0 16px;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 112px);
+
+    @supports (height: calc(100dvh - 112px)) {
+        height: calc(100dvh - 112px);
+    }
 
     @media (max-width: 768px) {
         padding: 0 8px;
-        height: calc(100vh - 108px);
     }
 }
 

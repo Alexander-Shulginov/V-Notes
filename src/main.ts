@@ -4,7 +4,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { useThemeStore } from './store/themeStore'
-import { useSideBarControls } from './hooks/useSideBarControls'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -13,7 +12,6 @@ app.use(pinia)
 
 const themeStore = useThemeStore()
 themeStore.loadColorTheme()
-const { toggleSideBar, hideSideBar } = useSideBarControls()
 
 app.mount('#app')
 
@@ -21,12 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         document.body.classList.remove('no-transition')
     }, 100)
+
+    if (navigator.userAgent.includes('iPhone')) {
+        const headElem = document.querySelector('[name=viewport')
+        if (headElem) {
+            headElem.setAttribute(
+                'content',
+                'width=device-width, initial-scale=1, maximum-scale=1 interactive-widget=resizes-content'
+            )
+        }
+    }
 })
-
-// const vh = window.innerHeight * 0.01
-// document.documentElement.style.setProperty('--vh', `${vh}px`)
-
-// window.addEventListener('resize', () => {
-//     const vh = window.innerHeight * 0.01
-//     document.documentElement.style.setProperty('--vh', `${vh}px`)
-// })

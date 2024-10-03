@@ -52,6 +52,7 @@ const themeStore = useThemeStore()
 
     &__input {
         appearance: none;
+        width: 0;
         &:checked ~ .theme__icon {
             background-color: var(--dark-light);
             transform: translate(20%, -50%);
