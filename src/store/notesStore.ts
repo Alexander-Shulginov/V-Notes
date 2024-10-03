@@ -29,7 +29,6 @@ export const useStore = defineStore('storeBase', {
         saveToLocalStorage() {
             setLocalStorage(StorageKeyName.items, this.notesItems)
             setLocalStorage(StorageKeyName.id, this.activeItemId)
-            console.log(getLocalStorage(StorageKeyName.id))
         },
 
         createItem(): void {
