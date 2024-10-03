@@ -10,6 +10,12 @@ const store = useStore()
 
 const { setFocusOnTitle } = useFocusOnTitle()
 const { setFocusOnTextarea } = useFocusOnTextarea()
+
+const hideSidebarOnMobile = () => {
+    if (window.innerWidth < 768) {
+        store.sidebarIsActive = !store.sidebarIsActive
+    }
+}
 </script>
 
 <template>
@@ -18,12 +24,15 @@ const { setFocusOnTextarea } = useFocusOnTextarea()
             <BaseBtn
                 class="btn--add"
                 :class="{ 'btn--add-active': store.itemsListIsEmpty }"
-                @click="store.createItem(), setFocusOnTitle()"
+                @click="store.createItem(), setFocusOnTitle(), hideSidebarOnMobile()"
                 ref="btnAdd"
             >
                 <IconPlus />
             </BaseBtn>
-            <BaseBtn class="btn--delete" @click="store.deleteItem(), setFocusOnTextarea()">
+            <BaseBtn
+                class="btn--delete"
+                @click="store.deleteItem(), setFocusOnTextarea()"
+            >
                 <IconTrash />
             </BaseBtn>
         </div>
