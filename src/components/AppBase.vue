@@ -1,13 +1,21 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useStore } from '@/store/notesStore'
+
 import AppBaseTop from './AppBaseTop.vue'
 import AppBaseBody from './AppBaseBody.vue'
-import { useSideBarControls } from '@/hooks/useSideBarControls'
 
-const { sideBarIsActive } = useSideBarControls()
+const store = useStore()
+
+const sidebarToggleClass = computed(() => {
+    return store.sidebarIsActive
+        ? 'sidebar--visible'
+        : 'sidebar--hidden'
+})
 </script>
 
 <template>
-    <main class="editor" :class="sideBarIsActive ? 'sidebar--hidden' : 'sidebar--visible'">
+    <main class="editor" :class="sidebarToggleClass">
         <AppBaseTop />
         <AppBaseBody />
     </main>

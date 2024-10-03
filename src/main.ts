@@ -4,6 +4,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { useThemeStore } from './store/themeStore'
+import { StorageKeyName, useStore } from './store/notesStore'
+import { setLocalStorage } from './helpers/LocalStorageActions'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -11,6 +13,7 @@ const pinia = createPinia()
 app.use(pinia)
 
 const themeStore = useThemeStore()
+const store = useStore()
 themeStore.loadColorTheme()
 
 app.mount('#app')

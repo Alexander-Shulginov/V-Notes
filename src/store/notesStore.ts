@@ -7,9 +7,10 @@ interface NotesItem {
     text: string
 }
 
-const enum StorageKeyName {
+export const enum StorageKeyName {
     id = 'activeItemIds',
-    items = 'notesItems'
+    items = 'notesItems',
+    sidebar = 'sideBarIsActive'
 }
 
 export const useStore = defineStore('storeBase', {
@@ -19,6 +20,7 @@ export const useStore = defineStore('storeBase', {
             notesTitleIsFocused: false,
             notesText: '',
             searchText: '',
+            sidebarIsActive: getLocalStorage(StorageKeyName.sidebar),
             activeItemId: getLocalStorage(StorageKeyName.id) || 0,
             notesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],
             filteredNotesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[]

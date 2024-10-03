@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { useSideBarControls } from '@/hooks/useSideBarControls'
-const { toggleSideBar } = useSideBarControls()
+import { setLocalStorage } from '@/helpers/LocalStorageActions'
+import { StorageKeyName, useStore } from '@/store/notesStore'
+
+const store = useStore()
+
+const toggleSidebar = () => {
+    store.sidebarIsActive = !store.sidebarIsActive
+    setLocalStorage(StorageKeyName.sidebar, store.sidebarIsActive)
+}
 </script>
 
 <template>
-    <button @click="toggleSideBar" class="sidebar-control" type="button">
+    <button @click="toggleSidebar" class="sidebar-control" type="button">
         <svg
             width="23"
             height="20"
