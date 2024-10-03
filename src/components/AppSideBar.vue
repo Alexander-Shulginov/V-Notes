@@ -30,9 +30,5 @@ import AppControls from './AppControls.vue'
         z-index: 3;
         width: 100%;
     }
-
-    &__list--scroll {
-        padding-right: var(--offset-base);
-    }
 }
 </style>

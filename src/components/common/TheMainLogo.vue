@@ -38,6 +38,14 @@
     &__svg {
         fill: var(--color-text);
         transition: fill var(--transition-short) ease-in-out;
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            width: 26px;
+        }
+
+        @media (max-width: 768px){
+            width: 28px;
+        }
     }
 }
 
@@ -52,6 +60,14 @@
     transition: color var(--transition-short) ease-in-out;
 
     position: relative;
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 768px){
+        font-size: 18px;
+    }
 
     &::after {
         content: '';

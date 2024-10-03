@@ -19,6 +19,7 @@ const { highLightText } = useHighLightText()
             type="text"
             class="notes-title__field"
             placeholder="Add a title"
+            aria-label="title field"
             data-notes-title
         />
     </div>
@@ -39,7 +40,7 @@ const { highLightText } = useHighLightText()
         width: 100%;
         padding: 16px;
 
-        font-size: 24px;
+        font-size: var(--font-size-title);
         font-weight: 700;
         color: var(--color-text);
         background-color: var(--bg-second);
@@ -57,10 +58,6 @@ const { highLightText } = useHighLightText()
             font-weight: normal;
             color: var(--color-text);
             transition: color var(--transition-short) ease-in-out;
-        }
-
-        @media (max-width: 768px) {
-            padding: 13px;
         }
     }
 }

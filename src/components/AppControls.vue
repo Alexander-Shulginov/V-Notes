@@ -49,10 +49,10 @@ const hideSidebarOnMobile = () => {
 
     &__wrapper {
         display: flex;
-        gap: 6px;
+        gap: var(--gap-small);
 
         margin-top: auto;
-        padding: 8px;
+        padding: var(--offset-small);
 
         border-radius: var(--b-radius-base);
         background-color: var(--bg-second);

@@ -7,14 +7,14 @@ const themeStore = useThemeStore()
 </script>
 
 <template>
-    <div class="theme" tabindex="1">
+    <div class="theme">
         <input
-            tabindex="0"
             @click="themeStore.toggleColorTheme()"
             :checked="themeStore.activeTheme === 'dark'"
             class="theme__input"
             type="checkbox"
             name="current-theme"
+            aria-label="toggle color theme"
             id="color-theme"
         />
         <label class="theme__label" for="color-theme"></label>
@@ -39,6 +39,7 @@ const themeStore = useThemeStore()
 
     &__label {
         cursor: pointer;
+
         position: absolute;
         top: 0;
         left: 0;

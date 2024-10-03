@@ -8,9 +8,7 @@ import AppBaseBody from './AppBaseBody.vue'
 const store = useStore()
 
 const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive
-        ? 'sidebar--visible'
-        : 'sidebar--hidden'
+    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
 })
 </script>
 
@@ -23,22 +21,26 @@ const sidebarToggleClass = computed(() => {
 
 <style lang="scss">
 .editor {
-    max-width: 1240px;
+    max-width: var(--container-width);
     margin: 0 auto;
 
     display: flex;
     flex-direction: column;
     gap: var(--gap-base);
 
-    padding: 0 16px;
-    height: calc(100vh - 112px);
+    padding: 0 var(--offset-base);
+    height: calc(100vh - 86px);
 
-    @supports (height: calc(100dvh - 112px)) {
-        height: calc(100dvh - 112px);
+    @supports (height: calc(100dvh - 86px)) {
+        height: calc(100dvh - 86px);
     }
 
     @media (max-width: 768px) {
-        padding: 0 8px;
+        height: calc(100vh - 74px);
+
+        @supports (height: calc(100dvh - 74px)) {
+            height: calc(100dvh - 74px);
+        }
     }
 }
 
@@ -58,7 +60,7 @@ const sidebarToggleClass = computed(() => {
 
 .sidebar--hidden {
     .search {
-        width: 66px;
+        width: 56px;
 
         &__field {
             visibility: hidden;
@@ -97,7 +99,9 @@ const sidebarToggleClass = computed(() => {
 
     .svg-arrow {
         transform: rotateY(190deg) translateX(-5px);
-        transition: transform var(--transition-base) ease-in-out;
+        transition:
+            transform var(--transition-base) ease-in-out,
+            stroke var(--transition-short) ease-in-out;
     }
 
     .svg-dots {
@@ -107,7 +111,9 @@ const sidebarToggleClass = computed(() => {
 
     .svg-line {
         transform: translateX(-4px);
-        transition: transform var(--transition-base) ease-in-out;
+        transition:
+            transform var(--transition-base) ease-in-out,
+            stroke var(--transition-short) ease-in-out;
     }
 }
 </style>

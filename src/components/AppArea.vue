@@ -13,6 +13,7 @@ const store = useStore()
             name="user-text"
             id="area-base"
             data-notes-area
+            aria-label="text field"
             spellcheck="false"
         ></textarea>
     </div>

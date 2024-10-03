@@ -58,13 +58,14 @@ onMounted(() => {
 .list {
     margin: 0;
     height: calc(100vh - 268px);
-    padding: 4px;
+    padding-left: 0;
+    padding-right: var(--gap-small);
 
     overflow-y: auto;
     overflow-x: hidden;
 
     color: var(--color-text);
-    font-size: 18px;
+    font-size: var(--font-size-sidebar);
     background-color: var(--bg-second);
 
     border-radius: var(--b-radius-base);
@@ -74,15 +75,15 @@ onMounted(() => {
 
     transition: background-color var(--transition-short) ease-in-out;
 
-    @supports (height: calc(100dvh - 268px)) {
-        height: calc(100dvh - 268px);
+    @supports (height: calc(100dvh - 242px)) {
+        height: calc(100dvh - 242px);
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 238px);
+        height: calc(100vh - 200px);
 
-        @supports (height: calc(100dvh - 238px)) {
-            height: calc(100dvh - 238px);
+        @supports (height: calc(100dvh - 200px)) {
+            height: calc(100dvh - 200px);
         }
     }
 
@@ -112,26 +113,8 @@ onMounted(() => {
     transform: translate(-50%, -50%) scale(1);
 }
 
-// .list-empty-enter-active {
-//     transition: opacity var(--transition-short) ease-in-out;
-//     // transition: none;
-// }
-
-// .list-empty-enter-from {
-//     opacity: 0;
-//     transition: none;
-// }
-
-// .list-empty-leave-to {
-//     opacity: 0;
-//     transition: none;
-// }
-
-// .list-empty-leave-active {
-//     opacity: 1;
-// }
 .list-empty-enter-active {
-    transition: opacity 0.5s;
+    transition: opacity 0.2s;
 }
 
 .list-empty-enter,

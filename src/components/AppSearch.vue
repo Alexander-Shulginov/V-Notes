@@ -13,10 +13,10 @@ import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
 <style lang="scss" scoped>
 .search {
     display: flex;
-    gap: 6px;
+    gap: var(--gap-small);
 
     width: var(--side-bar-width);
-    padding: 8px;
+    padding: var(--offset-small);
 
     outline: none;
     border-radius: var(--b-radius-base);

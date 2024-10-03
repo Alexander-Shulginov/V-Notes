@@ -11,7 +11,12 @@ const toggleSidebar = () => {
 </script>
 
 <template>
-    <button @click="toggleSidebar" class="sidebar-control" type="button">
+    <button
+        @click="toggleSidebar"
+        class="sidebar-control"
+        type="button"
+        aria-label="toggle sidebar"
+    >
         <svg
             width="23"
             height="20"
@@ -47,7 +52,7 @@ const toggleSidebar = () => {
     align-items: center;
     justify-content: center;
 
-    padding: 8px 12px;
+    padding: var(--offset-small);
     border: none;
     border-radius: var(--b-radius-base);
 
