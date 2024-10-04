@@ -4,8 +4,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import { useThemeStore } from './store/themeStore'
-import { StorageKeyName, useStore } from './store/notesStore'
-import { setLocalStorage } from './helpers/LocalStorageActions'
+import { useStore } from './store/notesStore'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -32,4 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             )
         }
     }
+})
+
+window.addEventListener('unload', () => {
+    store.updateText()
+    store.updateTitle()
 })

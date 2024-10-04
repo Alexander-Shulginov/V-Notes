@@ -59,6 +59,10 @@ const { highLightText } = useHighLightText()
             color: var(--color-text);
             transition: color var(--transition-short) ease-in-out;
         }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            padding: 6px;
+        }
     }
 }
 </style>

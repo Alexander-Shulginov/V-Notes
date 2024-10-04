@@ -38,3 +38,10 @@
         --side-bar-width: 100%;
     }
 }
+
+:root {
+    @media (max-height: 500px) and (orientation: landscape) {
+        --gap-base: 6px;
+        --offset-small: 4px;
+    }
+}

@@ -29,17 +29,25 @@ const sidebarToggleClass = computed(() => {
     gap: var(--gap-base);
 
     padding: 0 var(--offset-base);
-    height: calc(100vh - 86px);
+    height: calc(100vh - 110px);
 
-    @supports (height: calc(100dvh - 86px)) {
-        height: calc(100dvh - 86px);
+    @supports (height: calc(100dvh - 110px)) {
+        height: calc(100dvh - 110px);
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 74px);
+        height: calc(100vh - 70px);
 
-        @supports (height: calc(100dvh - 74px)) {
-            height: calc(100dvh - 74px);
+        @supports (height: calc(100dvh - 70px)) {
+            height: calc(100dvh - 70px);
+        }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        height: calc(100vh - 54px);
+
+        @supports (height: calc(100dvh - 54px)) {
+            height: calc(100dvh - 54px);
         }
     }
 }
@@ -60,7 +68,16 @@ const sidebarToggleClass = computed(() => {
 
 .sidebar--hidden {
     .search {
-        width: 56px;
+        width: 64px;
+
+        @media (max-width: 768px) {
+            width: 56px;
+        }
+
+        @media (max-height: 500px) and (orientation: landscape) {
+            width: 42px;
+            padding: 4px;
+        }
 
         &__field {
             visibility: hidden;

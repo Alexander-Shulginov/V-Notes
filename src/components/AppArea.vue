@@ -84,6 +84,9 @@ const store = useStore()
             border-radius: 2px;
             cursor: pointer;
         }
+        @media (max-height: 500px) and (orientation: landscape) {
+            min-height: 130px;
+        }
     }
 }
 </style>

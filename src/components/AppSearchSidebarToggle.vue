@@ -52,7 +52,7 @@ const toggleSidebar = () => {
     align-items: center;
     justify-content: center;
 
-    padding: var(--offset-small);
+    padding: var(--offset-small) var(--offset-base);
     border: none;
     border-radius: var(--b-radius-base);
 
@@ -60,6 +60,10 @@ const toggleSidebar = () => {
     background-color: var(--bg-base);
 
     transition: background-color var(--transition-short) ease-in-out;
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        padding: 6px 10px;
+    }
 
     @media (any-hover: hover) {
         &:hover {
@@ -88,6 +92,11 @@ const toggleSidebar = () => {
 
     rect {
         transition: stroke var(--transition-short) ease-in-out;
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        width: 14px;
+        height: 14px;
     }
 }
 

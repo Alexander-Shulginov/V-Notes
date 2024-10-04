@@ -32,7 +32,7 @@ const itemsToShow = computed(() => {
 watch(store.notesItems, scrollSibebarToBottom)
 
 onMounted(() => {
-    store.readItem()
+    // store.readItem()
 })
 </script>
 
@@ -57,7 +57,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    height: calc(100vh - 268px);
+    height: calc(100vh - 248px);
     padding-left: 0;
     padding-right: var(--gap-small);
 
@@ -75,8 +75,8 @@ onMounted(() => {
 
     transition: background-color var(--transition-short) ease-in-out;
 
-    @supports (height: calc(100dvh - 242px)) {
-        height: calc(100dvh - 242px);
+    @supports (height: calc(100dvh - 248px)) {
+        height: calc(100dvh - 248px);
     }
 
     @media (max-width: 768px) {
@@ -84,6 +84,14 @@ onMounted(() => {
 
         @supports (height: calc(100dvh - 200px)) {
             height: calc(100dvh - 200px);
+        }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        height: calc(100vh - 152px);
+
+        @supports (height: calc(100dvh - 152px)) {
+            height: calc(100dvh - 152px);
         }
     }
 
@@ -113,11 +121,12 @@ onMounted(() => {
     transform: translate(-50%, -50%) scale(1);
 }
 
-.list-empty-enter-active {
-    transition: opacity 0.2s;
+.list-empty-enter-active,
+.list-empty-leave-active {
+    transition: opacity var(--transition-short) ease-in-out;
 }
 
-.list-empty-enter,
+.list-empty-enter-from,
 .list-empty-leave-to {
     opacity: 0;
 }
