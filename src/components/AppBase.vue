@@ -23,33 +23,15 @@ const sidebarToggleClass = computed(() => {
 .editor {
     max-width: var(--container-width);
     margin: 0 auto;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     gap: var(--gap-base);
 
+    flex-grow: 2;
+
     padding: 0 var(--offset-base);
-    height: calc(100vh - 110px);
-
-    @supports (height: calc(100dvh - 110px)) {
-        height: calc(100dvh - 110px);
-    }
-
-    @media (max-width: 768px) {
-        height: calc(100vh - 70px);
-
-        @supports (height: calc(100dvh - 70px)) {
-            height: calc(100dvh - 70px);
-        }
-    }
-
-    @media (max-height: 500px) and (orientation: landscape) {
-        height: calc(100vh - 54px);
-
-        @supports (height: calc(100dvh - 54px)) {
-            height: calc(100dvh - 54px);
-        }
-    }
 }
 
 .sidebar--visible {
@@ -57,6 +39,7 @@ const sidebarToggleClass = computed(() => {
         .editor__top {
             gap: 0;
         }
+
         .notes-title {
             width: 0;
             padding: 0;

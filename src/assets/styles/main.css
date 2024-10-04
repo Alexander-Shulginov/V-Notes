@@ -11,13 +11,23 @@
 body {
     font-family: sans-serif;
     margin: 0;
+    height: 98vh;
 
     background-color: var(--bg-base);
     transition: background-color var(--transition-short) ease-in-out;
 }
 
+@supports (height: calc(98dvh)) {
+    body {
+        height: calc(98dvh);
+    }
+}
+
 #app {
     height: inherit;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .no-transition {

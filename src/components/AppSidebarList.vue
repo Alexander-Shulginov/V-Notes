@@ -56,7 +56,6 @@ watch(store.notesItems, scrollSibebarToBottom)
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    height: calc(100vh - 254px);
     padding-left: 0;
     padding-right: 0;
 
@@ -74,24 +73,11 @@ watch(store.notesItems, scrollSibebarToBottom)
 
     transition: background-color var(--transition-short) ease-in-out;
 
-    @supports (height: calc(100dvh - 254px)) {
-        height: calc(100dvh - 254px);
-    }
+    flex-grow: 2;
+    height: calc(100vh - 100%);
 
-    @media (max-width: 768px) {
-        height: calc(100vh - 200px);
-
-        @supports (height: calc(100dvh - 200px)) {
-            height: calc(100dvh - 200px);
-        }
-    }
-
-    @media (max-height: 500px) and (orientation: landscape) {
-        height: calc(100vh - 152px);
-
-        @supports (height: calc(100dvh - 152px)) {
-            height: calc(100dvh - 152px);
-        }
+    @supports (height: calc(100dvh - 100%)) {
+        height: calc(100dvh - 100%);
     }
 
     &::-webkit-scrollbar {
