@@ -79,10 +79,10 @@ watch(store.notesItems, scrollSibebarToBottom)
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 208px);
+        height: calc(100vh - 200px);
 
-        @supports (height: calc(100dvh - 208px)) {
-            height: calc(100dvh - 208px);
+        @supports (height: calc(100dvh - 200px)) {
+            height: calc(100dvh - 200px);
         }
     }
 

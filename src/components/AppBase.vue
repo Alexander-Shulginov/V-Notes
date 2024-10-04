@@ -36,10 +36,10 @@ const sidebarToggleClass = computed(() => {
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 78px);
+        height: calc(100vh - 70px);
 
-        @supports (height: calc(100dvh - 78px)) {
-            height: calc(100dvh - 78px);
+        @supports (height: calc(100dvh - 70px)) {
+            height: calc(100dvh - 70px);
         }
     }
 
