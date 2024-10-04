@@ -7,16 +7,19 @@ import { useStore } from '@/store/notesStore'
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
 
-function scrollSibebarToBottom() {
+const scrollSibebarToBottom = () => {
     nextTick(() => {
         if (sidebarElem.value) {
             const { clientHeight } = sidebarElem.value
             const { scrollHeight } = sidebarElem.value
 
             if (scrollHeight > clientHeight) {
+                sidebarElem.value.classList.add('list--offset')
                 sidebarElem.value.scrollTo({
                     top: sidebarElem.value.scrollHeight
                 })
+            } else {
+                sidebarElem.value.classList.remove('list--offset')
             }
         }
     })
@@ -30,10 +33,6 @@ const itemsToShow = computed(() => {
 })
 
 watch(store.notesItems, scrollSibebarToBottom)
-
-onMounted(() => {
-    // store.readItem()
-})
 </script>
 
 <template>
@@ -57,9 +56,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 .list {
     margin: 0;
-    height: calc(100vh - 248px);
+    height: calc(100vh - 254px);
     padding-left: 0;
-    padding-right: var(--gap-small);
+    padding-right: 0;
 
     overflow-y: auto;
     overflow-x: hidden;
@@ -75,15 +74,15 @@ onMounted(() => {
 
     transition: background-color var(--transition-short) ease-in-out;
 
-    @supports (height: calc(100dvh - 248px)) {
-        height: calc(100dvh - 248px);
+    @supports (height: calc(100dvh - 254px)) {
+        height: calc(100dvh - 254px);
     }
 
     @media (max-width: 768px) {
-        height: calc(100vh - 200px);
+        height: calc(100vh - 208px);
 
-        @supports (height: calc(100dvh - 200px)) {
-            height: calc(100dvh - 200px);
+        @supports (height: calc(100dvh - 208px)) {
+            height: calc(100dvh - 208px);
         }
     }
 
@@ -108,6 +107,10 @@ onMounted(() => {
         background-color: var(--color-accent);
         cursor: pointer;
         border-radius: 2px;
+    }
+
+    &--offset {
+        padding-right: var(--gap-small);
     }
 }
 

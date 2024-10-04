@@ -26,12 +26,14 @@ const hideSidebarOnMobile = () => {
                 :class="{ 'btn--add-active': store.itemsListIsEmpty }"
                 @click="store.createItem(), setFocusOnTitle(), hideSidebarOnMobile()"
                 ref="btnAdd"
+                aria-label="Button to add new note"
             >
                 <IconPlus />
             </BaseBtn>
             <BaseBtn
                 class="btn--delete"
                 @click="store.deleteItem(), setFocusOnTextarea()"
+                aria-label="Button to delete this note"
             >
                 <IconTrash />
             </BaseBtn>

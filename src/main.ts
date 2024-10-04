@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-window.addEventListener('unload', () => {
+window.addEventListener('beforeunload', () => {
     store.updateText()
     store.updateTitle()
 })
