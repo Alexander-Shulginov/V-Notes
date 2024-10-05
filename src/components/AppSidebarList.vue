@@ -33,6 +33,11 @@ const itemsToShow = computed(() => {
 })
 
 watch(store.notesItems, scrollSibebarToBottom)
+onMounted(() => {
+    if (store.notesItems.length === 0) {
+        store.createItem()
+    }
+})
 </script>
 
 <template>
@@ -74,10 +79,10 @@ watch(store.notesItems, scrollSibebarToBottom)
     transition: background-color var(--transition-short) ease-in-out;
 
     flex-grow: 2;
-    height: calc(100vh - 100%);
+    height: calc(100vh - 240px);
 
-    @supports (height: calc(100dvh - 100%)) {
-        height: calc(100dvh - 100%);
+    @supports (height: calc(100dvh - 240px)) {
+        height: calc(100dvh - 240px);
     }
 
     &::-webkit-scrollbar {

@@ -16,6 +16,7 @@ const { highLightText } = useHighLightText()
             v-model="store.notesTitle"
             ref="titleInput"
             :disabled="store.itemsListIsEmpty"
+            autofocus
             type="text"
             class="notes-title__field"
             placeholder="Add a title"
