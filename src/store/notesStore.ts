@@ -28,7 +28,7 @@ export const useStore = defineStore('storeBase', {
     },
 
     actions: {
-        saveToLocalStorage() {
+        saveToLocalStorage(): void {
             setLocalStorage(StorageKeyName.items, this.notesItems)
             setLocalStorage(StorageKeyName.id, this.activeItemId)
         },
@@ -41,7 +41,7 @@ export const useStore = defineStore('storeBase', {
             }
 
             this.notesItems.push(newItem)
-            this.filteredNotesItems.push(newItem)
+            this.filteredNotesItems = [...this.notesItems]
             this.saveToLocalStorage()
             this.setId(newItem.id)
             this.resetTextToDefault()
@@ -58,7 +58,7 @@ export const useStore = defineStore('storeBase', {
 
         updateTitle(): void {
             const activeItem = this.getActiveItem
-            if (this.notesTitle === '') {
+            if (!this.notesTitle.trim()) {
                 this.notesTitle = 'Untitled'
             }
             if (activeItem) {
@@ -90,7 +90,7 @@ export const useStore = defineStore('storeBase', {
 
             if (index !== -1) {
                 this.notesItems.splice(index, 1)
-                this.filteredNotesItems.splice(index, 1)
+                this.filteredNotesItems = [...this.notesItems]
                 this.saveToLocalStorage()
 
                 if (index > 0) {
@@ -105,7 +105,7 @@ export const useStore = defineStore('storeBase', {
             this.readItem()
         },
 
-        searchItems() {
+        searchItems(): void {
             if (this.searchText === '') {
                 this.filteredNotesItems = [...this.notesItems]
             } else {

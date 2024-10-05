@@ -34,9 +34,7 @@ const itemsToShow = computed(() => {
 
 watch(store.notesItems, scrollSibebarToBottom)
 onMounted(() => {
-    if (store.notesItems.length === 0) {
-        store.createItem()
-    }
+    if (store.itemsListIsEmpty) store.createItem()
 })
 </script>
 
