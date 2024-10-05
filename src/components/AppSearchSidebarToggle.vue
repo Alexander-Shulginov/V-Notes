@@ -52,7 +52,6 @@ const toggleSidebar = () => {
     align-items: center;
     justify-content: center;
 
-    // padding: var(--offset-small) var(--offset-base);
     padding: var(--offset-small) 12px;
     border: none;
     border-radius: var(--b-radius-base);

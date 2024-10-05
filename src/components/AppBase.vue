@@ -8,7 +8,9 @@ import AppBaseBody from './AppBaseBody.vue'
 const store = useStore()
 
 const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
+    return store.sidebarIsActive
+        ? 'sidebar--visible'
+        : 'sidebar--hidden'
 })
 </script>
 

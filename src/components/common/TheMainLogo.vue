@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <a href="/" class="logo">
         <svg class="logo__svg" width="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
