@@ -32,7 +32,3 @@ npm i
 ```bash 
 npm run dev
 ```
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
