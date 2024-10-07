@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TheMainLogo from '@/components/common/TheMainLogo.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
+import TheGitHubLink from './TheGitHubLink.vue';
 </script>
 
 <template>
@@ -8,6 +9,7 @@ import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
         <div class="header__container">
             <TheMainLogo />
             <TheColorThemeToggle />
+            <TheGitHubLink />
         </div>
     </header>
 </template>
@@ -27,6 +29,7 @@ import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
         display: flex;
         align-items: center;
         justify-content: space-between;
+        gap: var(--gap-base);
 
         margin: 0 auto;
         padding: 10px var(--offset-base);

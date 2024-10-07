@@ -28,6 +28,7 @@ const themeStore = useThemeStore()
 <style lang="scss" scoped>
 .theme {
     position: relative;
+    margin-left: auto;
 
     width: 40px;
     height: 23px;
