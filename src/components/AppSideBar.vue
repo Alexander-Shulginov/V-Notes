@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import AppSidebarList from './AppSidebarList.vue'
 import AppControls from './AppControls.vue'
+import { onMounted } from 'vue'
+import { useStore } from '@/store/notesStore'
+import { useDeviceType } from '@/hooks/useDeviceType'
+const store = useStore()
+
+const { isMobile } = useDeviceType()
+
+const hideSidebar = (): void => {
+    store.sidebarIsActive = false
+}
+onMounted(() => {
+    if (isMobile()) hideSidebar()
+})
 </script>
 
 <template>

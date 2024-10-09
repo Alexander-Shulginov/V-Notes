@@ -16,6 +16,8 @@
     align-items: center;
     gap: 4px;
 
+    margin-right: auto;
+
     text-decoration: none;
     outline: none;
 
@@ -41,7 +43,7 @@
             width: 26px;
         }
 
-        @media (max-width: 768px){
+        @media (max-width: 768px) {
             width: 28px;
         }
     }
@@ -63,7 +65,7 @@
         font-size: 16px;
     }
 
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
         font-size: 18px;
     }
 

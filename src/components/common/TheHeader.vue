@@ -8,8 +8,8 @@ import TheGitHubLink from './TheGitHubLink.vue';
     <header class="header">
         <div class="header__container">
             <TheMainLogo />
-            <TheColorThemeToggle />
             <TheGitHubLink />
+            <TheColorThemeToggle />
         </div>
     </header>
 </template>
