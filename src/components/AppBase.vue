@@ -4,13 +4,12 @@ import { useStore } from '@/store/notesStore'
 
 import AppBaseTop from './AppBaseTop.vue'
 import AppBaseBody from './AppBaseBody.vue'
+import AppModal from './AppModal.vue'
 
 const store = useStore()
 
 const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive
-        ? 'sidebar--visible'
-        : 'sidebar--hidden'
+    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
 })
 </script>
 
@@ -18,6 +17,9 @@ const sidebarToggleClass = computed(() => {
     <main class="editor" :class="sidebarToggleClass">
         <AppBaseTop />
         <AppBaseBody />
+        <Transition name="modal">
+            <AppModal v-if="store.modalIsOpen" />
+        </Transition>
     </main>
 </template>
 
@@ -117,5 +119,15 @@ const sidebarToggleClass = computed(() => {
             transform var(--transition-base) ease-in-out,
             stroke var(--transition-short) ease-in-out;
     }
+}
+
+.modal-enter-active,
+.modal-leave-active {
+    transition: opacity var(--transition-short) ease-in-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    opacity: 0;
 }
 </style>

@@ -2,6 +2,7 @@
 import TheMainLogo from '@/components/common/TheMainLogo.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
 import TheGitHubLink from './TheGitHubLink.vue';
+import TheHeaderMenu from './TheHeaderMenu.vue';
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import TheGitHubLink from './TheGitHubLink.vue';
             <TheMainLogo />
             <TheColorThemeToggle />
             <TheGitHubLink />
+            <TheHeaderMenu />
         </div>
     </header>
 </template>
