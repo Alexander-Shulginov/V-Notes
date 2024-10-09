@@ -34,5 +34,5 @@ npm run dev
 ```
 
 ## Hotkeys
-`Ctrl + s` - toggle sidebar
+`Ctrl + s` - toggle sidebar  
 `Ctrl + c` - toggle color theme
