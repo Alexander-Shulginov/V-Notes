@@ -32,3 +32,7 @@ npm i
 ```bash 
 npm run dev
 ```
+
+## Hotkeys
+`Ctrl + s` - toggle sidebar
+`Ctrl + c` - toggle color theme
