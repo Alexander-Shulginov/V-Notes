@@ -2,8 +2,24 @@
 import IconMoon from '@/components/icons/IconMoon.vue'
 import IconSun from '@/components/icons/IconSun.vue'
 import { useThemeStore } from '@/store/themeStore'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 const themeStore = useThemeStore()
+
+function handleKeyDown(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key === 'c') {
+        event.preventDefault()
+        themeStore.toggleColorTheme()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keydown', handleKeyDown)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('keydown', handleKeyDown)
+})
 </script>
 
 <template>
