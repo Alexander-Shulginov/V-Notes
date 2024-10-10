@@ -25,6 +25,7 @@ const showModal = () => {
     cursor: pointer;
     background-color: transparent;
     border: none;
+    padding: 0;
 
     &:focus-visible {
         outline: 2px solid var(--color-accent);

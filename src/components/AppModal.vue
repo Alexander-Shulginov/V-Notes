@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { useClickOutside } from '@/hooks/useClickOutside'
-import { useToggleOverlay } from '@/hooks/useToggleOverlay'
 import { useStore } from '@/store/notesStore'
-import { useTemplateRef } from 'vue'
+import { vOnClickOutside } from '@vueuse/components'
+import { useToggleOverlay } from '@/hooks/useToggleOverlay'
+import IconClose from './icons/IconClose.vue'
 
 const store = useStore()
 const { hideOverlay } = useToggleOverlay()
-const { clickOutside } = useClickOutside()
-
-const modalElem = useTemplateRef('modalElem')
 
 const hideModal = () => {
     store.modalIsOpen = false
@@ -17,15 +14,11 @@ const hideModal = () => {
 </script>
 
 <template>
-    <section class="modal" ref="modalElem">
+    <section class="modal" v-on-click-outside="hideModal">
         <div class="modal__head">
-            <h3 class="modal__title">Options</h3>
-            <button
-                @click="clickOutside(modalElem, hideModal)"
-                class="modal__close"
-                type="button"
-            >
-                X
+            <h3 class="modal__title">Settings</h3>
+            <button @click="hideModal" class="modal__close" type="button">
+                <IconClose />
             </button>
         </div>
     </section>
@@ -39,11 +32,13 @@ const hideModal = () => {
     left: 50%;
     transform: translate(-50%, -50%);
     // background-color: var(--bg-second);
-    background-color: darkcyan;
+    background-color: var(--bg-second);
+
+    border-radius: var(--b-radius-base);
     width: 50vh;
     height: 50vh;
 
-    padding: var(--offset-base);
+    padding: calc(var(--offset-base) * 2);
 
     &__head {
         display: flex;
@@ -61,6 +56,24 @@ const hideModal = () => {
         background-color: transparent;
         border: none;
         cursor: pointer;
+        padding: 0;
+        border-radius: var(--b-radius-base);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px;
+
+        @media (any-hover: hover) {
+            &:hover {
+                svg {
+                    opacity: 0.8;
+                }
+            }
+        }
+        &:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 1px;
+        }
     }
 }
 </style>

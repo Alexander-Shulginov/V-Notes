@@ -9,18 +9,20 @@ import AppModal from './AppModal.vue'
 const store = useStore()
 
 const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
+    return store.sidebarIsActive
+        ? 'sidebar--visible'
+        : 'sidebar--hidden'
 })
 </script>
 
 <template>
-    <main class="editor" :class="sidebarToggleClass">
+    <main class="editor" :class="sidebarToggleClass" :inert="store.modalIsOpen">
         <AppBaseTop />
         <AppBaseBody />
-        <Transition name="modal">
-            <AppModal v-if="store.modalIsOpen" />
-        </Transition>
     </main>
+    <Transition name="modal">
+        <AppModal v-if="store.modalIsOpen" />
+    </Transition>
 </template>
 
 <style lang="scss">
