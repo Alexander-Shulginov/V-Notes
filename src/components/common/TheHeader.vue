@@ -11,8 +11,8 @@ const store = useStore()
     <header class="header" :inert="store.modalIsOpen">
         <div class="header__container">
             <TheMainLogo />
-            <TheGitHubLink />
             <TheColorThemeToggle />
+            <TheGitHubLink />
             <TheHeaderMenu />
         </div>
     </header>
