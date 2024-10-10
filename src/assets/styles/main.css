@@ -15,6 +15,29 @@ body {
 
     background-color: var(--bg-base);
     transition: background-color var(--transition-short) ease-in-out;
+
+    overflow: hidden;
+    position: relative;
+}
+
+body::after {
+    content: '';
+    pointer-events: none;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: -100px;
+    left: 0;
+
+    z-index: 2;
+
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color var(--transition-short) ease-in-out;
+}
+
+body[data-overlay='true']::after {
+    background-color: var(--color-overlay);
 }
 
 @supports (height: calc(98dvh)) {

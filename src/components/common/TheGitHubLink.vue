@@ -18,5 +18,10 @@ import IconGitHubLogo from '../icons/IconGitHubLogo.vue'
     display: flex;
     align-items: center;
     justify-content: center;
+    &:focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 3px;
+        border-radius: 50%;
+    }
 }
 </style>
