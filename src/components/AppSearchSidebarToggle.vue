@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { setLocalStorage } from '@/helpers/LocalStorageActions'
 import { StorageKeyName, useStore } from '@/store/notesStore'
-import { onBeforeUnmount, onMounted } from 'vue';
+import { onBeforeUnmount, onMounted } from 'vue'
 
 const store = useStore()
 
@@ -29,7 +29,6 @@ onBeforeUnmount(() => {
 <template>
     <button
         @click="toggleSidebar"
-        @keydown.ctrl.s.prevent="toggleSidebar"
         class="sidebar-control"
         type="button"
         aria-label="toggle sidebar"
