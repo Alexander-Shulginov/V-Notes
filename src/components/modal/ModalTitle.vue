@@ -8,6 +8,7 @@
 .modal__title {
     color: var(--color-text);
     font-size: var(--font-size-title);
-    margin: 0;
+    font-weight: 700;
+    transition: color var(--transition-short) ease-in-out;
 }
 </style>

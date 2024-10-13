@@ -9,14 +9,16 @@ import AppModal from './modal/TheModal.vue'
 const store = useStore()
 
 const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive
-        ? 'sidebar--visible'
-        : 'sidebar--hidden'
+    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
 })
 </script>
 
 <template>
-    <main class="editor" :class="sidebarToggleClass" :inert="store.modalIsOpen">
+    <main
+        class="editor"
+        :class="(sidebarToggleClass, { 'layouts-right ': store.layoutRight })"
+        :inert="store.modalIsOpen"
+    >
         <AppBaseTop />
         <AppBaseBody />
     </main>
@@ -120,5 +122,4 @@ const sidebarToggleClass = computed(() => {
             stroke var(--transition-short) ease-in-out;
     }
 }
-
 </style>

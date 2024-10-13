@@ -18,6 +18,8 @@
     stroke-width: 2px;
     stroke-linecap: round;
 
-    transition: opacity var(--transition-base) ease-in-out;
+    transition:
+        opacity var(--transition-base) ease-in-out,
+        fill var(--transition-base) ease-in-out;
 }
 </style>

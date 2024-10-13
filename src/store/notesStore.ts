@@ -21,6 +21,7 @@ export const useStore = defineStore('storeBase', {
             notesText: '',
             searchText: '',
             modalIsOpen: false,
+            layoutRight: false,
             sidebarIsActive: getLocalStorage(StorageKeyName.sidebar) ?? true,
             activeItemId: getLocalStorage(StorageKeyName.id) || 0,
             notesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],

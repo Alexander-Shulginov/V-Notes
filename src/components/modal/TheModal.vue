@@ -3,7 +3,8 @@ import { vOnClickOutside } from '@vueuse/components'
 import { useStore } from '@/store/notesStore'
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
 import ModalHead from './ModalHead.vue'
-import ModalBody from './ModalBody.vue';
+import ModalBody from './ModalBody.vue'
+import { onBeforeUnmount, onMounted } from 'vue'
 
 const store = useStore()
 const { hideOverlay } = useToggleOverlay()
@@ -12,6 +13,20 @@ const hideModal = () => {
     store.modalIsOpen = false
     hideOverlay()
 }
+
+const handleKeyUp = (event: KeyboardEvent) => {
+    if (event.key === 'Escape' && store.modalIsOpen) {
+        hideModal()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keyup', handleKeyUp)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('keyup', handleKeyUp)
+})
 </script>
 
 <template>
@@ -39,6 +54,7 @@ const hideModal = () => {
 
     padding: calc(var(--offset-base) * 2);
 
+    transition: background-color var(--transition-short) ease-in-out;
 }
 
 .modal-enter-active,

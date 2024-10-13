@@ -2,13 +2,33 @@
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
 import IconDots from '../icons/IconDots.vue'
 import { useStore } from '@/store/notesStore'
+import { onBeforeUnmount, onMounted } from 'vue'
 const store = useStore()
-const { showOverlay } = useToggleOverlay()
+const { showOverlay, hideOverlay } = useToggleOverlay()
 
 const showModal = () => {
     store.modalIsOpen = true
     showOverlay()
 }
+
+const toggleModal = () => {
+    store.modalIsOpen = !store.modalIsOpen
+    store.modalIsOpen ? showOverlay() : hideOverlay()
+}
+
+const handleKeyUp = (event: KeyboardEvent) => {
+    if (event.ctrlKey && event.key === 'm') {
+        toggleModal()
+    }
+}
+
+onMounted(() => {
+    window.addEventListener('keyup', handleKeyUp)
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('keyup', handleKeyUp)
+})
 </script>
 
 <template>

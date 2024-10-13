@@ -1,6 +1,7 @@
 @import './fonts/k2d.css';
 @import './themes/dark';
 @import './themes/light';
+@import './reset';
 @import './vars';
 
 * {
