@@ -10,7 +10,8 @@ interface NotesItem {
 export const enum StorageKeyName {
     id = 'activeItemIds',
     items = 'notesItems',
-    sidebar = 'sideBarIsActive'
+    sidebar = 'sideBarIsActive',
+    layoutRight = 'layoutsRight'
 }
 
 export const useStore = defineStore('storeBase', {
@@ -21,7 +22,7 @@ export const useStore = defineStore('storeBase', {
             notesText: '',
             searchText: '',
             modalIsOpen: false,
-            layoutRight: false,
+            layoutRight: getLocalStorage(StorageKeyName.layoutRight) ?? false,
             sidebarIsActive: getLocalStorage(StorageKeyName.sidebar) ?? true,
             activeItemId: getLocalStorage(StorageKeyName.id) || 0,
             notesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],

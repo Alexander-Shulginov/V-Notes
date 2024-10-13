@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { useStore } from '@/store/notesStore'
+import { StorageKeyName, useStore } from '@/store/notesStore'
 import { ref } from 'vue'
-import IconLayoutsRight from '../icons/IconLayoutsRight.vue';
-import IconLayoutsLeft from '../icons/IconLayoutsLeft.vue';
+import IconLayoutsRight from '../icons/IconLayoutsRight.vue'
+import IconLayoutsLeft from '../icons/IconLayoutsLeft.vue'
+import { setLocalStorage } from '@/helpers/LocalStorageActions'
 const store = useStore()
 const version = import.meta.env.VITE_APP_VERSION
 
@@ -30,6 +31,16 @@ const activeTab = ref('apperance')
 const changeTab = (tabId: string) => {
     activeTab.value = tabId
 }
+
+const setActiveLayoutToLeft = () => {
+    store.layoutRight = false
+    setLocalStorage(StorageKeyName.layoutRight, false)
+}
+
+const setActiveLayoutToRight = () => {
+    store.layoutRight = true
+    setLocalStorage(StorageKeyName.layoutRight, true)
+}
 </script>
 
 <template>
@@ -53,11 +64,27 @@ const changeTab = (tabId: string) => {
 
                 <div v-show="activeTab === 'layouts'" class="tabs__item tabs__item-layouts">
                     <label class="tabs__item-label" for="layouts-left">
-                        <input checked type="radio" name="layouts-position" id="layouts-left" />
+                        <input
+                            @change="setActiveLayoutToLeft"
+                            checked
+                            value="layouts-left"
+                            class="tabs__item-radio"
+                            type="radio"
+                            name="layouts-position"
+                            id="layouts-left"
+                        />
                         <IconLayoutsLeft />
                     </label>
                     <label class="tabs__item-label" for="layouts-right">
-                        <input type="radio" name="layouts-position" id="layouts-right" />
+                        <input
+                            @change="setActiveLayoutToRight"
+                            :checked="store.layoutRight"
+                            value="layouts-right"
+                            class="tabs__item-radio"
+                            type="radio"
+                            name="layouts-position"
+                            id="layouts-right"
+                        />
                         <IconLayoutsRight />
                     </label>
                 </div>
@@ -180,6 +207,22 @@ const changeTab = (tabId: string) => {
         display: flex;
         align-items: center;
         gap: var(--offset-base);
+
+        cursor: pointer;
+
+        position: relative;
+    }
+
+    &__item-radio {
+        width: 20px;
+        height: 20px;
+        accent-color: var(--color-accent);
+        cursor: pointer;
+
+        // &:focus-visible {
+        //     outline: 2px solid var(--color-accent);
+        //     outline-offset: 1px;
+        // }
     }
 
     &__item-keys {

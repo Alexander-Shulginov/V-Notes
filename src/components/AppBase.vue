@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 
 import AppBaseTop from './AppBaseTop.vue'
@@ -11,12 +11,16 @@ const store = useStore()
 const sidebarToggleClass = computed(() => {
     return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
 })
+
+const layoutsToggleClass = computed(() => {
+    return !store.layoutRight ? '' : 'layouts-right'
+})
 </script>
 
 <template>
     <main
         class="editor"
-        :class="(sidebarToggleClass, { 'layouts-right ': store.layoutRight })"
+        :class="(sidebarToggleClass, layoutsToggleClass)"
         :inert="store.modalIsOpen"
     >
         <AppBaseTop />
@@ -38,6 +42,15 @@ const sidebarToggleClass = computed(() => {
     flex-grow: 2;
 
     padding: 0 var(--offset-base);
+}
+.layouts-right {
+    .editor__top {
+        flex-direction: row-reverse;
+    }
+
+    .editor__body {
+        flex-direction: row;
+    }
 }
 
 .sidebar--visible {
