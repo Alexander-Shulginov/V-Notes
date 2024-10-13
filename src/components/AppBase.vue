@@ -20,7 +20,7 @@ const layoutsToggleClass = computed(() => {
 <template>
     <main
         class="editor"
-        :class="(sidebarToggleClass, layoutsToggleClass)"
+        :class="[sidebarToggleClass, layoutsToggleClass]"
         :inert="store.modalIsOpen"
     >
         <AppBaseTop />
@@ -43,13 +43,19 @@ const layoutsToggleClass = computed(() => {
 
     padding: 0 var(--offset-base);
 }
+
 .layouts-right {
-    .editor__top {
+    .editor__top,
+    .search {
         flex-direction: row-reverse;
     }
 
     .editor__body {
         flex-direction: row;
+    }
+
+    .sidebar-control {
+        transform: rotate(180deg);
     }
 }
 

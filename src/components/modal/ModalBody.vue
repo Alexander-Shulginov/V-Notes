@@ -61,7 +61,6 @@ const setActiveLayoutToRight = () => {
             </div>
             <div class="tabs__content">
                 <div v-show="activeTab === 'apperance'" class="tabs__item">tab 1</div>
-
                 <div v-show="activeTab === 'layouts'" class="tabs__item tabs__item-layouts">
                     <label class="tabs__item-label" for="layouts-left">
                         <input

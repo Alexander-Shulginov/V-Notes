@@ -16,18 +16,18 @@ const toggleModal = () => {
     store.modalIsOpen ? showOverlay() : hideOverlay()
 }
 
-const handleKeyUp = (event: KeyboardEvent) => {
+const toggleMenuModal = (event: KeyboardEvent) => {
     if (event.ctrlKey && event.key === 'm') {
         toggleModal()
     }
 }
 
 onMounted(() => {
-    window.addEventListener('keyup', handleKeyUp)
+    window.addEventListener('keyup', toggleMenuModal)
 })
 
 onBeforeUnmount(() => {
-    window.removeEventListener('keyup', handleKeyUp)
+    window.removeEventListener('keyup', toggleMenuModal)
 })
 </script>
 

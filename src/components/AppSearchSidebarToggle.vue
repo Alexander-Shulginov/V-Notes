@@ -10,7 +10,7 @@ const toggleSidebar = () => {
     setLocalStorage(StorageKeyName.sidebar, store.sidebarIsActive)
 }
 
-function handleKeyDown(event: KeyboardEvent) {
+function keyDownToggleSidebar(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 's') {
         event.preventDefault()
         toggleSidebar()
@@ -18,11 +18,11 @@ function handleKeyDown(event: KeyboardEvent) {
 }
 
 onMounted(() => {
-    window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keydown', keyDownToggleSidebar)
 })
 
 onBeforeUnmount(() => {
-    window.removeEventListener('keydown', handleKeyDown)
+    window.removeEventListener('keydown', keyDownToggleSidebar)
 })
 </script>
 
