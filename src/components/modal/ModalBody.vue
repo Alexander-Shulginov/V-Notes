@@ -4,13 +4,14 @@ import { ref } from 'vue'
 import IconLayoutsRight from '../icons/IconLayoutsRight.vue'
 import IconLayoutsLeft from '../icons/IconLayoutsLeft.vue'
 import { setLocalStorage } from '@/helpers/LocalStorageActions'
+import ModalColors from './ModalColors.vue'
 const store = useStore()
 const version = import.meta.env.VITE_APP_VERSION
 
 const tabsNav = [
     {
-        tabName: 'Apperance',
-        tabId: 'apperance'
+        tabName: 'Colors',
+        tabId: 'colors'
     },
     {
         tabName: 'Layouts',
@@ -26,7 +27,7 @@ const tabsNav = [
     }
 ]
 
-const activeTab = ref('apperance')
+const activeTab = ref('colors')
 
 const changeTab = (tabId: string) => {
     activeTab.value = tabId
@@ -60,7 +61,9 @@ const setActiveLayoutToRight = () => {
                 </button>
             </div>
             <div class="tabs__content">
-                <div v-show="activeTab === 'apperance'" class="tabs__item">tab 1</div>
+                <div v-show="activeTab === 'colors'" class="tabs__item">
+                    <ModalColors />
+                </div>
                 <div v-show="activeTab === 'layouts'" class="tabs__item tabs__item-layouts">
                     <label class="tabs__item-label" for="layouts-left">
                         <input
@@ -182,6 +185,7 @@ const setActiveLayoutToRight = () => {
 
     &__item {
         padding: var(--offset-base);
+        padding-top: 0;
         color: var(--color-text);
         transition: color var(--transition-short) ease-in-out;
 

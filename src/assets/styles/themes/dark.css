@@ -1,6 +1,6 @@
 :root {
-    --dark-primary: rgb(36, 41, 46);
-    --dark-primary-hover: rgba(36, 41, 46, 0.6);
+    --dark-primary: #24292e;
+    --dark-primary-hover: #24292e99;
 
     --dark-second: #363e45;
 
