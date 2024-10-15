@@ -1,14 +1,8 @@
 <script setup lang="ts">
-import { setLocalStorage } from '@/helpers/LocalStorageActions'
-import { StorageKeyName, useStore } from '@/store/notesStore'
+import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import { onBeforeUnmount, onMounted } from 'vue'
 
-const store = useStore()
-
-const toggleSidebar = () => {
-    store.sidebarIsActive = !store.sidebarIsActive
-    setLocalStorage(StorageKeyName.sidebar, store.sidebarIsActive)
-}
+const { toggleSidebar } = useToggleSidebar()
 
 function keyDownToggleSidebar(event: KeyboardEvent) {
     if (event.ctrlKey && event.key === 's') {

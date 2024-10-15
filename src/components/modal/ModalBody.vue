@@ -104,6 +104,14 @@ const setActiveLayoutToRight = () => {
                         <code>CTRL + m </code>
                         <span> - toggle menu</span>
                     </div>
+                    <div class="tabs__item-keys">
+                        <code>right swipe</code>
+                        <span> - show sidebar</span>
+                    </div>
+                    <div class="tabs__item-keys">
+                        <code>left swipe</code>
+                        <span> - hide sidebar</span>
+                    </div>
                 </div>
                 <div v-show="activeTab === 'about'" class="tabs__item tabs__item-about">
                     <p>V-notes is a simple application for creating and managing notes.</p>
@@ -138,6 +146,7 @@ const setActiveLayoutToRight = () => {
     &__nav {
         display: flex;
         flex-direction: column;
+        flex-shrink: 0;
         width: 120px;
         gap: var(--gap-small);
     }
@@ -238,6 +247,8 @@ const setActiveLayoutToRight = () => {
         }
 
         code {
+            width: 93px;
+            text-align: center;
             background-color: var(--bg-base);
             border-radius: 11px;
             padding: 8px;

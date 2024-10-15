@@ -49,8 +49,9 @@ onBeforeUnmount(() => {
     background-color: var(--bg-second);
 
     border-radius: var(--b-radius-base);
-    width: 50vh;
-    height: 50vh;
+    width: 100%;
+    max-width: 450px;
+    height: 400px;
 
     padding: calc(var(--offset-base) * 2);
 

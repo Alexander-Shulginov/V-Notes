@@ -5,6 +5,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import { useThemeStore } from './store/themeStore'
 import { useStore } from './store/notesStore'
+import vOnDoubleTap from './directives/doubleTapDirective'
 
 const app = createApp(App)
 const pinia = createPinia()
@@ -14,6 +15,7 @@ app.use(pinia)
 const themeStore = useThemeStore()
 const store = useStore()
 themeStore.loadColorTheme()
+app.directive('double-tap', vOnDoubleTap)
 
 app.mount('#app')
 

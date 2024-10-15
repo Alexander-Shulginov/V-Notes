@@ -1,6 +1,24 @@
 <script setup lang="ts">
+import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import { useStore } from '@/store/notesStore'
+import { useSwipe } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 const store = useStore()
+
+const { showSidebar, hideSidebar } = useToggleSidebar()
+const areaField = useTemplateRef('area-field')
+
+useSwipe(areaField, {
+    threshold: 120,
+    onSwipeEnd(e: TouchEvent, direction) {
+        if (direction === 'right') {
+            showSidebar()
+        }
+        if (direction === 'left') {
+            hideSidebar()
+        }
+    }
+})
 </script>
 
 <template>
@@ -9,6 +27,7 @@ const store = useStore()
             v-model="store.notesText"
             @blur="store.updateText(), store.readItem()"
             :disabled="store.itemsListIsEmpty"
+            ref="area-field"
             class="text-field__area"
             name="user-text"
             id="area-base"

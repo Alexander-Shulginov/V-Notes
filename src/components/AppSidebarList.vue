@@ -3,9 +3,21 @@ import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import AppSidebarListItem from './AppSidebarListItem.vue'
 import IconFolderEmpty from './icons/IconFolderEmpty.vue'
 import { useStore } from '@/store/notesStore'
+import { useSwipe } from '@vueuse/core'
+import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
+const { hideSidebar } = useToggleSidebar()
+
+useSwipe(sidebarElem, {
+    threshold: 120,
+    onSwipeEnd(e: TouchEvent, direction) {
+        if (direction === 'left') {
+            hideSidebar()
+        }
+    }
+})
 
 const scrollSibebarToBottom = () => {
     nextTick(() => {

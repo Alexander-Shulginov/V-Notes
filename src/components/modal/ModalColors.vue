@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import AppControlsBtn from '../AppControlsBtn.vue'
+import { useThemeStore } from '@/store/themeStore'
+const themeStore = useThemeStore()
 
 enum ColorType {
     base = '--bg-base',
     text = '--color-text',
     second = '--bg-second',
     accent = '--color-accent',
-    overlay = '--color-overlay'
 }
 
 const getColor = (colorName: string): string => {
@@ -25,13 +26,24 @@ const colorsPallet = {
     base: getColor(ColorType.base),
     second: getColor(ColorType.second),
     accent: getColor(ColorType.accent),
-    overlay: getColor(ColorType.overlay)
 }
+
+watch(
+    () => themeStore.activeTheme,
+    () => {
+        const colorsPallet = {
+            text: getColor(ColorType.text),
+            base: getColor(ColorType.base),
+            second: getColor(ColorType.second),
+            accent: getColor(ColorType.accent),
+        }
+    }
+)
 </script>
 
 <template>
     <div class="colortheme">
-        <h4 class="colortheme__title">Color theme</h4>
+        <h4 class="colortheme__title">Custom color theme</h4>
         <ul class="colortheme__items">
             <li class="colortheme__item">
                 <label for="base-color" class="colortheme__name">Base color</label>
@@ -75,17 +87,6 @@ const colorsPallet = {
                     type="color"
                     name="text-color"
                     id="text-color"
-                />
-            </li>
-            <li class="colortheme__item">
-                <label for="overlay-color" class="colortheme__name">Overlay color</label>
-                <input
-                    @input="(event) => setColor(event, ColorType.overlay)"
-                    :value="colorsPallet.overlay"
-                    class="colortheme__input"
-                    type="color"
-                    name="overlay-color"
-                    id="overlay-color"
                 />
             </li>
         </ul>
