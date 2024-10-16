@@ -43,6 +43,7 @@ const { highLightText } = useHighLightText()
 
         font-size: var(--font-size-title);
         font-weight: 700;
+        font-family: var(--font-base);
         color: var(--color-text);
         background-color: var(--bg-second);
 

@@ -70,12 +70,12 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .list {
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-
     overflow-y: auto;
     overflow-x: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
 
     color: var(--color-text);
     font-size: var(--font-size-sidebar);

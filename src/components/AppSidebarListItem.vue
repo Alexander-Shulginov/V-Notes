@@ -28,8 +28,6 @@ const itemIsClicked = (id: number): boolean => {
     return id === store.activeItemId
 }
 
-const some = () => console.log(1233123121)
-
 onMounted(() => {
     store.readItem()
 })
@@ -42,55 +40,72 @@ onMounted(() => {
         @click="clickHandler(id)"
         v-on-double-tap="doubleTapHander"
     >
-        <p class="list__item-text">
-            {{ title }}
-        </p>
+        <button class="list__item-btn">
+            <p class="list__item-name">
+                {{ title }}
+            </p>
+        </button>
     </li>
 </template>
 
 <style lang="scss" scoped>
 .list__item {
-    cursor: pointer;
-
-    font-size: var(--font-size-text);
-    padding: var(--offset-base);
-
     list-style-type: none;
-
     border-radius: var(--b-radius-base);
+
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base);
         }
     }
-}
 
-.list__item--active {
-    background-color: var(--color-accent);
-    transition: background-color var(--transition-short) ease-in-out;
+    &--active {
+        background-color: var(--color-accent);
+        transition: background-color var(--transition-short) ease-in-out;
 
-    @media (any-hover: hover) {
-        &:hover {
-            background-color: var(--color-accent);
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: var(--color-accent);
+            }
         }
+
+        .list__item-btn:focus-visible {
+            outline: 2px solid var(--color-text);
+            outline-offset: -2px;
+            border-radius: var(--b-radius-base);
+        }
+    }
+
+    &-btn {
+        cursor: pointer;
+        text-align: left;
+
+        width: 100%;
+        padding: var(--offset-base);
+
+        transition: color var(--transition-short) ease-in-out;
+
+        &:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: -2px;
+            border-radius: var(--b-radius-base);
+        }
+    }
+
+    &-name {
+        color: var(--color-text);
+        font-size: var(--font-size-text);
+        font-family: var(--font-base);
+
+        overflow: hidden;
+        display: -webkit-box;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
     }
 }
 
-.list__item-text {
-    margin: 0;
-    overflow: hidden;
-
-    display: -webkit-box;
-    line-clamp: 1;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-
-    color: var(--color-text);
-
-    transition: color var(--transition-short) ease-in-out;
-}
-
-[data-color-theme='light'] .list__item--active .list__item-text {
+[data-color-theme='light'] .list__item--active .list__item-name {
     color: var(--bg-base);
 }
 </style>

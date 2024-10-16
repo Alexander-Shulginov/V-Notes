@@ -79,6 +79,9 @@ useSwipe(areaField, {
 
         color: var(--color-text);
         font-size: var(--font-size-text);
+        font-family: var(--font-base);
+        font-weight: 400;
+        line-height: 1.5;
 
         background-color: var(--bg-second);
 
