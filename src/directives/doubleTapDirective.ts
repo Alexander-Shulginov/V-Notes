@@ -1,28 +1,23 @@
-// import { DirectiveBinding } from 'vue'
+import { type DirectiveBinding } from 'vue'
 
-function handleDoubleTap(el: HTMLElement, binding) {
-    let lastTap = 0
-    const doubleTapThreshold = 300 // Максимальный интервал между двумя тапами
+export const doubleTapDirective = {
+    mounted(el: HTMLElement, binding: DirectiveBinding) {
+        let clickCounter = 0
+        const tapThreshold = 300
 
-    el.addEventListener('touchend', (event) => {
-        const currentTime = new Date().getTime()
-        const tapLength = currentTime - lastTap
-
-        if (tapLength < doubleTapThreshold && tapLength > 0) {
-            // Если это двойной тап, выполняем все переданные действия
-            binding.value()
+        const handleTapStart = () => {
+            clickCounter++
+            setTimeout(() => {
+                clickCounter++
+                clickCounter = 0
+            }, tapThreshold)
         }
 
-        lastTap = currentTime
-    })
-}
+        const handleTapEnd = () => {
+            if (clickCounter === 2) binding.value()
+        }
 
-export default {
-    mounted(el: HTMLElement, binding) {
-        handleDoubleTap(el, binding)
-    },
-    unmounted(el: HTMLElement) {
-        // Если нужно, добавляем очистку событий
-        el.removeEventListener('touchend', () => {})
+        el.addEventListener('touchstart', handleTapStart)
+        el.addEventListener('touchend', handleTapEnd)
     }
 }

@@ -3,27 +3,32 @@ import { onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-import doubleTapDirective from '@/directives/doubleTapDirective'
 
 defineProps<{
     id: number
     title: string
 }>()
-const directives = { 'double-tap': doubleTapDirective }
-function onDoubleTapAction(id) {
-    // Вызов всех необходимых функций
-    store.setId(id)
-    store.readItem()
-    setFocusOnTextarea()
-    hideSidebar()
-}
+
 const store = useStore()
 const { setFocusOnTextarea } = useFocusOnTextarea()
 const { hideSidebar } = useToggleSidebar()
 
+const clickHandler = (id: number) => {
+    store.setId(id)
+    store.readItem()
+    setFocusOnTextarea()
+}
+
+function doubleTapHander(id: number) {
+    clickHandler(id)
+    hideSidebar()
+}
+
 const itemIsClicked = (id: number): boolean => {
     return id === store.activeItemId
 }
+
+const some = () => console.log(1233123121)
 
 onMounted(() => {
     store.readItem()
@@ -34,8 +39,8 @@ onMounted(() => {
     <li
         class="list__item"
         :class="{ 'list__item--active': itemIsClicked(id) }"
-        @click="store.setId(id), store.readItem(), setFocusOnTextarea()"
-        v-double-tap="onDoubleTapAction(id)"
+        @click="clickHandler(id)"
+        v-on-double-tap="doubleTapHander"
     >
         <p class="list__item-text">
             {{ title }}

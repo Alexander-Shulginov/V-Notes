@@ -112,6 +112,10 @@ const setActiveLayoutToRight = () => {
                         <code>left swipe</code>
                         <span> - hide sidebar</span>
                     </div>
+                    <div class="tabs__item-keys">
+                        <code>double tap</code>
+                        <span> - select note</span>
+                    </div>
                 </div>
                 <div v-show="activeTab === 'about'" class="tabs__item tabs__item-about">
                     <p>V-notes is a simple application for creating and managing notes.</p>
