@@ -4,7 +4,7 @@ import { useStore } from '@/store/notesStore'
 
 import AppBaseTop from './AppBaseTop.vue'
 import AppBaseBody from './AppBaseBody.vue'
-import AppModal from './modal/TheModal.vue'
+import TheSettings from './settings/TheSettings.vue';
 
 const store = useStore()
 
@@ -26,7 +26,7 @@ const layoutsToggleClass = computed(() => {
         <AppBaseTop />
         <AppBaseBody />
     </main>
-    <AppModal />
+    <TheSettings />
 </template>
 
 <style lang="scss">

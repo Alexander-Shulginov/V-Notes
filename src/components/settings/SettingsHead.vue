@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import ModalTitle from './ModalTitle.vue'
-import ModalButtonClose from './ModalButtonClose.vue'
+import SettingsHeadClose from './SettingsHeadClose.vue';
+import SettingsHeadTitle from './SettingsHeadTitle.vue';
 
 defineEmits(['hideModal'])
 </script>
 
 <template>
     <div class="modal__head">
-        <ModalTitle />
-        <ModalButtonClose @hide-modal="$emit('hideModal')" />
+        <SettingsHeadTitle />
+        <SettingsHeadClose @hide-modal="$emit('hideModal')" />
     </div>
 </template>
 

@@ -35,8 +35,11 @@ npm run dev
 
 ## Hotkeys
 `Ctrl + s` - toggle sidebar  
-`Ctrl + c` - toggle color theme
-`Ctrl + m` - toggle menu 
+`Ctrl + c` - toggle color theme  
+`Ctrl + m` - toggle menu   
+`right swipe` - show sidebar
+`left swipe` - hide sidebar
+`double tap` - select note  
 
 <!-- анимации добавления/удаления элементов списка не оч
 фокус при свайпах на мобилках
@@ -45,7 +48,11 @@ npm run dev
 адаптив настроек
 дата создания заметки
 корзину бы?
-фокус на элементы списка надо сделать
-со шрифтами тоже надо поиграться
-sidebartoggle вытащять svg
-крестик для поиска -->
++ фокус на элементы списка надо сделать
++ со шрифтами тоже надо поиграться
++ sidebartoggle вытащять svg
++ крестик для поиска
++ listItem по бему запилить
+при управлении свайпами нужно учить текущий лайоут 
+layouts focus???
+-->

@@ -2,9 +2,9 @@
 import { vOnClickOutside } from '@vueuse/components'
 import { useStore } from '@/store/notesStore'
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
-import ModalHead from './ModalHead.vue'
-import ModalBody from './ModalBody.vue'
 import { onBeforeUnmount, onMounted } from 'vue'
+import SettingsHead from './SettingsHead.vue'
+import SettingsBody from './SettingsBody.vue'
 
 const store = useStore()
 const { hideOverlay } = useToggleOverlay()
@@ -32,8 +32,8 @@ onBeforeUnmount(() => {
 <template>
     <Transition name="modal">
         <section class="modal" v-show="store.modalIsOpen" v-on-click-outside="hideModal">
-            <ModalHead @hide-modal="hideModal" />
-            <ModalBody />
+            <SettingsHead @hide-modal="hideModal" />
+            <SettingsBody />
         </section>
     </Transition>
 </template>
