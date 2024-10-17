@@ -3,16 +3,18 @@ import TheMainLogo from '@/components/common/TheMainLogo.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
 import TheGitHubLink from './TheGitHubLink.vue'
 import TheHeaderMenu from './TheHeaderMenu.vue'
-import { useStore } from '@/store/notesStore';
+import { useStore } from '@/store/notesStore'
 const store = useStore()
+
+
 </script>
 
 <template>
     <header class="header" :inert="store.modalIsOpen">
         <div class="header__container">
-            <TheMainLogo />
-            <TheColorThemeToggle />
-            <TheGitHubLink />
+            <TheMainLogo v-once />
+            <TheColorThemeToggle v-once/>
+            <TheGitHubLink v-once />
             <TheHeaderMenu />
         </div>
     </header>

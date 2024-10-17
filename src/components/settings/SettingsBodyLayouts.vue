@@ -22,11 +22,11 @@ const setActiveLayoutToRight = () => {
         <label class="settings-layouts__label" for="layouts-left">
             <input
                 @change="setActiveLayoutToLeft"
-                checked
+                :checked="!store.layoutRight"
                 value="layouts-left"
                 class="settings-layouts__radio"
                 type="radio"
-                name="layouts-position"
+                name="layouts-position-left"
                 id="layouts-left"
             />
             <IconLayoutsLeft />
@@ -38,7 +38,7 @@ const setActiveLayoutToRight = () => {
                 value="layouts-right"
                 class="settings-layouts__radio"
                 type="radio"
-                name="layouts-position"
+                name="layouts-position-right"
                 id="layouts-right"
             />
             <IconLayoutsRight />
@@ -67,6 +67,11 @@ const setActiveLayoutToRight = () => {
 
         accent-color: var(--color-accent);
         cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
     }
 }
 </style>

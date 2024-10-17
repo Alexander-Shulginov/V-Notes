@@ -19,7 +19,7 @@ onMounted(() => {
 <template>
     <aside class="sidebar">
         <AppSidebarList />
-        <AppControls />
+        <AppControls v-once />
     </aside>
 </template>
 

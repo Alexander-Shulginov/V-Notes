@@ -5,17 +5,22 @@ import { useSwipe } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
 const store = useStore()
 
-const { showSidebar, hideSidebar } = useToggleSidebar()
+const { showSidebar, hideSidebar, toggleSidebar } = useToggleSidebar()
 const areaField = useTemplateRef('area-field')
 
 useSwipe(areaField, {
     threshold: 120,
     onSwipeEnd(e: TouchEvent, direction) {
-        if (direction === 'right') {
+        if (store.layoutRight && direction === 'left') {
             showSidebar()
-        }
-        if (direction === 'left') {
+        } else if (!store.layoutRight && direction === 'left') {
             hideSidebar()
+        }
+
+        if (store.layoutRight && direction === 'right') {
+            hideSidebar()
+        } else if (!store.layoutRight && direction === 'right') {
+            showSidebar()
         }
     }
 })

@@ -15,6 +15,7 @@ const sidebarToggleClass = computed(() => {
 const layoutsToggleClass = computed(() => {
     return !store.layoutRight ? '' : 'layouts-right'
 })
+
 </script>
 
 <template>

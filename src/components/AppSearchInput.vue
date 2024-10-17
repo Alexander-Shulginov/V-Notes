@@ -31,6 +31,7 @@ const clearInput = () => (store.searchText = '')
 <style lang="scss" scoped>
 .search__field {
     width: 100%;
+    height: 100%;
     padding: var(--offset-base);
 
     border: none;
@@ -70,6 +71,7 @@ const clearInput = () => (store.searchText = '')
 }
 
 .search__field-wrap {
+    width: 100%;
     position: relative;
 }
 
