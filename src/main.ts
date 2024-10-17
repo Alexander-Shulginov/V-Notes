@@ -3,8 +3,6 @@ import './assets/styles/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
-import { useThemeStore } from './store/themeStore'
-import { useStore } from './store/notesStore'
 import { doubleTapDirective } from './directives/doubleTapDirective'
 
 const app = createApp(App)
@@ -12,31 +10,4 @@ const pinia = createPinia()
 
 app.use(pinia)
 app.directive('on-double-tap', doubleTapDirective)
-
-const themeStore = useThemeStore()
-const store = useStore()
-themeStore.loadColorTheme()
-
-
 app.mount('#app')
-
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-        document.body.classList.remove('no-transition')
-    }, 100)
-
-    if (navigator.userAgent.includes('iPhone')) {
-        const headElem = document.querySelector('[name=viewport')
-        if (headElem) {
-            headElem.setAttribute(
-                'content',
-                'width=device-width, initial-scale=1, maximum-scale=1 interactive-widget=resizes-content'
-            )
-        }
-    }
-})
-
-window.addEventListener('beforeunload', () => {
-    store.updateText()
-    store.updateTitle()
-})

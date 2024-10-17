@@ -12,17 +12,14 @@ const { hideSidebar, showSidebar } = useToggleSidebar()
 
 useSwipe(sidebarElem, {
     threshold: 120,
+
     onSwipeEnd(e: TouchEvent, direction) {
-        if (store.layoutRight && direction === 'left') {
-            showSidebar()
-        } else if (!store.layoutRight && direction === 'left') {
-            hideSidebar()
+        if (direction === 'left') {
+            store.layoutRight ? showSidebar() : hideSidebar()
         }
 
-        if (store.layoutRight && direction === 'right') {
-            hideSidebar()
-        } else if (!store.layoutRight && direction === 'right') {
-            showSidebar()
+        if (direction === 'right') {
+            store.layoutRight ? hideSidebar() : showSidebar()
         }
     }
 })

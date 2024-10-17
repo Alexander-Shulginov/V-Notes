@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { nextTick, onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
@@ -83,7 +83,6 @@ onMounted(() => {
         width: 100%;
         padding: var(--offset-base);
 
-        transition: color var(--transition-short) ease-in-out;
 
         &:focus-visible {
             outline: 2px solid var(--color-accent);
@@ -102,6 +101,8 @@ onMounted(() => {
         line-clamp: 1;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+
+        transition: color var(--transition-short) ease-in-out;
     }
 }
 

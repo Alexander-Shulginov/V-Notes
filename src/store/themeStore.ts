@@ -28,9 +28,7 @@ export const useThemeStore = defineStore('themeStore', {
         },
 
         toggleColorTheme() {
-            this.activeTheme === 'dark'
-                ? this.setColorTheme('light')
-                : this.setColorTheme('dark')
+            this.activeTheme === 'dark' ? this.setColorTheme('light') : this.setColorTheme('dark')
         }
     },
 

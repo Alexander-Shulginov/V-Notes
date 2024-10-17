@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
+import { useThemeStore } from '@/store/themeStore'
 
 import AppBaseTop from './AppBaseTop.vue'
 import AppBaseBody from './AppBaseBody.vue'
-import TheSettings from './settings/TheSettings.vue';
+import TheSettings from './settings/TheSettings.vue'
+import { fixIphoneResizeViewport } from '@/helpers/FixIphoneResizeViewPort'
 
 const store = useStore()
+const themeStore = useThemeStore()
 
 const sidebarToggleClass = computed(() => {
     return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
@@ -16,6 +19,21 @@ const layoutsToggleClass = computed(() => {
     return !store.layoutRight ? '' : 'layouts-right'
 })
 
+const handleLeaveOnPage = () => {
+    store.updateText()
+    store.updateTitle()
+}
+
+onMounted(() => {
+    setTimeout(() => {
+        document.body.classList.remove('no-transition')
+    }, 100)
+
+    fixIphoneResizeViewport()
+
+    themeStore.loadColorTheme()
+    window.addEventListener('beforeunload', handleLeaveOnPage)
+})
 </script>
 
 <template>
