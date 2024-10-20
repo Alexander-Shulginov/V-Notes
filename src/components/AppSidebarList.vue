@@ -161,7 +161,6 @@ onMounted(() => {
     opacity: 0;
 }
 
-.list-move,
 .list-enter-active,
 .list-leave-active {
     transition: var(--transition-short) ease-in-out;
@@ -170,11 +169,6 @@ onMounted(() => {
 .list-enter-from,
 .list-leave-to {
     opacity: 0;
-    transform: translateX(100px);
-}
-
-.list-leave-active {
-    position: absolute;
-    width: 100%;
+    transform: translateY(10px);
 }
 </style>

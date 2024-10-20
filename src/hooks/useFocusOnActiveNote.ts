@@ -8,9 +8,7 @@ export function useFocusOnActiveNote() {
         console.log(activeNote)
         if (activeNote) {
             nextTick(() => {
-                setTimeout(() => {
-                    activeNote.focus()
-                }, 1000)
+                activeNote.focus()
             })
         }
     }
