@@ -20,6 +20,7 @@ const { highLightText } = useHighLightText()
             type="text"
             class="notes-title__field"
             placeholder="Add a title"
+            spellcheck="false"
             aria-label="title field"
             data-notes-title
         />

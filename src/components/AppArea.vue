@@ -1,11 +1,15 @@
 <script setup lang="ts">
+import { useFocusOnActiveNote } from '@/hooks/useFocusOnActiveNote'
+import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import { useStore } from '@/store/notesStore'
 import { useSwipe } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
 const store = useStore()
 
-const { showSidebar, hideSidebar, toggleSidebar } = useToggleSidebar()
+const { showSidebar, hideSidebar } = useToggleSidebar()
+const { focusOnActiveNote } = useFocusOnActiveNote()
+const { setFocusOnTextarea } = useFocusOnTextarea()
 const areaField = useTemplateRef('area-field')
 
 useSwipe(areaField, {
@@ -13,11 +17,15 @@ useSwipe(areaField, {
 
     onSwipeEnd(e: TouchEvent, direction) {
         if (direction === 'left') {
-            store.layoutRight ? showSidebar() : hideSidebar()
+            store.layoutRight
+                ? (showSidebar(), focusOnActiveNote())
+                : (hideSidebar(), setFocusOnTextarea())
         }
 
         if (direction === 'right') {
-            store.layoutRight ? hideSidebar() : showSidebar()
+            store.layoutRight
+                ? (hideSidebar(), setFocusOnTextarea())
+                : (showSidebar(), focusOnActiveNote())
         }
     }
 })

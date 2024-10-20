@@ -5,10 +5,27 @@ import IconFolderEmpty from './icons/IconFolderEmpty.vue'
 import { useStore } from '@/store/notesStore'
 import { useSwipe } from '@vueuse/core'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
+import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
+const { setFocusOnTextarea } = useFocusOnTextarea()
 
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
 const { hideSidebar, showSidebar } = useToggleSidebar()
+
+const clickHandler = (id: number) => {
+    store.setId(id)
+    store.readItem()
+    setFocusOnTextarea()
+}
+
+const doubleTapHandler = (id: number) => {
+    clickHandler(id)
+    hideSidebar()
+}
+
+const itemIsClicked = (id: number): boolean => {
+    return id === store.activeItemId
+}
 
 useSwipe(sidebarElem, {
     threshold: 120,
@@ -50,7 +67,9 @@ const itemsToShow = computed(() => {
 })
 
 watch(store.notesItems, scrollSibebarToBottom)
+
 onMounted(() => {
+    store.readItem()
     if (store.itemsListIsEmpty) store.createItem()
 })
 </script>
@@ -66,8 +85,10 @@ onMounted(() => {
             <AppSidebarListItem
                 v-for="item in itemsToShow"
                 :key="item.id"
-                :id="item.id"
                 :title="item.title"
+                :class="{ 'list__item--active': itemIsClicked(item.id) }"
+                @click="clickHandler(item.id)"
+                v-on-double-tap="doubleTapHandler"
             />
         </TransitionGroup>
     </ul>

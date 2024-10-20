@@ -1,45 +1,11 @@
 <script setup lang="ts">
-import { nextTick, onMounted } from 'vue'
-import { useStore } from '@/store/notesStore'
-import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
-import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-
 defineProps<{
-    id: number
     title: string
 }>()
-
-const store = useStore()
-const { setFocusOnTextarea } = useFocusOnTextarea()
-const { hideSidebar } = useToggleSidebar()
-
-const clickHandler = (id: number) => {
-    store.setId(id)
-    store.readItem()
-    setFocusOnTextarea()
-}
-
-function doubleTapHander(id: number) {
-    clickHandler(id)
-    hideSidebar()
-}
-
-const itemIsClicked = (id: number): boolean => {
-    return id === store.activeItemId
-}
-
-onMounted(() => {
-    store.readItem()
-})
 </script>
 
 <template>
-    <li
-        class="list__item"
-        :class="{ 'list__item--active': itemIsClicked(id) }"
-        @click="clickHandler(id)"
-        v-on-double-tap="doubleTapHander"
-    >
+    <li class="list__item">
         <button class="list__item-btn">
             <p class="list__item-name">
                 {{ title }}
@@ -82,7 +48,6 @@ onMounted(() => {
 
         width: 100%;
         padding: var(--offset-base);
-
 
         &:focus-visible {
             outline: 2px solid var(--color-accent);
