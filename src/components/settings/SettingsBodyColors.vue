@@ -8,7 +8,7 @@ enum ColorType {
     base = '--bg-base',
     text = '--color-text',
     second = '--bg-second',
-    accent = '--color-accent',
+    accent = '--color-accent'
 }
 
 const getColor = (colorName: string): string => {
@@ -18,27 +18,35 @@ const getColor = (colorName: string): string => {
 const setColor = (event: Event, colorType: string) => {
     const eventTarget = event.target as HTMLInputElement
     if (!eventTarget) return
-    document.body.style.setProperty(colorType, eventTarget.value, 'important')
+    document.body.style.setProperty(colorType, eventTarget.value)
 }
 
-const colorsPallet = {
+const currentColorsPallet = {
     text: getColor(ColorType.text),
     base: getColor(ColorType.base),
     second: getColor(ColorType.second),
-    accent: getColor(ColorType.accent),
+    accent: getColor(ColorType.accent)
 }
 
 watch(
     () => themeStore.activeTheme,
     () => {
-        const colorsPallet = {
-            text: getColor(ColorType.text),
-            base: getColor(ColorType.base),
-            second: getColor(ColorType.second),
-            accent: getColor(ColorType.accent),
-        }
+        console.log(getColor(ColorType.text))
     }
 )
+
+const colorsPallet = () => {
+    return {
+        text: getColor(ColorType.text),
+        base: getColor(ColorType.base),
+        second: getColor(ColorType.second),
+        accent: getColor(ColorType.accent)
+    }
+}
+
+onMounted(() => {
+    colorsPallet()
+})
 </script>
 
 <template>
@@ -49,7 +57,7 @@ watch(
                 <label for="base-color" class="colortheme__name">Base color</label>
                 <input
                     @input="(event) => setColor(event, ColorType.base)"
-                    :value="colorsPallet.base"
+                    :value="colorsPallet().base"
                     class="colortheme__input"
                     type="color"
                     name="base-color"
@@ -60,7 +68,7 @@ watch(
                 <label for="second-color" class="colortheme__name">Second color</label>
                 <input
                     @input="(event) => setColor(event, ColorType.second)"
-                    :value="colorsPallet.second"
+                    :value="colorsPallet().second"
                     class="colortheme__input"
                     type="color"
                     name="second-color"
@@ -71,7 +79,7 @@ watch(
                 <label for="accent-color" class="colortheme__name">Accent color</label>
                 <input
                     @input="(event) => setColor(event, ColorType.accent)"
-                    :value="colorsPallet.accent"
+                    :value="colorsPallet().accent"
                     class="colortheme__input"
                     type="color"
                     name="accent-color"
@@ -82,7 +90,7 @@ watch(
                 <label for="text-color" class="colortheme__name">Text color</label>
                 <input
                     @input="(event) => setColor(event, ColorType.text)"
-                    :value="colorsPallet.text"
+                    :value="colorsPallet().text"
                     class="colortheme__input"
                     type="color"
                     name="text-color"

@@ -6,11 +6,11 @@ import { useStore } from '@/store/notesStore'
 import { useSwipe } from '@vueuse/core'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
-const { setFocusOnTextarea } = useFocusOnTextarea()
 
 const store = useStore()
 const sidebarElem = useTemplateRef('sideBarList')
 const { hideSidebar, showSidebar } = useToggleSidebar()
+const { setFocusOnTextarea } = useFocusOnTextarea()
 
 const clickHandler = (id: number) => {
     store.setId(id)

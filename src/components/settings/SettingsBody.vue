@@ -6,17 +6,17 @@ import SettingsBodyHotKeys from './SettingsBodyHotKeys.vue'
 import SettingsBodyAbout from './SettingsBodyAbout.vue'
 
 const tabsNav = [
+    // {
+    //     tabName: 'Colors',
+    //     tabId: 'colors'
+    // },
     {
-        tabName: 'Colors',
-        tabId: 'colors'
+        tabName: 'Hot keys',
+        tabId: 'hotkeys'
     },
     {
         tabName: 'Layouts',
         tabId: 'layouts'
-    },
-    {
-        tabName: 'Hot keys',
-        tabId: 'hotkeys'
     },
     {
         tabName: 'About',
@@ -24,7 +24,7 @@ const tabsNav = [
     }
 ]
 
-const activeTab = ref('colors')
+const activeTab = ref('hotkeys')
 
 const changeTab = (tabId: string) => {
     activeTab.value = tabId
@@ -48,7 +48,7 @@ const changeTab = (tabId: string) => {
                 </button>
             </div>
             <div class="tabs__content">
-                <SettingsBodyColors v-show="activeTab === 'colors'" class="tabs__item" />
+                <!-- <SettingsBodyColors v-show="activeTab === 'colors'" class="tabs__item" /> -->
                 <SettingsBodyLayouts v-show="activeTab === 'layouts'" class="tabs__item" />
                 <SettingsBodyHotKeys v-show="activeTab === 'hotkeys'" class="tabs__item" />
                 <SettingsBodyAbout v-show="activeTab === 'about'" class="tabs__item" />
