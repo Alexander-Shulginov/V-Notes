@@ -88,6 +88,10 @@ const clearInput = () => (store.searchText = '')
     align-items: center;
     justify-content: center;
 
+    transition:
+        opacity 0.2s ease-in-out,
+        visibility 0.2s ease-in-out;
+
     svg {
         width: 14px;
         height: 14px;

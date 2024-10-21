@@ -112,6 +112,11 @@ onMounted(() => {
             width: 0;
             padding: 0;
         }
+
+        &__close {
+            visibility: hidden;
+            opacity: 0;
+        }
     }
 
     .sidebar {
