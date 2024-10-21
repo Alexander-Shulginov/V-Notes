@@ -50,7 +50,12 @@ const setActiveLayoutToRight = () => {
 .settings-layouts {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-base);
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+
+    transform: translateY(30px);
+
 
     &__label {
         display: flex;

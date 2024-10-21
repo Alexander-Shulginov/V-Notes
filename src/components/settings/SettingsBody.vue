@@ -61,14 +61,18 @@ const changeTab = (tabId: string) => {
 .tabs {
     &__inner {
         display: flex;
+        flex-direction: column;
         gap: var(--gap-base);
+        height: 100%;
+
+        @media (max-width: 768px){
+            gap: 22px;
+        }
     }
 
     &__nav {
         display: flex;
-        flex-direction: column;
         flex-shrink: 0;
-        width: 120px;
         gap: var(--gap-small);
     }
 
@@ -77,7 +81,6 @@ const changeTab = (tabId: string) => {
 
         width: 100%;
 
-        text-align: left;
         background-color: transparent;
         border: none;
 
@@ -114,7 +117,6 @@ const changeTab = (tabId: string) => {
     }
 
     &__item {
-        padding: var(--offset-base);
         padding-top: 0;
         color: var(--color-text);
         transition: color var(--transition-short) ease-in-out;

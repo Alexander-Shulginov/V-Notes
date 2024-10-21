@@ -49,13 +49,18 @@ onBeforeUnmount(() => {
     background-color: var(--bg-second);
 
     border-radius: var(--b-radius-base);
-    width: 100%;
-    max-width: 450px;
-    height: 400px;
+    width: calc(100% - 18px);
+    max-width: 350px;
+    height: 440px;
+
 
     padding: calc(var(--offset-base) * 2);
 
     transition: background-color var(--transition-short) ease-in-out;
+
+    @media (max-width: 768px){
+        height: 390px;
+    }
 }
 
 .modal-enter-active,

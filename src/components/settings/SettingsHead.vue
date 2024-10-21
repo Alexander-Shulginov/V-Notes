@@ -19,5 +19,9 @@ defineEmits(['hideModal'])
     justify-content: space-between;
 
     margin-bottom: 32px;
+
+    @media (max-width: 768px){
+        margin-bottom: 18px;
+    }
 }
 </style>

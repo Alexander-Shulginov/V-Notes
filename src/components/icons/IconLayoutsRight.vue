@@ -1,8 +1,8 @@
 <template>
     <svg
         class="icon-layouts-right"
-        width="100"
-        height="75"
+        width="137"
+        height="79"
         viewBox="0 0 60 35"
         xmlns="http://www.w3.org/2000/svg"
     >
