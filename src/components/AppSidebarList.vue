@@ -74,7 +74,7 @@ onMounted(() => {
 })
 </script>
 
-<template>
+<!-- <template>
     <ul class="list" ref="sideBarList">
         <Transition name="list-empty">
             <li v-if="store.itemsListIsEmpty" class="empty-list">
@@ -92,7 +92,7 @@ onMounted(() => {
             />
         </TransitionGroup>
     </ul>
-</template>
+</template> -->
 
 <style lang="scss" scoped>
 .list {
