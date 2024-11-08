@@ -7,7 +7,7 @@
             <span> - toggle sidebar</span>
         </div>
         <div class="settings-keys__item">
-            <code>CTRL + c </code>
+            <code>CTRL + x </code>
             <span> - toggle colortheme</span>
         </div>
         <div class="settings-keys__item">

@@ -7,7 +7,7 @@ import { onBeforeUnmount, onMounted } from 'vue'
 const themeStore = useThemeStore()
 
 function handleKeyDown(event: KeyboardEvent) {
-    if (event.ctrlKey && event.key === 'c') {
+    if (event.ctrlKey && event.key === 'x') {
         event.preventDefault()
         themeStore.toggleColorTheme()
     }
