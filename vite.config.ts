@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/V-Notes/',
+    base: '/',
     plugins: [
         vue({
             template: { transformAssetUrls }
