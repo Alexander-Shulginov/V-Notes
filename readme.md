@@ -34,8 +34,8 @@ npm run dev
 ```
 
 ## Hotkeys
-`Ctrl + x` - toggle sidebar  
-`Ctrl + c` - toggle color theme  
+`Ctrl + s` - toggle sidebar  
+`Ctrl + q` - toggle color theme  
 `Ctrl + m` - toggle menu   
 `right swipe` - show sidebar  
 `left swipe` - hide sidebar  
