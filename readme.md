@@ -1,5 +1,5 @@
 # V-Notes
-This is a simple application for creating and managing notes.
+This is a simple application for creating and managing notes.  
 
 ## Tech stack 
 ![Vue](https://img.shields.io/badge/vue-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
