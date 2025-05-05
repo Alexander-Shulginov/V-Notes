@@ -41,7 +41,7 @@ useSwipe(sidebarElem, {
     }
 })
 
-const scrollSibebarToBottom = () => {
+const scrollSidebarToBottom = () => {
     nextTick(() => {
         if (sidebarElem.value) {
             const { clientHeight } = sidebarElem.value
@@ -66,7 +66,7 @@ const itemsToShow = computed(() => {
     return store.notesItems
 })
 
-watch(store.notesItems, scrollSibebarToBottom)
+watch(store.notesItems, scrollSidebarToBottom)
 
 onMounted(() => {
     store.readItem()
