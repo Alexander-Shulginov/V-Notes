@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
 import IconDots from '../icons/IconDots.vue'
+import IconSettings from '../icons/IconSettings.vue'
 import { useStore } from '@/store/notesStore'
 import { onBeforeUnmount, onMounted } from 'vue'
 const store = useStore()
@@ -33,7 +34,8 @@ onBeforeUnmount(() => {
 
 <template>
     <button @click="showModal" class="menu-btn">
-        <IconDots />
+        <!-- <IconDots /> -->
+        <IconSettings />
     </button>
 </template>
 

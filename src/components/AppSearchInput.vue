@@ -33,6 +33,7 @@ const clearInput = () => (store.searchText = '')
     width: 100%;
     height: 100%;
     padding: var(--offset-base);
+    padding-right: calc(var(--offset-base) * 3);
 
     border: none;
     outline: none;
@@ -67,6 +68,10 @@ const clearInput = () => (store.searchText = '')
         &:hover {
             background-color: var(--bg-base-hover);
         }
+    }
+
+    @media (max-width: 768px) {
+        padding-right: calc(var(--offset-base) * 4);
     }
 }
 

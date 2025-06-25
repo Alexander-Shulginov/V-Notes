@@ -31,6 +31,7 @@ const hideSidebarOnMobile = () => {
                 <IconPlus />
             </BaseBtn>
             <BaseBtn
+                :disabled="store.itemsListIsEmpty"
                 class="btn--delete"
                 @click="store.deleteItem(), setFocusOnTextarea()"
                 aria-label="Button to delete this note"

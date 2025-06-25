@@ -20,6 +20,7 @@
 
     text-decoration: none;
     outline: none;
+    cursor: default;
 
     @media (any-hover: hover) {
         &:hover {

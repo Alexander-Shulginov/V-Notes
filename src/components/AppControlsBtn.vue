@@ -33,6 +33,14 @@
         background-color: var(--bg-base-hover);
     }
 
+    &:disabled.btn--delete {
+        display: none;
+    }
+
+    &:disabled:hover {
+        background-color: var(--bg-base);
+    }
+
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base-hover);
