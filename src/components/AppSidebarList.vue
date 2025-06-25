@@ -70,7 +70,6 @@ watch(store.notesItems, scrollSidebarToBottom)
 
 onMounted(() => {
     store.readItem()
-    // if (store.itemsListIsEmpty) store.createItem()
 })
 </script>
 
