@@ -12,7 +12,7 @@ defineProps<{
                 {{ title }}
             </span>
         </button>
-        <div class="list__item-tooltip">
+        <div v-if="createdAt" class="list__item-tooltip">
             <span>Created at: </span>
             <span>{{ createdAt }}</span>
         </div>
