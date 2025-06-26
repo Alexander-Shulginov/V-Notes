@@ -48,7 +48,7 @@ onBeforeUnmount(() => {
     transition: background-color var(--transition-short) ease-in-out;
 
     @media (max-height: 500px) and (orientation: landscape) {
-        padding: 6px 10px;
+        padding: 6px 13px;
     }
 
     @media (any-hover: hover) {

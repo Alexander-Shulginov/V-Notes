@@ -85,6 +85,7 @@ onMounted(() => {
                 v-for="item in itemsToShow"
                 :key="item.id"
                 :title="item.title"
+                :created-at="item.createdAt"
                 :class="{ 'list__item--active': itemIsClicked(item.id) }"
                 @click="clickHandler(item.id)"
                 v-on-double-tap="doubleTapHandler"

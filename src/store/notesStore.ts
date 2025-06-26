@@ -1,10 +1,12 @@
 import { defineStore } from 'pinia'
 import { getLocalStorage, setLocalStorage } from '@/helpers/LocalStorageActions'
+import { formatDate } from '@/helpers/formatDate'
 
 interface NotesItem {
     id: number
     title: string
     text: string
+    createdAt: string
 }
 
 export const enum StorageKeyName {
@@ -40,7 +42,8 @@ export const useStore = defineStore('storeBase', {
             const newItem: NotesItem = {
                 id: Date.now(),
                 title: 'Untitled',
-                text: ''
+                text: '',
+                createdAt: formatDate(Date.now())
             }
 
             this.notesItems.push(newItem)

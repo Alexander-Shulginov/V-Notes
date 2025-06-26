@@ -64,7 +64,7 @@ const { highLightText } = useHighLightText()
         }
 
         @media (max-height: 500px) and (orientation: landscape) {
-            padding: 6px;
+            padding: 11px;
         }
     }
 }

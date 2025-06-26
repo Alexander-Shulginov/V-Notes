@@ -1,16 +1,21 @@
 <script setup lang="ts">
 defineProps<{
     title: string
+    createdAt: string
 }>()
 </script>
 
 <template>
     <li class="list__item">
         <button class="list__item-btn">
-            <p class="list__item-name">
+            <span class="list__item-name">
                 {{ title }}
-            </p>
+            </span>
         </button>
+        <div class="list__item-tooltip">
+            <span>Created at: </span>
+            <span>{{ createdAt }}</span>
+        </div>
     </li>
 </template>
 
@@ -18,10 +23,16 @@ defineProps<{
 .list__item {
     list-style-type: none;
     border-radius: var(--b-radius-base);
+    position: relative;
 
     @media (any-hover: hover) {
         &:hover {
             background-color: var(--bg-base);
+            .list__item-tooltip {
+                transition-delay: 0.5s;
+                visibility: visible;
+                opacity: 1;
+            }
         }
     }
 
@@ -68,6 +79,41 @@ defineProps<{
         -webkit-line-clamp: 1;
 
         transition: color var(--transition-short) ease-in-out;
+    }
+
+    &-tooltip {
+        position: absolute;
+        top: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--dark-primary);
+        width: 80%;
+        text-align: center;
+        border-radius: var(--b-radius-base);
+        font-size: 14px;
+        padding: 6px;
+        z-index: 2;
+
+        visibility: hidden;
+        opacity: 0;
+
+        transition:
+            visibility 0.2s ease-in-out,
+            opacity 0.2s ease-in-out;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 0 10px 11px 10px;
+            border-color: transparent transparent var(--dark-primary) transparent;
+            transform: rotate(0deg);
+        }
     }
 }
 
