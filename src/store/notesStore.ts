@@ -102,7 +102,7 @@ export const useStore = defineStore('storeBase', {
                 if (index > 0) {
                     this.activeItemId = this.notesItems[index - 1]?.id
                 } else if (this.notesItems.length > 0) {
-                    this.activeItemId = this.notesItems[0].id
+                    this.activeItemId = this.notesItems[0]?.id
                 } else {
                     this.activeItemId = 0
                     this.resetTextToDefault()

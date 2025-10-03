@@ -2,7 +2,7 @@ export function useDeviceType() {
     enum MediaSize {
         mobile = 767,
         table = 1023,
-        dekstop = 1024
+        desktop = 1024
     }
 
     function isMobile(): boolean {
@@ -16,7 +16,7 @@ export function useDeviceType() {
     }
 
     function isDesktop(): boolean {
-        return window.matchMedia(`(min-width: ${MediaSize.dekstop}px)`).matches
+        return window.matchMedia(`(min-width: ${MediaSize.desktop}px)`).matches
     }
 
     return { isMobile, isTablet, isDesktop }
