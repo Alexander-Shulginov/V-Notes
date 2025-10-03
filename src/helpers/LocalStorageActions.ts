@@ -9,7 +9,6 @@ export function setLocalStorage<T>(key: string, data: T): void {
     try {
         localStorage.setItem(key, JSON.stringify(data))
     } catch (error) {
-        console.log('error2')
-        // throw new Error(`Error saving to localStorage: ${error}`)
+        throw new Error(`Error saving to localStorage: ${error}`)
     }
 }

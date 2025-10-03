@@ -2,11 +2,13 @@
 import { computed, onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useThemeStore } from '@/store/themeStore'
-
-import AppBaseTop from './AppBaseTop.vue'
-import AppBaseBody from './AppBaseBody.vue'
-import TheSettings from './settings/TheSettings.vue'
 import { fixIphoneResizeViewport } from '@/helpers/FixIphoneResizeViewPort'
+
+import AppSearch from '@/components/AppSearch.vue'
+import AppTitle from '@/components/AppTitle.vue'
+import AppArea from '@/components/AppEditor.vue'
+import AppSideBar from '@/components/AppSideBar.vue'
+import TheSettings from '@/components/settings/TheSettings.vue'
 
 const store = useStore()
 const themeStore = useThemeStore()
@@ -42,8 +44,14 @@ onMounted(() => {
         :class="[sidebarToggleClass, layoutsToggleClass]"
         :inert="store.modalIsOpen"
     >
-        <AppBaseTop />
-        <AppBaseBody />
+        <div class="editor__top">
+            <AppSearch />
+            <AppTitle />
+        </div>
+        <div class="editor__body">
+            <AppArea />
+            <AppSideBar />
+        </div>
     </main>
     <TheSettings />
 </template>
@@ -61,6 +69,25 @@ onMounted(() => {
     flex-grow: 2;
 
     padding: 0 var(--offset-base);
+
+    &__top {
+        display: flex;
+        gap: var(--gap-base);
+        transition: gap var(--transition-base) ease-in-out;
+    }
+
+    &__body {
+        position: relative;
+
+        display: flex;
+        flex-direction: row-reverse;
+        gap: var(--gap-base);
+
+        width: 100%;
+        height: 100%;
+
+        transition: gap var(--transition-base) ease-in-out;
+    }
 }
 
 .layouts-right {
