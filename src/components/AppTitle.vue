@@ -1,11 +1,24 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import { nextTick, useTemplateRef, watch } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useHighLightText } from '@/hooks/useHighLightText'
+import { useFocusStore, FocusTargets } from '@/store/focusStore'
 
 const store = useStore()
+const focusStore = useFocusStore()
 const titleInput = useTemplateRef('titleInput')
 const { highLightText } = useHighLightText()
+
+watch(
+    () => focusStore.focusTarget,
+    async (target) => {
+        if (target === FocusTargets.Title) {
+            await nextTick()
+            titleInput.value?.focus()
+            focusStore.clearFocus()
+        }
+    }
+)
 </script>
 
 <template>

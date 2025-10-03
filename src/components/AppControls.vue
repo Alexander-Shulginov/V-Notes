@@ -3,13 +3,10 @@ import BaseBtn from '@/components/AppControlsBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
 import { useStore } from '@/store/notesStore'
-import { useFocusOnTitle } from '@/hooks/useFocusOnTitle'
-import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
+import { useFocusStore, FocusTargets } from '@/store/focusStore'
 
 const store = useStore()
-
-const { setFocusOnTitle } = useFocusOnTitle()
-const { setFocusOnTextarea } = useFocusOnTextarea()
+const focusStore = useFocusStore()
 
 const hideSidebarOnMobile = () => {
     if (window.innerWidth < 768) {
@@ -24,7 +21,11 @@ const hideSidebarOnMobile = () => {
             <BaseBtn
                 class="btn--add"
                 :class="{ 'btn--add-active': store.itemsListIsEmpty }"
-                @click="store.createItem(), setFocusOnTitle(), hideSidebarOnMobile()"
+                @click="
+                    (store.createItem(),
+                    focusStore.requestFocus(FocusTargets.Title),
+                    hideSidebarOnMobile())
+                "
                 ref="btnAdd"
                 aria-label="Button to add new note"
             >
@@ -33,7 +34,7 @@ const hideSidebarOnMobile = () => {
             <BaseBtn
                 :disabled="store.itemsListIsEmpty"
                 class="btn--delete"
-                @click="store.deleteItem(), setFocusOnTextarea()"
+                @click="(store.deleteItem(), focusStore.requestFocus(FocusTargets.TextArea))"
                 aria-label="Button to delete this note"
             >
                 <IconTrash />

@@ -5,17 +5,17 @@ import IconFolderEmpty from './icons/IconFolderEmpty.vue'
 import { useStore } from '@/store/notesStore'
 import { useSwipe } from '@vueuse/core'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
+import { useFocusStore, FocusTargets } from '@/store/focusStore'
 
 const store = useStore()
+const focusStore = useFocusStore();
 const sidebarElem = useTemplateRef('sideBarList')
 const { hideSidebar, showSidebar } = useToggleSidebar()
-const { setFocusOnTextarea } = useFocusOnTextarea()
 
 const clickHandler = (id: number) => {
     store.setId(id)
     store.readItem()
-    setFocusOnTextarea()
+    focusStore.requestFocus(FocusTargets.TextArea)
 }
 
 const doubleTapHandler = (id: number) => {

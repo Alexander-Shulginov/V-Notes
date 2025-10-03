@@ -1,41 +1,49 @@
 <script setup lang="ts">
-import { useFocusOnActiveNote } from '@/hooks/useFocusOnActiveNote'
-import { useFocusOnTextarea } from '@/hooks/useFocusOnTextarea'
-import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-import { useStore } from '@/store/notesStore'
+import { nextTick, useTemplateRef, watch } from 'vue'
 import { useSwipe } from '@vueuse/core'
-import { useTemplateRef } from 'vue'
-const store = useStore()
+import { useStore } from '@/store/notesStore'
+import { useToggleSidebar } from '@/hooks/useToggleSidebar'
+import { useFocusStore, FocusTargets } from '@/store/focusStore'
 
+const store = useStore()
+const focusStore = useFocusStore()
 const { showSidebar, hideSidebar } = useToggleSidebar()
-const { focusOnActiveNote } = useFocusOnActiveNote()
-const { setFocusOnTextarea } = useFocusOnTextarea()
+
 const areaField = useTemplateRef('area-field')
 
 useSwipe(areaField, {
     threshold: 120,
 
-    onSwipeEnd(e: TouchEvent, direction) {
+    onSwipeEnd(e: TouchEvent, direction: String) {
         if (direction === 'left') {
-            store.layoutRight
-                ? (showSidebar(), focusOnActiveNote())
-                : (hideSidebar(), setFocusOnTextarea())
+            store.layoutRight ? showSidebar() : hideSidebar()
+            areaField.value?.focus()
         }
 
         if (direction === 'right') {
-            store.layoutRight
-                ? (hideSidebar(), setFocusOnTextarea())
-                : (showSidebar(), focusOnActiveNote())
+            store.layoutRight ? hideSidebar() : showSidebar()
+            areaField.value?.focus()
         }
     }
 })
+
+watch(
+    () => focusStore.focusTarget,
+    async (target) => {
+        if (target === FocusTargets.TextArea) {
+            await nextTick()
+            areaField.value?.focus()
+            focusStore.clearFocus()
+        }
+    }
+)
 </script>
 
 <template>
     <div class="text-field">
         <textarea
             v-model="store.notesText"
-            @blur="store.updateText(), store.readItem()"
+            @blur="(store.updateText(), store.readItem())"
             :disabled="store.itemsListIsEmpty"
             ref="area-field"
             class="text-field__area"
