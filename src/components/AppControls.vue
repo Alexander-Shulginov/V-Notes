@@ -2,11 +2,18 @@
 import BaseBtn from '@/components/AppControlsBtn.vue'
 import IconPlus from './icons/IconPlus.vue'
 import IconTrash from './icons/IconTrash.vue'
+import AppControlsConfirmDelete from './AppControlsConfirmDelete.vue'
+
 import { useStore } from '@/store/notesStore'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'
+import { useToggleOverlay } from '@/hooks/useToggleOverlay'
+import { usePopupStore, PopupNames } from '@/store/popupStore'
 
 const store = useStore()
 const focusStore = useFocusStore()
+const popup = usePopupStore()
+
+const { showOverlay } = useToggleOverlay()
 
 const hideSidebarOnMobile = () => {
     if (window.innerWidth < 768) {
@@ -34,16 +41,19 @@ const hideSidebarOnMobile = () => {
             <BaseBtn
                 :disabled="store.itemsListIsEmpty"
                 class="btn--delete"
-                @click="(store.deleteItem(), focusStore.requestFocus(FocusTargets.TextArea))"
+                @click="(popup.open(PopupNames.Confirm), showOverlay())"
                 aria-label="Button to delete this note"
             >
                 <IconTrash />
             </BaseBtn>
         </div>
+        <Transition name="fade-modal">
+            <AppControlsConfirmDelete v-if="popup.isOpen(PopupNames.Confirm)" />
+        </Transition>
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .controls {
     width: 100%;
     overflow: hidden;
@@ -62,5 +72,15 @@ const hideSidebarOnMobile = () => {
         background-color: var(--bg-second);
         transition: background-color var(--transition-short) ease-in-out;
     }
+}
+
+.fade-modal-enter-active,
+.fade-modal-leave-active {
+    transition: opacity 2s ease-in-out;
+}
+
+.fade-modal-enter-from,
+.fade-modal-leave-to {
+    opacity: 0;
 }
 </style>

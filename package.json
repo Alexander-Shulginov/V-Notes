@@ -14,15 +14,12 @@
         "format": "prettier --write src/"
     },
     "dependencies": {
-        "@quasar/extras": "^1.16.12",
         "@vueuse/components": "^13.9.0",
         "@vueuse/core": "^13.9.0",
         "pinia": "^3.0.3",
-        "quasar": "^2.16.11",
         "vue": "^3.4.29"
     },
     "devDependencies": {
-        "@quasar/vite-plugin": "^1.7.0",
         "@rushstack/eslint-patch": "^1.8.0",
         "@tsconfig/node20": "^20.1.4",
         "@types/node": "^24.6.2",
