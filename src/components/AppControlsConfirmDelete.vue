@@ -51,6 +51,23 @@ const { hideOverlay } = useToggleOverlay()
     padding: 30px;
 }
 
+.confirm-delete__text {
+    min-width: 250px;
+    display: block;
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.confirm-delete__wrap {
+    display: flex;
+    gap: var(--offset-base);
+}
+
+.confirm-delete__btn {
+    color: var(--color-text);
+}
+
 .modal-enter-active,
 .modal-leave-active {
     transition: opacity var(--transition-short) ease-in-out;
