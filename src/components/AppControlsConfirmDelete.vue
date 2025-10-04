@@ -14,31 +14,33 @@ const { hideOverlay } = useToggleOverlay()
 </script>
 
 <template>
-    <Teleport to="#app">
-        <div class="confirm-delete">
-            <span class="confirm-delete__text">Are you sure you want to delete this note?</span>
-            <div class="confirm-delete__wrap">
-                <AppControlsBtn
-                    @click="
-                        (hideOverlay(),
-                        store.deleteItem(),
-                        popup.close(PopupNames.Confirm),
-                        focusStore.requestFocus(FocusTargets.TextArea))
-                    "
-                    class="confirm-delete__btn"
-                    >Yes</AppControlsBtn
-                >
-                <AppControlsBtn
-                    @click="(popup.close(PopupNames.Confirm), hideOverlay())"
-                    class="confirm-delete__btn"
-                    >No</AppControlsBtn
-                >
+    <Transition name="modal">
+        <Teleport to="#app">
+            <div class="confirm-delete">
+                <span class="confirm-delete__text">Are you sure you want to delete this note?</span>
+                <div class="confirm-delete__wrap">
+                    <AppControlsBtn
+                        @click="
+                            (hideOverlay(),
+                            store.deleteItem(),
+                            popup.close(PopupNames.Confirm),
+                            focusStore.requestFocus(FocusTargets.TextArea))
+                        "
+                        class="confirm-delete__btn"
+                        >Yes</AppControlsBtn
+                    >
+                    <AppControlsBtn
+                        @click="(popup.close(PopupNames.Confirm), hideOverlay())"
+                        class="confirm-delete__btn"
+                        >No</AppControlsBtn
+                    >
+                </div>
             </div>
-        </div>
-    </Teleport>
+        </Teleport>
+    </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .confirm-delete {
     position: fixed;
     top: 50%;
@@ -68,4 +70,13 @@ const { hideOverlay } = useToggleOverlay()
     }
 }
 
+.modal-enter-active,
+.modal-leave-active {
+    transition: opacity var(--transition-short) ease-in-out;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+    opacity: 0;
+}
 </style>

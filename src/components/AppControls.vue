@@ -53,34 +53,24 @@ const hideSidebarOnMobile = () => {
     </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .controls {
     width: 100%;
     overflow: hidden;
     transition:
         width var(--transition-base) ease-in-out,
         opacity var(--transition-short) ease-in-out;
-
-    &__wrapper {
-        display: flex;
-        gap: var(--gap-small);
-
-        margin-top: auto;
-        padding: var(--offset-small);
-
-        border-radius: var(--b-radius-base);
-        background-color: var(--bg-second);
-        transition: background-color var(--transition-short) ease-in-out;
-    }
 }
 
-.fade-modal-enter-active,
-.fade-modal-leave-active {
-    transition: opacity 2s ease-in-out;
-}
+.controls__wrapper {
+    display: flex;
+    gap: var(--gap-small);
 
-.fade-modal-enter-from,
-.fade-modal-leave-to {
-    opacity: 0;
+    margin-top: auto;
+    padding: var(--offset-small);
+
+    border-radius: var(--b-radius-base);
+    background-color: var(--bg-second);
+    transition: background-color var(--transition-short) ease-in-out;
 }
 </style>

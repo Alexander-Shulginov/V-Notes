@@ -41,7 +41,7 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .modal {
     position: fixed;
-    z-index: 3;
+    z-index: 6;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
