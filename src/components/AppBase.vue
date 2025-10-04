@@ -56,7 +56,7 @@ onMounted(() => {
     <TheSettings />
 </template>
 
-<style lang="scss">
+<style>
 .editor {
     max-width: var(--container-width);
     margin: 0 auto;
@@ -69,127 +69,118 @@ onMounted(() => {
     flex-grow: 2;
 
     padding: 0 var(--offset-base);
-
-    &__top {
-        display: flex;
-        gap: var(--gap-base);
-        transition: gap var(--transition-base) ease-in-out;
-    }
-
-    &__body {
-        position: relative;
-
-        display: flex;
-        flex-direction: row-reverse;
-        gap: var(--gap-base);
-
-        width: 100%;
-        height: 100%;
-
-        transition: gap var(--transition-base) ease-in-out;
-    }
 }
 
-.layouts-right {
-    .editor__top,
-    .search {
-        flex-direction: row-reverse;
-    }
-
-    .editor__body {
-        flex-direction: row;
-    }
-
-    .sidebar-control {
-        transform: rotate(180deg);
-    }
+.editor__top {
+    display: flex;
+    gap: var(--gap-base);
+    transition: gap var(--transition-base) ease-in-out;
 }
 
-.sidebar--visible {
-    @media (max-width: 768px) {
-        .editor__top {
-            gap: 0;
-        }
+.editor__body {
+    position: relative;
 
-        .notes-title {
-            width: 0;
-            padding: 0;
-            opacity: 0;
-            overflow: hidden;
-        }
-    }
+    display: flex;
+    flex-direction: row-reverse;
+    gap: var(--gap-base);
+
+    width: 100%;
+    height: 100%;
+
+    transition: gap var(--transition-base) ease-in-out;
 }
 
-.sidebar--hidden {
-    .search {
-        width: 64px;
+.layouts-right .editor__top.search {
+    flex-direction: row-reverse;
+}
 
-        @media (max-width: 768px) {
-            // width: 56px;
-        }
+.layouts-right .editor__body {
+    flex-direction: row;
+}
 
-        @media (max-height: 500px) and (orientation: landscape) {
-            width: 42px;
-            padding: 4px;
-        }
+.layouts-right .sidebar-control {
+    transform: rotate(180deg);
+}
 
-        &__field {
-            visibility: hidden;
-            opacity: 0;
-            width: 0;
-            padding: 0;
-        }
-
-        &__close {
-            visibility: hidden;
-            opacity: 0;
-        }
-    }
-
-    .sidebar {
-        width: 0px;
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .controls {
-        width: 0px;
-        opacity: 0;
-    }
-
-    .empty-list {
-        opacity: 0;
-    }
-
-    .info {
-        display: none;
-    }
-
-    .editor__body {
+@media (max-width: 768px) {
+    .sidebar--visible .editor__top {
         gap: 0;
     }
 
-    .text-field::after {
-        background-color: rgba(0, 0, 0, 0);
-    }
-
-    .svg-arrow {
-        transform: rotateY(190deg) translateX(-5px);
-        transition:
-            transform var(--transition-base) ease-in-out,
-            stroke var(--transition-short) ease-in-out;
-    }
-
-    .svg-dots {
+    .sidebar--visible .notes-title {
+        width: 0;
+        padding: 0;
         opacity: 0;
-        transition: opacity var(--transition-base) ease-in-out;
+        overflow: hidden;
     }
+}
 
-    .svg-line {
-        transform: translateX(-4px);
-        transition:
-            transform var(--transition-base) ease-in-out,
-            stroke var(--transition-short) ease-in-out;
+.sidebar--hidden .search {
+    width: 64px;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .sidebar--hidden .search {
+        width: 42px;
+        padding: 4px;
     }
+}
+
+.sidebar--hidden .search__field {
+    visibility: hidden;
+    opacity: 0;
+    width: 0;
+    padding: 0;
+}
+
+.sidebar--hidden .search__close {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.sidebar--hidden .sidebar {
+    width: 0px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar--hidden .controls {
+    width: 0px;
+    opacity: 0;
+}
+
+.sidebar--hidden .empty-list {
+    opacity: 0;
+}
+
+.sidebar--hidden .info {
+    display: none;
+}
+
+.sidebar--hidden .editor__body {
+    gap: 0;
+}
+
+.sidebar--hidden .text-field::after {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.sidebar--hidden .svg-arrow {
+    transform: rotateY(190deg) translateX(-5px);
+    transition:
+        transform var(--transition-base) ease-in-out,
+        stroke var(--transition-short) ease-in-out;
+}
+
+.sidebar--hidden .svg-dots {
+    opacity: 0;
+    transition: opacity var(--transition-base) ease-in-out;
+}
+
+.sidebar--hidden .svg-line {
+    transform: translateX(-4px);
+    transition:
+        transform var(--transition-base) ease-in-out,
+        stroke var(--transition-short) ease-in-out;
 }
 </style>

@@ -21,16 +21,17 @@
     </svg>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .svg--trash {
     overflow: visible;
-
-    path {
-        stroke: var(--color-text);
-        fill: transparent;
-        transition: var(--transition-short) ease-in-out;
-    }
 }
+
+.svg--trash path {
+    stroke: var(--color-text);
+    fill: transparent;
+    transition: var(--transition-short) ease-in-out;
+}
+
 .svg--trash-top {
     transform: translateY(-0.5px);
     transition: var(--transition-base) ease-in-out;

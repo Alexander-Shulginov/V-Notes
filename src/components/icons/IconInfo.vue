@@ -6,7 +6,7 @@
     </svg>
 </template>
 
-<style lang="scss">
+<style>
 .icon-info {
     width: 20px;
     height: 20px;

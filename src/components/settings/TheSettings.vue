@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted } from 'vue'
 import { vOnClickOutside } from '@vueuse/components'
 import { useStore } from '@/store/notesStore'
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
-import { onBeforeUnmount, onMounted } from 'vue'
-import SettingsHead from './SettingsHead.vue'
-import SettingsBody from './SettingsBody.vue'
+import SettingsHead from '@/components/settings/SettingsHead.vue'
+import SettingsBody from '@/components/settings/SettingsBody.vue'
 
 const store = useStore()
 const { hideOverlay } = useToggleOverlay()
@@ -38,14 +38,13 @@ onBeforeUnmount(() => {
     </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .modal {
     position: fixed;
     z-index: 6;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // background-color: var(--bg-second);
     background-color: var(--bg-second);
 
     border-radius: var(--b-radius-base);
@@ -53,12 +52,13 @@ onBeforeUnmount(() => {
     max-width: 350px;
     height: 440px;
 
-
     padding: calc(var(--offset-base) * 2);
 
     transition: background-color var(--transition-short) ease-in-out;
+}
 
-    @media (max-width: 768px){
+@media (max-width: 768px) {
+    .modal {
         height: 390px;
     }
 }

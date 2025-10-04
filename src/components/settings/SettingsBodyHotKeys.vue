@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <div class="settings-keys">
         <div class="settings-keys__item">
@@ -29,25 +27,23 @@
     </div>
 </template>
 
-<style scoped lang="scss">
-.settings-keys {
-    &__item {
-        display: flex;
-        align-items: center;
-        gap: 4px;
+<style scoped>
+.settings-keys__item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-        &:not(:last-child) {
-            margin-bottom: var(--offset-base);
-        }
+.settings-keys__item code {
+    width: 94px;
+    text-align: center;
+    background-color: var(--bg-base);
+    border-radius: 11px;
+    padding: 8px;
+    transition: background-color var(--transition-short) ease-in-out;
+}
 
-        code {
-            width: 94px;
-            text-align: center;
-            background-color: var(--bg-base);
-            border-radius: 11px;
-            padding: 8px;
-            transition: background-color var(--transition-short) ease-in-out;
-        }
-    }
+.settings-keys__item:not(:last-child) {
+    margin-bottom: var(--offset-base);
 }
 </style>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import BaseBtn from '@/components/AppControlsBtn.vue'
-import IconPlus from './icons/IconPlus.vue'
-import IconTrash from './icons/IconTrash.vue'
-import AppControlsConfirmDelete from './AppControlsConfirmDelete.vue'
+import IconPlus from '@/components/icons/IconPlus.vue'
+import IconTrash from '@/components/icons/IconTrash.vue'
+import AppControlsConfirmDelete from '@/components/AppControlsConfirmDelete.vue'
 
 import { useStore } from '@/store/notesStore'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'

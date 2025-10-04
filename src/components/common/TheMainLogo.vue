@@ -10,7 +10,7 @@
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .logo {
     display: flex;
     align-items: center;
@@ -21,33 +21,19 @@
     text-decoration: none;
     outline: none;
     cursor: default;
+}
 
-    @media (any-hover: hover) {
-        &:hover {
-            .slogan::after {
-                width: 100%;
-            }
-        }
-    }
-
-    &:focus-visible {
+@media (any-hover: hover) {
+    .logo:hover {
         .slogan::after {
             width: 100%;
         }
     }
+}
 
-    &__svg {
-        fill: var(--color-text);
-        transition: fill var(--transition-short) ease-in-out;
-
-        @media (max-height: 500px) and (orientation: landscape) {
-            width: 26px;
-        }
-
-        @media (max-width: 768px) {
-            width: 28px;
-        }
-    }
+.logo__svg {
+    fill: var(--color-text);
+    transition: fill var(--transition-short) ease-in-out;
 }
 
 .slogan {
@@ -61,29 +47,41 @@
     transition: color var(--transition-short) ease-in-out;
 
     position: relative;
+}
 
-    @media (max-height: 500px) and (orientation: landscape) {
+.slogan::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+
+    background-color: var(--color-accent);
+
+    transition: width var(--transition-base) ease-in-out;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .logo__svg {
+        width: 26px;
+    }
+
+    .slogan {
         font-size: 16px;
     }
+}
 
-    @media (max-width: 768px) {
-        font-size: 18px;
+@media (max-width: 768px) {
+    .logo__svg {
+        width: 28px;
     }
 
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-
-        width: 0;
-        height: 2px;
-        border-radius: 2px;
-
-        background-color: var(--color-accent);
-
-        transition: width var(--transition-base) ease-in-out;
+    .slogan {
+        font-size: 18px;
     }
 }
 </style>

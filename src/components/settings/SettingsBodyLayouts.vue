@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import IconLayoutsRight from '../icons/IconLayoutsRight.vue'
-import IconLayoutsLeft from '../icons/IconLayoutsLeft.vue'
+import IconLayoutsRight from '@/components/icons/IconLayoutsRight.vue'
+import IconLayoutsLeft from '@/components/icons/IconLayoutsLeft.vue'
 import { setLocalStorage } from '@/helpers/LocalStorageActions'
 import { StorageKeyName, useStore } from '@/store/notesStore'
 
@@ -46,7 +46,7 @@ const setActiveLayoutToRight = () => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .settings-layouts {
     display: flex;
     flex-direction: column;
@@ -55,28 +55,26 @@ const setActiveLayoutToRight = () => {
     gap: 50px;
 
     transform: translateY(30px);
+}
+.settings-layouts__label {
+    display: flex;
+    align-items: center;
+    gap: var(--offset-base);
 
+    position: relative;
+    cursor: pointer;
+}
 
-    &__label {
-        display: flex;
-        align-items: center;
-        gap: var(--offset-base);
+.settings-layouts__radio {
+    width: 20px;
+    height: 20px;
 
-        position: relative;
-        cursor: pointer;
-    }
+    accent-color: var(--color-accent);
+    cursor: pointer;
+}
 
-    &__radio {
-        width: 20px;
-        height: 20px;
-
-        accent-color: var(--color-accent);
-        cursor: pointer;
-
-        &:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-    }
+.settings-layouts__radio:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
 }
 </style>

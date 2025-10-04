@@ -19,7 +19,7 @@
     </svg>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .icon-settings {
     transition: opacity var(--transition-short) ease-in-out;
 }

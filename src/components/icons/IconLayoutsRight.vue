@@ -13,7 +13,7 @@
     </svg>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .icon-layouts-right {
     fill: var(--color-accent);
     transition: fill var(--transition-base) ease-in-out;

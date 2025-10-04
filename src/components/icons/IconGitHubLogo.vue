@@ -14,7 +14,7 @@
     </svg>
 </template>
 
-<style lang="scss">
+<style>
 .github-logo {
     fill: var(--color-text);
     transition: fill var(--transition-short) ease-in-out;

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
-import AppSidebarListItem from './AppSidebarListItem.vue'
-import IconFolderEmpty from './icons/IconFolderEmpty.vue'
+import AppSidebarListItem from '@/components/AppSidebarListItem.vue'
+import IconFolderEmpty from '@/components/icons/IconFolderEmpty.vue'
 import { useStore } from '@/store/notesStore'
 import { useSwipe } from '@vueuse/core'
 import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'
 
 const store = useStore()
-const focusStore = useFocusStore();
+const focusStore = useFocusStore()
 const sidebarElem = useTemplateRef('sideBarList')
 const { hideSidebar, showSidebar } = useToggleSidebar()
 
@@ -94,60 +94,54 @@ onMounted(() => {
     </ul>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .list {
     overflow-y: auto;
     overflow-x: hidden;
-
     display: flex;
     flex-direction: column;
     gap: 3px;
-
     color: var(--color-text);
     font-size: var(--font-size-sidebar);
     background-color: var(--bg-second);
-
     border-radius: var(--b-radius-base);
     border: 6px solid transparent;
-
     position: relative;
-
     transition: background-color var(--transition-short) ease-in-out;
-
     flex-grow: 2;
     height: calc(100vh - 240px);
+}
 
-    @supports (height: calc(100dvh - 240px)) {
+@supports (height: calc(100dvh - 240px)) {
+    .list {
         height: calc(100dvh - 240px);
     }
+}
 
-    &::-webkit-scrollbar {
-        width: 5px;
-    }
+.list::-webkit-scrollbar {
+    width: 5px;
+}
 
-    &::-webkit-scrollbar-track {
-        background-color: var(--bg-base);
-        border-radius: 2px;
-    }
+.list::-webkit-scrollbar-track {
+    background-color: var(--bg-base);
+    border-radius: 2px;
+}
 
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--color-accent);
-        cursor: pointer;
-        border-radius: 2px;
-    }
+.list::-webkit-scrollbar-thumb {
+    background-color: var(--color-accent);
+    cursor: pointer;
+    border-radius: 2px;
+}
 
-    &--offset {
-        padding-right: var(--gap-small);
-    }
+.list--offset {
+    padding-right: var(--gap-small);
 }
 
 .empty-list {
     list-style-type: none;
-
     position: absolute;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%) scale(1);
 }
 

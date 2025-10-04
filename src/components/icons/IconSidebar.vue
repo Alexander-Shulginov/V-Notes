@@ -27,21 +27,22 @@
     </svg>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .svg-sidebar {
     fill: var(--bg-base);
     transition: fill var(--transition-short) ease-in-out;
-    rect,
-    line,
-    path {
-        stroke: var(--color-text);
-    }
+}
 
-    rect {
-        transition: stroke var(--transition-short) ease-in-out;
-    }
+.svg-sidebar rect, line, path {
+    stroke: var(--color-text);
+}
 
-    @media (max-height: 500px) and (orientation: landscape) {
+.svg-sidebar rect {
+    transition: stroke var(--transition-short) ease-in-out;
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .svg-sidebar {
         width: 14px;
         height: 14px;
     }
