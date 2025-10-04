@@ -26,11 +26,3 @@ export const usePopupStore = defineStore('popup', {
         }
     }
 })
-
-const popup = usePopupStore()
-
-window.addEventListener('keydown', (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && popup.active) {
-        popup.close()
-    }
-})

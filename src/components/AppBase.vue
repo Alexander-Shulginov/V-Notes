@@ -10,7 +10,7 @@ import AppTitle from '@/components/AppTitle.vue'
 import AppArea from '@/components/AppEditor.vue'
 import AppSideBar from '@/components/AppSideBar.vue'
 import TheSettings from '@/components/settings/TheSettings.vue'
-import AppControlsConfirmDelete from '@/components/AppControlsConfirmDelete.vue'
+import AppConfirmDelete from '@/components/AppConfirmDelete.vue'
 
 const store = useStore()
 const popup = usePopupStore()
@@ -60,7 +60,7 @@ onMounted(() => {
         <TheSettings v-if="popup.isOpen(PopupNames.Settings)" />
     </Transition>
     <Transition name="modal">
-        <AppControlsConfirmDelete v-if="popup.isOpen(PopupNames.Confirm)" />
+        <AppConfirmDelete v-if="popup.isOpen(PopupNames.Confirm)" />
     </Transition>
 </template>
 
