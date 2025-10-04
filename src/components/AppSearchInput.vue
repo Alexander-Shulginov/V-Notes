@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import IconClose from '@/components/icons/IconClose.vue'
 import { useStore } from '@/store/notesStore'
-import IconClose from './icons/IconClose.vue'
+
 const store = useStore()
 
 const clearInput = () => (store.searchText = '')
@@ -28,22 +29,19 @@ const clearInput = () => (store.searchText = '')
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .search__field {
     width: 100%;
     height: 100%;
     padding: var(--offset-base);
     padding-right: calc(var(--offset-base) * 3);
-
     border: none;
     outline: none;
     border-radius: var(--b-radius-base);
-
     font-family: var(--font-base);
     font-size: var(--font-size-text);
     color: var(--color-text);
     background-color: var(--bg-base);
-
     transition:
         color var(--transition-short) ease-in-out,
         visibility var(--transition-base) ease-in-out,
@@ -51,26 +49,28 @@ const clearInput = () => (store.searchText = '')
         width var(--transition-base) ease-in-out,
         padding var(--transition-base) ease-in-out,
         background-color var(--transition-short) ease-in-out;
+}
 
-    &:focus-visible {
-        outline: 2px solid var(--color-accent);
-        outline-offset: 1px;
-        border-radius: var(--b-radius-base);
+.search__field:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+    border-radius: var(--b-radius-base);
+}
+
+.search__field::placeholder {
+    color: var(--color-text);
+    opacity: 0.7;
+    transition: color var(--transition-short) ease-in-out;
+}
+
+@media (any-hover: hover) {
+    .search__field:hover {
+        background-color: var(--bg-base-hover);
     }
+}
 
-    &::placeholder {
-        color: var(--color-text);
-        opacity: 0.7;
-        transition: color var(--transition-short) ease-in-out;
-    }
-
-    @media (any-hover: hover) {
-        &:hover {
-            background-color: var(--bg-base-hover);
-        }
-    }
-
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .search__field {
         padding-right: calc(var(--offset-base) * 4);
     }
 }
@@ -84,24 +84,21 @@ const clearInput = () => (store.searchText = '')
     position: absolute;
     top: 50%;
     right: 6px;
-
     transform: translateY(-50%);
-
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     transition:
         opacity 0.2s ease-in-out,
         visibility 0.2s ease-in-out;
-
-    svg {
-        width: 14px;
-        height: 14px;
-    }
 }
+
+.search__close svg {
+    width: 14px;
+    height: 14px;
+}
+
 .icon-close-enter-active,
 .icon-close-leave-active {
     transition: opacity var(--transition-short) ease;

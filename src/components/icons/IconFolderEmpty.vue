@@ -33,7 +33,7 @@
     </svg>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .svg-empty-folder {
     fill: var(--color-accent);
     transition: fill var(--transition-base) ease-in-out;

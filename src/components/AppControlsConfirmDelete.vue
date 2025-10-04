@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import AppControlsBtn from '@/components/AppControlsBtn.vue'
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
-import AppControlsBtn from './AppControlsBtn.vue'
 import { useStore } from '@/store/notesStore'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'
 import { usePopupStore, PopupNames } from '@/store/popupStore'
-const popup = usePopupStore()
 
 const store = useStore()
+const popup = usePopupStore()
 const focusStore = useFocusStore()
 
 const { hideOverlay } = useToggleOverlay()
@@ -38,7 +37,7 @@ const { hideOverlay } = useToggleOverlay()
     </Teleport>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .confirm-delete {
     position: fixed;
     top: 50%;
@@ -48,24 +47,23 @@ const { hideOverlay } = useToggleOverlay()
     border-radius: var(--b-radius-base);
     z-index: 10;
     padding: 30px;
-
-    &__text {
-        display: block;
-        margin-bottom: calc(var(--offset-small) * 3);
-        color: var(--color-text);
-        text-align: center;
-    }
-
-    &__wrap {
-        display: flex;
-        justify-content: center;
-        gap: var(--offset-base);
-    }
-
-    &__btn {
-        width: 100px;
-        color: var(--color-text);
-    }
 }
 
+.confirm-delete__text {
+    display: block;
+    margin-bottom: calc(var(--offset-small) * 3);
+    color: var(--color-text);
+    text-align: center;
+}
+
+.confirm-delete__wrap {
+    display: flex;
+    justify-content: center;
+    gap: var(--offset-base);
+}
+
+.confirm-delete__btn {
+    width: 100px;
+    color: var(--color-text);
+}
 </style>

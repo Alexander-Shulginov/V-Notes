@@ -10,7 +10,7 @@ import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .search {
     display: flex;
     gap: var(--gap-small);
@@ -25,8 +25,10 @@ import AppSearchSideBarToggle from '@/components/AppSearchSidebarToggle.vue'
     transition:
         width var(--transition-short) ease-in-out,
         background-color var(--transition-short) ease-in-out;
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .search {
         width: 100%;
     }
 }

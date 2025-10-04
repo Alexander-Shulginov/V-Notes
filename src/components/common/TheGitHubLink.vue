@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconGitHubLogo from '../icons/IconGitHubLogo.vue'
+import IconGitHubLogo from '@/components/icons/IconGitHubLogo.vue'
 </script>
 
 <template>
@@ -13,15 +13,16 @@ import IconGitHubLogo from '../icons/IconGitHubLogo.vue'
     </a>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .github-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    &:focus-visible {
-        outline: 2px solid var(--color-accent);
-        outline-offset: 3px;
-        border-radius: 50%;
-    }
+}
+
+.github-link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 50%;
 }
 </style>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import BaseBtn from '@/components/AppControlsBtn.vue'
-import IconPlus from './icons/IconPlus.vue'
-import IconTrash from './icons/IconTrash.vue'
-import AppControlsConfirmDelete from './AppControlsConfirmDelete.vue'
+import IconPlus from '@/components/icons/IconPlus.vue'
+import IconTrash from '@/components/icons/IconTrash.vue'
+import AppControlsConfirmDelete from '@/components/AppControlsConfirmDelete.vue'
 
 import { useStore } from '@/store/notesStore'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'
@@ -53,25 +53,25 @@ const hideSidebarOnMobile = () => {
     </div>
 </template>
 
-<style lang="scss">
+<style scoped>
 .controls {
     width: 100%;
     overflow: hidden;
     transition:
         width var(--transition-base) ease-in-out,
         opacity var(--transition-short) ease-in-out;
+}
 
-    &__wrapper {
-        display: flex;
-        gap: var(--gap-small);
+.controls__wrapper {
+    display: flex;
+    gap: var(--gap-small);
 
-        margin-top: auto;
-        padding: var(--offset-small);
+    margin-top: auto;
+    padding: var(--offset-small);
 
-        border-radius: var(--b-radius-base);
-        background-color: var(--bg-second);
-        transition: background-color var(--transition-short) ease-in-out;
-    }
+    border-radius: var(--b-radius-base);
+    background-color: var(--bg-second);
+    transition: background-color var(--transition-short) ease-in-out;
 }
 
 .fade-modal-enter-active,

@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SettingsBodyColors from './SettingsBodyColors.vue'
-import SettingsBodyLayouts from './SettingsBodyLayouts.vue'
-import SettingsBodyHotKeys from './SettingsBodyHotKeys.vue'
-import SettingsBodyAbout from './SettingsBodyAbout.vue'
+import SettingsBodyLayouts from '@/components/settings/SettingsBodyLayouts.vue'
+import SettingsBodyHotKeys from '@/components/settings/SettingsBodyHotKeys.vue'
+import SettingsBodyAbout from '@/components/settings/SettingsBodyAbout.vue'
 
 const tabsNav = [
-    // {
-    //     tabName: 'Colors',
-    //     tabId: 'colors'
-    // },
     {
         tabName: 'Hot keys',
         tabId: 'hotkeys'
@@ -48,7 +43,6 @@ const changeTab = (tabId: string) => {
                 </button>
             </div>
             <div class="tabs__content">
-                <!-- <SettingsBodyColors v-show="activeTab === 'colors'" class="tabs__item" /> -->
                 <SettingsBodyLayouts v-show="activeTab === 'layouts'" class="tabs__item" />
                 <SettingsBodyHotKeys v-show="activeTab === 'hotkeys'" class="tabs__item" />
                 <SettingsBodyAbout v-show="activeTab === 'about'" class="tabs__item" />
@@ -57,69 +51,69 @@ const changeTab = (tabId: string) => {
     </div>
 </template>
 
-<style lang="scss" scoped>
-.tabs {
-    &__inner {
-        display: flex;
-        flex-direction: column;
-        gap: var(--gap-base);
-        height: 100%;
+<style scoped>
+.tabs__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-base);
+    height: 100%;
+}
 
-        @media (max-width: 768px){
-            gap: 22px;
-        }
+.tabs__nav {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--gap-small);
+}
+
+.tabs__btn {
+    cursor: pointer;
+
+    width: 100%;
+
+    background-color: transparent;
+    border: none;
+
+    font-size: var(--font-size-text);
+    color: var(--color-text);
+    padding: var(--offset-base);
+
+    list-style-type: none;
+
+    border-radius: var(--b-radius-base);
+    transition: color var(--transition-short) ease-in-out;
+}
+
+@media (any-hover: hover) {
+    .tabs__btn:hover {
+        background-color: var(--bg-base);
     }
+}
 
-    &__nav {
-        display: flex;
-        flex-shrink: 0;
-        gap: var(--gap-small);
-    }
+.tabs__btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
 
-    &__btn {
-        cursor: pointer;
+.tabs__btn--active {
+    background-color: var(--color-accent);
+    transition: background-color var(--transition-short) ease-in-out;
+}
 
-        width: 100%;
-
-        background-color: transparent;
-        border: none;
-
-        font-size: var(--font-size-text);
-        color: var(--color-text);
-        padding: var(--offset-base);
-
-        list-style-type: none;
-
-        border-radius: var(--b-radius-base);
-        transition: color var(--transition-short) ease-in-out;
-
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: var(--bg-base);
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 1px;
-        }
-    }
-
-    &__btn--active {
+@media (any-hover: hover) {
+    .tabs__btn--active:hover {
         background-color: var(--color-accent);
-        transition: background-color var(--transition-short) ease-in-out;
-
-        @media (any-hover: hover) {
-            &:hover {
-                background-color: var(--color-accent);
-            }
-        }
     }
+}
 
-    &__item {
-        padding-top: 0;
-        color: var(--color-text);
-        transition: color var(--transition-short) ease-in-out;
+.tabs__item {
+    padding-top: 0;
+    color: var(--color-text);
+    transition: color var(--transition-short) ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .tabs__inner {
+        gap: 22px;
     }
 }
 

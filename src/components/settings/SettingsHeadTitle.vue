@@ -4,7 +4,7 @@
     </h3>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .modal__title {
     color: var(--color-text);
     font-size: var(--font-size-title);

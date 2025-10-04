@@ -4,59 +4,54 @@
     </button>
 </template>
 
-<style lang="scss">
+<style scoped>
 .btn {
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     padding: var(--offset-base);
     background-color: var(--bg-base);
-
     border: none;
     outline: none;
     border-radius: var(--b-radius-base);
-
     transition-property: background-color, opacity;
     transition-duration: var(--transition-short);
     transition-timing-function: ease-in-out;
+}
 
-    &:focus-visible {
-        outline: 2px solid var(--color-accent);
-        outline-offset: 1px;
-    }
+.btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
 
-    &:active {
+.btn:active {
+    background-color: var(--bg-base-hover);
+}
+
+.btn:disabled.btn--delete {
+    display: none;
+}
+
+.btn:disabled:hover {
+    background-color: var(--bg-base);
+}
+
+@media (any-hover: hover) {
+    .btn:hover {
         background-color: var(--bg-base-hover);
-    }
-
-    &:disabled.btn--delete {
-        display: none;
-    }
-
-    &:disabled:hover {
-        background-color: var(--bg-base);
-    }
-
-    @media (any-hover: hover) {
-        &:hover {
-            background-color: var(--bg-base-hover);
-        }
     }
 }
 
 .btn--add {
     outline: 2px solid transparent;
     outline-offset: 1px;
-    @media (any-hover: hover) {
-        &:hover {
-            .svg--plus {
-                transform: rotate(90deg);
-            }
-        }
+}
+
+@media (any-hover: hover) {
+    .btn--add:hover .svg--plus {
+        transform: rotate(90deg);
     }
 }
 
@@ -67,14 +62,10 @@
         background-color var(--transition-short) ease-in-out;
 }
 
-.btn--delete {
-    @media (any-hover: hover) {
-        &:hover {
-            .svg--trash-top {
-                transform-origin: right 75%;
-                transform: rotate(25deg) translate(-2px, -1px);
-            }
-        }
+@media (any-hover: hover) {
+    .btn--delete:hover .svg--trash-top {
+        transform-origin: right 75%;
+        transform: rotate(25deg) translate(-2px, -1px);
     }
 }
 </style>

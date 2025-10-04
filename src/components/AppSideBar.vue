@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import AppSidebarList from './AppSidebarList.vue'
-import AppControls from './AppControls.vue'
 import { onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useDeviceType } from '@/hooks/useDeviceType'
+import AppSidebarList from '@/components/AppSidebarList.vue'
+import AppControls from '@/components/AppControls.vue'
+
 const store = useStore()
 
 const { isMobile } = useDeviceType()
@@ -11,6 +12,7 @@ const { isMobile } = useDeviceType()
 const hideSidebar = (): void => {
     store.sidebarIsActive = false
 }
+
 onMounted(() => {
     if (isMobile()) hideSidebar()
 })
@@ -23,7 +25,7 @@ onMounted(() => {
     </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .sidebar {
     display: flex;
     flex-direction: column;
@@ -35,8 +37,10 @@ onMounted(() => {
 
     overflow: hidden;
     transition: var(--transition-base) ease-in-out;
+}
 
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .sidebar {
         position: absolute;
         top: 0;
         left: 0;

@@ -12,7 +12,7 @@
     </svg>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .icon-dots {
     width: 22px;
     height: 22px;

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SettingsHeadClose from './SettingsHeadClose.vue';
-import SettingsHeadTitle from './SettingsHeadTitle.vue';
+import SettingsHeadClose from '@/components/settings/SettingsHeadClose.vue'
+import SettingsHeadTitle from '@/components/settings/SettingsHeadTitle.vue'
 
 defineEmits(['hideModal'])
 </script>
@@ -12,15 +12,17 @@ defineEmits(['hideModal'])
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .modal__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     margin-bottom: 32px;
+}
 
-    @media (max-width: 768px){
+@media (max-width: 768px) {
+    .modal__head {
         margin-bottom: 18px;
     }
 }

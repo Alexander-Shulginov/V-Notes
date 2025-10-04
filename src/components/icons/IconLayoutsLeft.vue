@@ -13,9 +13,9 @@
     </svg>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .icon-layouts-left {
     fill: var(--color-accent);
-    transition: fill var(--transition-base)  ease-in-out;
+    transition: fill var(--transition-base) ease-in-out;
 }
 </style>

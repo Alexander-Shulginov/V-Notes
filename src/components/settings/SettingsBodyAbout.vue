@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheMainLogo from '../common/TheMainLogo.vue'
+import TheMainLogo from '@/components/common/TheMainLogo.vue'
 
 const version = import.meta.env.VITE_APP_VERSION
 </script>
@@ -28,29 +28,30 @@ const version = import.meta.env.VITE_APP_VERSION
     </div>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .settings-about {
     display: flex;
     flex-direction: column;
     gap: var(--gap-base);
+}
 
-    &__contacts {
-        display: inline-block;
-        margin-bottom: var(--gap-small);
-    }
+.settings-about .logo {
+    margin: 0 auto;
+}
 
-    &__link {
-        color: inherit;
-        margin-bottom: 6px;
-        display: block;
-        &:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 1px;
-        }
-    }
+.settings-about__contacts {
+    display: inline-block;
+    margin-bottom: var(--gap-small);
+}
 
-    .logo {
-        margin: 0 auto;
-    }
+.settings-about__link {
+    color: inherit;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.settings-about__link:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
 }
 </style>

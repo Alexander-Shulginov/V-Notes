@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import IconClose from '@/components/icons/IconClose.vue'
+
 defineEmits(['hideModal'])
 </script>
 
@@ -9,7 +10,7 @@ defineEmits(['hideModal'])
     </button>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .modal__close {
     background-color: transparent;
     border: none;
@@ -20,17 +21,18 @@ defineEmits(['hideModal'])
     align-items: center;
     justify-content: center;
     padding: 3px;
+}
 
-    @media (any-hover: hover) {
-        &:hover {
-            svg {
-                opacity: 0.8;
-            }
+@media (any-hover: hover) {
+    .modal__close:hover {
+        svg {
+            opacity: 0.8;
         }
     }
-    &:focus-visible {
-        outline: 2px solid var(--color-accent);
-        outline-offset: 1px;
-    }
+}
+
+.modal__close:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
 }
 </style>

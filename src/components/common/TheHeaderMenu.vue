@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useToggleOverlay } from '@/hooks/useToggleOverlay'
-import IconDots from '../icons/IconDots.vue'
 import IconSettings from '../icons/IconSettings.vue'
 import { useStore } from '@/store/notesStore'
 import { onBeforeUnmount, onMounted } from 'vue'
@@ -34,12 +33,11 @@ onBeforeUnmount(() => {
 
 <template>
     <button @click="showModal" class="menu-btn">
-        <!-- <IconDots /> -->
         <IconSettings />
     </button>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .menu-btn {
     display: flex;
     align-items: center;
@@ -48,18 +46,18 @@ onBeforeUnmount(() => {
     background-color: transparent;
     border: none;
     padding: 0;
+}
 
-    &:focus-visible {
-        outline: 2px solid var(--color-accent);
-        border-radius: 4px;
-    }
-
-    @media (any-hover: hover) {
-        &:hover {
-            svg {
-                opacity: 0.8;
-            }
+@media (any-hover: hover) {
+    .menu-btn:hover {
+        svg {
+            opacity: 0.8;
         }
     }
+}
+
+.menu-btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    border-radius: 4px;
 }
 </style>
