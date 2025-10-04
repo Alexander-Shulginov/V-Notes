@@ -3,9 +3,11 @@ import TheMainLogo from '@/components/common/TheMainLogo.vue'
 import TheGitHubLink from '@/components/common/TheGitHubLink.vue'
 import TheHeaderMenu from '@/components/common/TheHeaderMenu.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
+import { usePopupStore, PopupNames } from '@/store/popupStore'
 import { useStore } from '@/store/notesStore'
 
 const store = useStore()
+const popup = usePopupStore();
 </script>
 
 <template>
@@ -14,7 +16,7 @@ const store = useStore()
             <TheMainLogo v-once />
             <TheColorThemeToggle v-once />
             <TheGitHubLink v-once />
-            <TheHeaderMenu />
+            <TheHeaderMenu @click="popup.open(PopupNames.Settings)" />
         </div>
     </header>
 </template>

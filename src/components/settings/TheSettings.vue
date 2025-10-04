@@ -1,50 +1,23 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted } from 'vue'
-import { vOnClickOutside } from '@vueuse/components'
-import { useStore } from '@/store/notesStore'
-import { useToggleOverlay } from '@/hooks/useToggleOverlay'
+import BasePopup from '@/components/BasePopup.vue'
 import SettingsHead from '@/components/settings/SettingsHead.vue'
 import SettingsBody from '@/components/settings/SettingsBody.vue'
 
-const store = useStore()
-const { hideOverlay } = useToggleOverlay()
-
-const hideModal = () => {
-    store.modalIsOpen = false
-    hideOverlay()
-}
-
-const handleKeyUp = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && store.modalIsOpen) {
-        hideModal()
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('keyup', handleKeyUp)
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('keyup', handleKeyUp)
-})
 </script>
 
 <template>
-    <Transition name="modal">
-        <section class="modal" v-show="store.modalIsOpen" v-on-click-outside="hideModal">
-            <SettingsHead @hide-modal="hideModal" />
+    <BasePopup>
+        <section class="settings-modal">
+            <SettingsHead  />
             <SettingsBody />
         </section>
-    </Transition>
+    </BasePopup>
 </template>
 
 <style scoped>
-.modal {
-    position: fixed;
-    z-index: 6;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.settings-modal {
+    position: relative;
+    z-index: 10;
     background-color: var(--bg-second);
 
     border-radius: var(--b-radius-base);
@@ -58,7 +31,7 @@ onBeforeUnmount(() => {
 }
 
 @media (max-width: 768px) {
-    .modal {
+    .settings-modal {
         height: 390px;
     }
 }

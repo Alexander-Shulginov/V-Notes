@@ -1,27 +1,25 @@
 <script setup lang="ts">
 import AppControlsBtn from '@/components/AppControlsBtn.vue'
-import { useToggleOverlay } from '@/hooks/useToggleOverlay'
 import { useStore } from '@/store/notesStore'
 import { useFocusStore, FocusTargets } from '@/store/focusStore'
 import { usePopupStore, PopupNames } from '@/store/popupStore'
+import BasePopup from './BasePopup.vue'
 
 const store = useStore()
 const popup = usePopupStore()
 const focusStore = useFocusStore()
 
-const { hideOverlay } = useToggleOverlay()
 </script>
 
 <template>
     <Transition name="modal">
-        <Teleport to="#app">
+        <BasePopup>
             <div class="confirm-delete">
                 <span class="confirm-delete__text">Are you sure you want to delete this note?</span>
                 <div class="confirm-delete__wrap">
                     <AppControlsBtn
                         @click="
-                            (hideOverlay(),
-                            store.deleteItem(),
+                            (store.deleteItem(),
                             popup.close(PopupNames.Confirm),
                             focusStore.requestFocus(FocusTargets.TextArea))
                         "
@@ -29,22 +27,18 @@ const { hideOverlay } = useToggleOverlay()
                         >Yes</AppControlsBtn
                     >
                     <AppControlsBtn
-                        @click="(popup.close(PopupNames.Confirm), hideOverlay())"
+                        @click="popup.close(PopupNames.Confirm)"
                         class="confirm-delete__btn"
                         >No</AppControlsBtn
                     >
                 </div>
             </div>
-        </Teleport>
+        </BasePopup>
     </Transition>
 </template>
 
-<style lang="scss" >
+<style lang="scss">
 .confirm-delete {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: var(--bg-second);
     border-radius: var(--b-radius-base);
     z-index: 10;

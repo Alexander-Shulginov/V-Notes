@@ -76,6 +76,7 @@ const changeTab = (tabId: string) => {
     font-size: var(--font-size-text);
     color: var(--color-text);
     padding: var(--offset-base);
+    white-space: nowrap;
 
     list-style-type: none;
 

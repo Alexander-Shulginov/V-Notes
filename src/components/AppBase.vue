@@ -3,14 +3,17 @@ import { computed, onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
 import { useThemeStore } from '@/store/themeStore'
 import { fixIphoneResizeViewport } from '@/helpers/FixIphoneResizeViewPort'
+import { usePopupStore, PopupNames } from '@/store/popupStore'
 
 import AppSearch from '@/components/AppSearch.vue'
 import AppTitle from '@/components/AppTitle.vue'
 import AppArea from '@/components/AppEditor.vue'
 import AppSideBar from '@/components/AppSideBar.vue'
 import TheSettings from '@/components/settings/TheSettings.vue'
+import AppControlsConfirmDelete from '@/components/AppControlsConfirmDelete.vue'
 
 const store = useStore()
+const popup = usePopupStore()
 const themeStore = useThemeStore()
 
 const sidebarToggleClass = computed(() => {
@@ -53,7 +56,12 @@ onMounted(() => {
             <AppSideBar />
         </div>
     </main>
-    <TheSettings />
+    <Transition name="modal">
+        <TheSettings v-if="popup.isOpen(PopupNames.Settings)" />
+    </Transition>
+    <Transition name="modal">
+        <AppControlsConfirmDelete v-if="popup.isOpen(PopupNames.Confirm)" />
+    </Transition>
 </template>
 
 <style>

@@ -1,38 +1,10 @@
 <script setup lang="ts">
-import { useToggleOverlay } from '@/hooks/useToggleOverlay'
-import IconSettings from '../icons/IconSettings.vue'
-import { useStore } from '@/store/notesStore'
-import { onBeforeUnmount, onMounted } from 'vue'
-const store = useStore()
-const { showOverlay, hideOverlay } = useToggleOverlay()
+import IconSettings from '@/components/icons/IconSettings.vue'
 
-const showModal = () => {
-    store.modalIsOpen = true
-    showOverlay()
-}
-
-const toggleModal = () => {
-    store.modalIsOpen = !store.modalIsOpen
-    store.modalIsOpen ? showOverlay() : hideOverlay()
-}
-
-const toggleMenuModal = (event: KeyboardEvent) => {
-    if (event.ctrlKey && event.key === 'm') {
-        toggleModal()
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('keyup', toggleMenuModal)
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('keyup', toggleMenuModal)
-})
 </script>
 
 <template>
-    <button @click="showModal" class="menu-btn">
+    <button class="menu-btn" type="button" aria-label="settings button">
         <IconSettings />
     </button>
 </template>
