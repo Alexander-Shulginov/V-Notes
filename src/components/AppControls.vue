@@ -16,6 +16,12 @@ const hideSidebarOnMobile = () => {
         store.sidebarIsActive = !store.sidebarIsActive
     }
 }
+
+const addNotesHandler = () => {
+    store.createItem()
+    focusStore.requestFocus(FocusTargets.Title)
+    hideSidebarOnMobile()
+}
 </script>
 
 <template>
@@ -24,11 +30,7 @@ const hideSidebarOnMobile = () => {
             <BaseBtn
                 class="btn--add"
                 :class="{ 'btn--add-active': store.itemsListIsEmpty }"
-                @click="
-                    (store.createItem(),
-                    focusStore.requestFocus(FocusTargets.Title),
-                    hideSidebarOnMobile())
-                "
+                @click="addNotesHandler"
                 ref="btnAdd"
                 aria-label="Button to add new note"
             >

@@ -123,6 +123,12 @@ onMounted(() => {
     }
 }
 
+@media (max-width: 768px) {
+    .editor__body {
+        height: 100%;
+    }
+}
+
 .sidebar--hidden .search__field {
     visibility: hidden;
     opacity: 0;

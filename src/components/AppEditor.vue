@@ -11,6 +11,11 @@ const { showSidebar, hideSidebar } = useToggleSidebar()
 
 const areaField = useTemplateRef('area-field')
 
+const blurHandler = () => {
+    store.updateText()
+    store.readItem()
+}
+
 useSwipe(areaField, {
     threshold: 120,
 
@@ -43,7 +48,7 @@ watch(
     <div class="text-field">
         <textarea
             v-model="store.notesText"
-            @blur="(store.updateText(), store.readItem())"
+            @blur="blurHandler"
             :disabled="store.itemsListIsEmpty"
             ref="area-field"
             class="text-field__area"
