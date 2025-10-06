@@ -7,17 +7,20 @@ export enum PopupNames {
 
 export const usePopupStore = defineStore('popup', {
     state: () => ({
-        active: '' as PopupNames | null
+        active: '' as PopupNames | null,
+        modalIsOpen: false
     }),
 
     actions: {
         open(name: PopupNames) {
             this.active = name
+            this.modalIsOpen = true
         },
 
         close(name?: PopupNames) {
             if (!name || this.active === name) {
                 this.active = null
+                this.modalIsOpen = false
             }
         },
 

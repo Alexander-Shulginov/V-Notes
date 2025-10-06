@@ -4,14 +4,12 @@ import TheGitHubLink from '@/components/common/TheGitHubLink.vue'
 import TheHeaderMenu from '@/components/common/TheHeaderMenu.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
 import { usePopupStore, PopupNames } from '@/store/popupStore'
-import { useStore } from '@/store/notesStore'
 
-const store = useStore()
-const popup = usePopupStore();
+const popup = usePopupStore()
 </script>
 
 <template>
-    <header class="header" :inert="store.modalIsOpen">
+    <header class="header">
         <div class="header__container">
             <TheMainLogo v-once />
             <TheColorThemeToggle v-once />

@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
     <div class="modal">
         <div class="modal__content">

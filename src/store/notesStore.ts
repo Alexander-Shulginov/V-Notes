@@ -23,7 +23,6 @@ export const useStore = defineStore('storeBase', {
             notesTitleIsFocused: false,
             notesText: '',
             searchText: '',
-            modalIsOpen: false,
             layoutRight: getLocalStorage(StorageKeyName.layoutRight) ?? false,
             sidebarIsActive: getLocalStorage(StorageKeyName.sidebar) ?? true,
             activeItemId: getLocalStorage(StorageKeyName.id) || 0,

@@ -38,7 +38,7 @@ onMounted(() => {
     <main
         class="editor"
         :class="[sidebarToggleClass, layoutsToggleClass]"
-        :inert="store.modalIsOpen"
+        :inert="popup.modalIsOpen"
     >
         <div class="editor__top">
             <AppSearch />
