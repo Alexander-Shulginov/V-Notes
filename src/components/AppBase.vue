@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useStore } from '@/store/notesStore'
-import { useThemeStore } from '@/store/themeStore'
 import { fixIphoneResizeViewport } from '@/helpers/FixIphoneResizeViewPort'
 import { usePopupStore, PopupNames } from '@/store/popupStore'
 
@@ -14,7 +13,6 @@ import AppConfirmDelete from '@/components/AppConfirmDelete.vue'
 
 const store = useStore()
 const popup = usePopupStore()
-const themeStore = useThemeStore()
 
 const sidebarToggleClass = computed(() => {
     return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
@@ -30,13 +28,8 @@ const handleLeaveOnPage = () => {
 }
 
 onMounted(() => {
-    setTimeout(() => {
-        document.body.classList.remove('no-transition')
-    }, 100)
-
     fixIphoneResizeViewport()
 
-    themeStore.loadColorTheme()
     window.addEventListener('beforeunload', handleLeaveOnPage)
 })
 </script>
@@ -69,13 +62,10 @@ onMounted(() => {
     max-width: var(--container-width);
     margin: 0 auto;
     width: 100%;
-
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: var(--gap-base);
-
-    flex-grow: 2;
-
     padding: 0 var(--offset-base);
 }
 
@@ -93,7 +83,6 @@ onMounted(() => {
     gap: var(--gap-base);
 
     width: 100%;
-    height: 100%;
 
     transition: gap var(--transition-base) ease-in-out;
 }

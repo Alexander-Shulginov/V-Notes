@@ -12,7 +12,7 @@
 body {
     font-family: var(--font-base);
     margin: 0;
-    height: 98vh;
+    height: 100vh;
 
     background-color: var(--bg-base);
     transition: background-color var(--transition-short) ease-in-out;
@@ -41,21 +41,15 @@ body[data-overlay='true']::after {
     background-color: var(--color-overlay);
 }
 
-@supports (height: calc(98dvh)) {
+@supports (height: calc(100dvh)) {
     body {
-        height: calc(98dvh);
+        height: calc(100dvh);
     }
 }
 
 #app {
     height: inherit;
-    display: flex;
-    flex-direction: column;
     width: 100%;
-}
-
-.no-transition {
-    transition: none;
 }
 
 [disabled] {

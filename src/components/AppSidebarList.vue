@@ -48,12 +48,9 @@ const scrollSidebarToBottom = () => {
             const { scrollHeight } = sidebarElem.value
 
             if (scrollHeight > clientHeight) {
-                sidebarElem.value.classList.add('list--offset')
                 sidebarElem.value.scrollTo({
                     top: sidebarElem.value.scrollHeight
                 })
-            } else {
-                sidebarElem.value.classList.remove('list--offset')
             }
         }
     })
@@ -96,6 +93,7 @@ onMounted(() => {
 
 <style scoped>
 .list {
+    padding: 5px;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;

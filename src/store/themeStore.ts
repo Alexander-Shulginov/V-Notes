@@ -5,7 +5,6 @@ export const useThemeStore = defineStore('themeStore', {
         return {
             activeTheme: '',
             defaultTheme: 'dark',
-            domDataAttr: 'data-color-theme'
         }
     },
 
@@ -13,12 +12,10 @@ export const useThemeStore = defineStore('themeStore', {
         setColorTheme(themeName: string): void {
             this.activeTheme = themeName
             localStorage.setItem('color-theme', themeName)
-            document.body.setAttribute(this.domDataAttr, themeName)
         },
 
         setDefaultTheme() {
             this.setColorTheme(this.defaultTheme)
-            document.body.setAttribute(this.domDataAttr, this.defaultTheme)
         },
 
         loadColorTheme() {
