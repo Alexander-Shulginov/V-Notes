@@ -2,6 +2,11 @@ import { defineStore } from 'pinia'
 import { getLocalStorage, setLocalStorage } from '@/helpers/LocalStorageActions'
 import { formatDate } from '@/helpers/formatDate'
 
+import { NotesRepo } from '@/core/repository/noteRepo'
+import { NoteService } from '@/core/services/noteService'
+
+const service = new NoteService(new NotesRepo())
+
 interface NotesItem {
     id: number
     title: string
@@ -27,7 +32,8 @@ export const useStore = defineStore('storeBase', {
             sidebarIsActive: getLocalStorage(StorageKeyName.sidebar) ?? true,
             activeItemId: getLocalStorage(StorageKeyName.id) || 0,
             notesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],
-            filteredNotesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[]
+            filteredNotesItems: (getLocalStorage(StorageKeyName.items) || []) as NotesItem[],
+
         }
     },
 
