@@ -1,5 +1,5 @@
-import { NotesRepo } from '@/core/repository/noteRepo'
-import { type INote } from '@/core/models/INote'
+import { NotesRepo } from '@/core/infrastructure/repository/noteRepo'
+import { type INote } from '@/core/domain/INote'
 
 export class NoteService {
     constructor(private repo: NotesRepo) {}

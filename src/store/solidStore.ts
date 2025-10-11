@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
-import { type INote } from '@/core/models/INote'
-import { NotesRepo } from '@/core/repository/noteRepo'
-import { NoteService } from '@/core/services/noteService'
+import { type INote } from '@/core/domain/INote'
+import { NotesRepo } from '@/core/infrastructure/repository/noteRepo'
+import { NoteService } from '@/core/application/services/noteService'
 
 const service = new NoteService(new NotesRepo())
 

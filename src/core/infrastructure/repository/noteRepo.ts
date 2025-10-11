@@ -1,4 +1,4 @@
-import { type INote, Note } from '@/core/models/INote'
+import { type INote, Note } from '@/core/domain/INote'
 import { getLocalStorage, setLocalStorage } from '@/helpers/LocalStorageActions'
 
 const STORAGE_KEY = 'notesItems'
