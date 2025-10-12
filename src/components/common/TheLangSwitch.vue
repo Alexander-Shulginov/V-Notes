@@ -1,8 +1,17 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import IconLang from '@/components/icons/IconLang.vue'
-import { ref } from 'vue';
 
-const itemIsActive = ref()
+const langs = [
+    {
+        tag: 'ru',
+        name: 'Русский'
+    },
+    {
+        tag: 'en',
+        name: 'English'
+    }
+]
 </script>
 
 <template>
@@ -11,13 +20,10 @@ const itemIsActive = ref()
             <IconLang />
         </button>
         <ul class="lang-switch__langs">
-            <li>
-                <button class="lang-switch__lang lang-switch__lang--active" type="button">
-                    English
+            <li v-for="(lang, index) in langs" :key="index">
+                <button class="lang-switch__lang" type="button">
+                    {{ lang.name }}
                 </button>
-            </li>
-            <li>
-                <button class="lang-switch__lang" type="button">Russian</button>
             </li>
         </ul>
     </div>
