@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { useStore } from '@/store/notesStore'
+import { onMounted } from 'vue'
 import { fixIphoneResizeViewport } from '@/helpers/FixIphoneResizeViewPort'
-import { usePopupStore, PopupNames } from '@/store/popupStore'
 
 import AppSearch from '@/components/AppSearch.vue'
 import AppTitle from '@/components/AppTitle.vue'
@@ -11,35 +9,13 @@ import AppSideBar from '@/components/AppSideBar.vue'
 import TheSettings from '@/components/settings/TheSettings.vue'
 import AppConfirmDelete from '@/components/AppConfirmDelete.vue'
 
-const store = useStore()
-const popup = usePopupStore()
-
-const sidebarToggleClass = computed(() => {
-    return store.sidebarIsActive ? 'sidebar--visible' : 'sidebar--hidden'
-})
-
-const layoutsToggleClass = computed(() => {
-    return !store.layoutRight ? '' : 'layouts-right'
-})
-
-const handleLeaveOnPage = () => {
-    store.updateText()
-    store.updateTitle()
-}
-
 onMounted(() => {
     fixIphoneResizeViewport()
-
-    window.addEventListener('beforeunload', handleLeaveOnPage)
 })
 </script>
 
 <template>
-    <main
-        class="editor"
-        :class="[sidebarToggleClass, layoutsToggleClass]"
-        :inert="popup.modalIsOpen"
-    >
+    <main class="editor">
         <div class="editor__top">
             <AppSearch />
             <AppTitle />
@@ -50,10 +26,10 @@ onMounted(() => {
         </div>
     </main>
     <Transition name="modal">
-        <TheSettings v-if="popup.isOpen(PopupNames.Settings)" />
+        <TheSettings v-if="false"/>
     </Transition>
     <Transition name="modal">
-        <AppConfirmDelete v-if="popup.isOpen(PopupNames.Confirm)" />
+        <AppConfirmDelete v-if="false" />
     </Transition>
 </template>
 

@@ -3,10 +3,7 @@ import TheMainLogo from '@/components/common/TheMainLogo.vue'
 import TheGitHubLink from '@/components/common/TheGitHubLink.vue'
 import TheHeaderMenu from '@/components/common/TheHeaderMenu.vue'
 import TheColorThemeToggle from '@/components/common/TheColorThemeToggle.vue'
-import { usePopupStore, PopupNames } from '@/store/popupStore'
 import TheLangSwitch from './TheLangSwitch.vue'
-
-const popup = usePopupStore()
 </script>
 
 <template>
@@ -16,7 +13,7 @@ const popup = usePopupStore()
             <TheColorThemeToggle v-once />
             <TheGitHubLink v-once />
             <TheLangSwitch />
-            <TheHeaderMenu @click="popup.open(PopupNames.Settings)" />
+            <TheHeaderMenu />
         </div>
     </header>
 </template>

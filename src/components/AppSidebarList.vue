@@ -1,92 +1,17 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, useTemplateRef, watch } from 'vue'
 import AppSidebarListItem from '@/components/AppSidebarListItem.vue'
 import IconFolderEmpty from '@/components/icons/IconFolderEmpty.vue'
-import { useStore } from '@/store/notesStore'
-import { useSwipe } from '@vueuse/core'
-import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-import { useFocusStore, FocusTargets } from '@/store/focusStore'
-
-const store = useStore()
-const focusStore = useFocusStore()
-const sidebarElem = useTemplateRef('sideBarList')
-const { hideSidebar, showSidebar } = useToggleSidebar()
-
-const clickHandler = (id: number) => {
-    store.setId(id)
-    store.readItem()
-    focusStore.requestFocus(FocusTargets.TextArea)
-}
-
-const doubleTapHandler = (id: number) => {
-    clickHandler(id)
-    hideSidebar()
-}
-
-const itemIsClicked = (id: number): boolean => {
-    return id === store.activeItemId
-}
-
-useSwipe(sidebarElem, {
-    threshold: 120,
-
-    onSwipeEnd(e: TouchEvent, direction) {
-        if (direction === 'left') {
-            store.layoutRight ? showSidebar() : hideSidebar()
-        }
-
-        if (direction === 'right') {
-            store.layoutRight ? hideSidebar() : showSidebar()
-        }
-    }
-})
-
-const scrollSidebarToBottom = () => {
-    nextTick(() => {
-        if (sidebarElem.value) {
-            const { clientHeight } = sidebarElem.value
-            const { scrollHeight } = sidebarElem.value
-
-            if (scrollHeight > clientHeight) {
-                sidebarElem.value.scrollTo({
-                    top: sidebarElem.value.scrollHeight
-                })
-            }
-        }
-    })
-}
-
-const itemsToShow = computed(() => {
-    if (store.searchText.trim() !== '') {
-        return store.filteredNotesItems
-    }
-    return store.notesItems
-})
-
-watch(store.notesItems, scrollSidebarToBottom)
-
-onMounted(() => {
-    store.readItem()
-})
 </script>
 
 <template>
     <ul class="list" ref="sideBarList">
         <Transition name="list-empty">
-            <li v-if="store.itemsListIsEmpty" class="empty-list">
+            <li class="empty-list">
                 <IconFolderEmpty />
             </li>
         </Transition>
         <TransitionGroup name="list">
-            <AppSidebarListItem
-                v-for="item in itemsToShow"
-                :key="item.id"
-                :title="item.title"
-                :created-at="item.createdAt"
-                :class="{ 'list__item--active': itemIsClicked(item.id) }"
-                @click="clickHandler(item.id)"
-                v-on-double-tap="doubleTapHandler"
-            />
+            <AppSidebarListItem />
         </TransitionGroup>
     </ul>
 </template>

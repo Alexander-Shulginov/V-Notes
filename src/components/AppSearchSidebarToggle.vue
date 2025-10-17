@@ -1,33 +1,9 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted } from 'vue'
-import { useToggleSidebar } from '@/hooks/useToggleSidebar'
 import IconSidebar from '@/components/icons/IconSidebar.vue'
-
-const { toggleSidebar } = useToggleSidebar()
-
-function keyDownToggleSidebar(event: KeyboardEvent) {
-    if (event.ctrlKey && event.key === 's') {
-        event.preventDefault()
-        toggleSidebar()
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('keydown', keyDownToggleSidebar)
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('keydown', keyDownToggleSidebar)
-})
 </script>
 
 <template>
-    <button
-        @click="toggleSidebar"
-        class="sidebar-control"
-        type="button"
-        aria-label="toggle sidebar"
-    >
+    <button class="sidebar-control" type="button" aria-label="toggle sidebar">
         <IconSidebar />
     </button>
 </template>

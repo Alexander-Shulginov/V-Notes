@@ -2,17 +2,13 @@
 import TheHeader from '@/components/common/TheHeader.vue'
 import AppBase from '@/components/AppBase.vue'
 
-import { useThemeStore } from '@/store/themeStore'
 import { onMounted } from 'vue'
-const themeStore = useThemeStore()
 
-onMounted(() => {
-    themeStore.loadColorTheme()
-})
+
 </script>
 
 <template>
-    <div class="app-wrapper" :data-color-theme="themeStore.activeTheme">
+    <div class="app-wrapper" :data-color-theme="'dark'">
         <TheHeader />
         <AppBase />
     </div>

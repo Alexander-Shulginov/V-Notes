@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import SettingsHeadClose from '@/components/settings/SettingsHeadClose.vue'
 import SettingsHeadTitle from '@/components/settings/SettingsHeadTitle.vue'
-import { usePopupStore, PopupNames } from '@/store/popupStore'
-
-const popup = usePopupStore()
 </script>
 
 <template>
     <div class="settings-modal__head">
         <SettingsHeadTitle />
-        <SettingsHeadClose @click="popup.close(PopupNames.Settings)" />
+        <SettingsHeadClose />
     </div>
 </template>
 

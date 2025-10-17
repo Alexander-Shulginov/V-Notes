@@ -1,21 +1,12 @@
-<script setup lang="ts">
-defineProps<{
-    title: string
-    createdAt: string
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <li class="list__item">
         <button class="list__item-btn">
             <span class="list__item-name">
-                {{ title }}
+                empty
             </span>
         </button>
-        <div v-if="createdAt" class="list__item-tooltip">
-            <span>Created at: </span>
-            <span>{{ createdAt }}</span>
-        </div>
     </li>
 </template>
 

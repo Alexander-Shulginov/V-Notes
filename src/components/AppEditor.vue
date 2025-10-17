@@ -1,55 +1,27 @@
 <script setup lang="ts">
-import { nextTick, useTemplateRef, watch } from 'vue'
+import { useTemplateRef } from 'vue'
 import { useSwipe } from '@vueuse/core'
-import { useStore } from '@/store/notesStore'
-import { useToggleSidebar } from '@/hooks/useToggleSidebar'
-import { useFocusStore, FocusTargets } from '@/store/focusStore'
-
-const store = useStore()
-const focusStore = useFocusStore()
-const { showSidebar, hideSidebar } = useToggleSidebar()
 
 const areaField = useTemplateRef('area-field')
-
-const blurHandler = () => {
-    store.updateText()
-    store.readItem()
-}
 
 useSwipe(areaField, {
     threshold: 120,
 
     onSwipeEnd(e: TouchEvent, direction: String) {
         if (direction === 'left') {
-            store.layoutRight ? showSidebar() : hideSidebar()
             areaField.value?.focus()
         }
 
         if (direction === 'right') {
-            store.layoutRight ? hideSidebar() : showSidebar()
             areaField.value?.focus()
         }
     }
 })
-
-watch(
-    () => focusStore.focusTarget,
-    async (target) => {
-        if (target === FocusTargets.TextArea) {
-            await nextTick()
-            areaField.value?.focus()
-            focusStore.clearFocus()
-        }
-    }
-)
 </script>
 
 <template>
     <div class="text-field">
         <textarea
-            v-model="store.notesText"
-            @blur="blurHandler"
-            :disabled="store.itemsListIsEmpty"
             ref="area-field"
             class="text-field__area"
             name="user-text"

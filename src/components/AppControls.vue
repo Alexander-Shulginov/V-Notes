@@ -2,46 +2,15 @@
 import BaseBtn from '@/components/AppControlsBtn.vue'
 import IconPlus from '@/components/icons/IconPlus.vue'
 import IconTrash from '@/components/icons/IconTrash.vue'
-
-import { useStore } from '@/store/notesStore'
-import { useFocusStore, FocusTargets } from '@/store/focusStore'
-import { usePopupStore, PopupNames } from '@/store/popupStore'
-
-const store = useStore()
-const focusStore = useFocusStore()
-const popup = usePopupStore()
-
-const hideSidebarOnMobile = () => {
-    if (window.innerWidth < 768) {
-        store.sidebarIsActive = !store.sidebarIsActive
-    }
-}
-
-const addNotesHandler = () => {
-    store.createItem()
-    focusStore.requestFocus(FocusTargets.Title)
-    hideSidebarOnMobile()
-}
 </script>
 
 <template>
     <div class="controls">
         <div class="controls__wrapper">
-            <BaseBtn
-                class="btn--add"
-                :class="{ 'btn--add-active': store.itemsListIsEmpty }"
-                @click="addNotesHandler"
-                ref="btnAdd"
-                aria-label="Button to add new note"
-            >
+            <BaseBtn class="btn--add" ref="btnAdd" aria-label="Button to add new note">
                 <IconPlus />
             </BaseBtn>
-            <BaseBtn
-                :disabled="store.itemsListIsEmpty"
-                class="btn--delete"
-                @click="popup.open(PopupNames.Confirm)"
-                aria-label="Button to delete this note"
-            >
+            <BaseBtn class="btn--delete" aria-label="Button to delete this note">
                 <IconTrash />
             </BaseBtn>
         </div>

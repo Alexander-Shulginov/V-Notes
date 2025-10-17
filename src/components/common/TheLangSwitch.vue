@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import IconLang from '@/components/icons/IconLang.vue'
 
 const langs = [
@@ -19,7 +18,7 @@ const langs = [
         <button class="lang-switch__btn" type="button">
             <IconLang />
         </button>
-        <ul class="lang-switch__langs">
+        <ul v-if="false" class="lang-switch__langs">
             <li v-for="(lang, index) in langs" :key="index">
                 <button class="lang-switch__lang" type="button">
                     {{ lang.name }}

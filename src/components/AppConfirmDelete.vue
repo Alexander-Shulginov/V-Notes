@@ -1,19 +1,6 @@
 <script setup lang="ts">
 import AppControlsBtn from '@/components/AppControlsBtn.vue'
-import { useStore } from '@/store/notesStore'
-import { useFocusStore, FocusTargets } from '@/store/focusStore'
-import { usePopupStore, PopupNames } from '@/store/popupStore'
 import BasePopup from '@/components/BasePopup.vue'
-
-const store = useStore()
-const popup = usePopupStore()
-const focusStore = useFocusStore()
-
-const handleConfirmDelete = () => {
-    store.deleteItem()
-    popup.close(PopupNames.Confirm)
-    focusStore.requestFocus(FocusTargets.TextArea)
-}
 </script>
 
 <template>
@@ -22,14 +9,8 @@ const handleConfirmDelete = () => {
             <div class="confirm-delete">
                 <span class="confirm-delete__text">Are you sure you want to delete this note?</span>
                 <div class="confirm-delete__wrap">
-                    <AppControlsBtn @click="handleConfirmDelete" class="confirm-delete__btn"
-                        >Yes</AppControlsBtn
-                    >
-                    <AppControlsBtn
-                        @click="popup.close(PopupNames.Confirm)"
-                        class="confirm-delete__btn"
-                        >No</AppControlsBtn
-                    >
+                    <AppControlsBtn class="confirm-delete__btn">Yes</AppControlsBtn>
+                    <AppControlsBtn class="confirm-delete__btn">No</AppControlsBtn>
                 </div>
             </div>
         </BasePopup>

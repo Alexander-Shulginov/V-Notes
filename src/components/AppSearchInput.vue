@@ -1,28 +1,12 @@
 <script setup lang="ts">
 import IconClose from '@/components/icons/IconClose.vue'
-import { useStore } from '@/store/notesStore'
-
-const store = useStore()
-
-const clearInput = () => (store.searchText = '')
 </script>
 
 <template>
     <div class="search__field-wrap">
-        <input
-            v-model="store.searchText"
-            @input="store.searchItems()"
-            type="text"
-            class="search__field"
-            placeholder="Search"
-        />
+        <input type="text" class="search__field" placeholder="Search" />
         <Transition name="icon-close">
-            <button
-                @click="clearInput"
-                v-show="store.searchText"
-                class="search__close"
-                type="button"
-            >
+            <button class="search__close" type="button">
                 <IconClose />
             </button>
         </Transition>

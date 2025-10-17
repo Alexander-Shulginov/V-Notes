@@ -1,32 +1,11 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted } from 'vue'
 import IconMoon from '@/components/icons/IconMoon.vue'
 import IconSun from '@/components/icons/IconSun.vue'
-import { useThemeStore } from '@/store/themeStore'
-
-const themeStore = useThemeStore()
-
-function handleKeyDown(event: KeyboardEvent) {
-    if (event.ctrlKey && event.key === 'q') {
-        event.preventDefault()
-        themeStore.toggleColorTheme()
-    }
-}
-
-onMounted(() => {
-    window.addEventListener('keydown', handleKeyDown)
-})
-
-onBeforeUnmount(() => {
-    window.removeEventListener('keydown', handleKeyDown)
-})
 </script>
 
 <template>
     <div class="theme">
         <input
-            @click="themeStore.toggleColorTheme()"
-            :checked="themeStore.activeTheme === 'dark'"
             class="theme__input"
             type="checkbox"
             name="current-theme"
